@@ -1,0 +1,4222 @@
+{
+  "version": 1,
+  "name": "芙宁娜",
+  "createdAt": "2026-10-29T05:32:37.781Z",
+  "spec": {
+    "name": "芙宁娜",
+    "heightCm": 14,
+    "style": "chibi",
+    "gauge": {
+      "stPerCm": 2.2,
+      "roundsPerCm": 2.2,
+      "hookMm": 2.5,
+      "yarn": "4ply 牛奶棉"
+    },
+    "palette": [
+      {
+        "id": "C1",
+        "name": "奶肤",
+        "hex": "#F5E6D8",
+        "role": "skin",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C2",
+        "name": "银白",
+        "hex": "#E8F4F8",
+        "role": "hair",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C3",
+        "name": "深蓝",
+        "hex": "#1A2B5C",
+        "role": "main",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C4",
+        "name": "深紫",
+        "hex": "#5D3A8A",
+        "role": "accent",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C5",
+        "name": "金色",
+        "hex": "#D4AF37",
+        "role": "accent",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C6",
+        "name": "水蓝",
+        "hex": "#3D8ED4",
+        "role": "eye",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C7",
+        "name": "腮红粉",
+        "hex": "#F2B6B6",
+        "role": "blush",
+        "yarnMetersPerGram": 4.2
+      }
+    ],
+    "parts": [
+      {
+        "id": "head",
+        "name": "头部",
+        "shape": {
+          "kind": "sphere",
+          "diameterCm": 6.5
+        },
+        "defaultColor": "C1"
+      },
+      {
+        "id": "hair-cap",
+        "name": "发帽",
+        "shape": {
+          "kind": "sphere",
+          "diameterCm": 6.8
+        },
+        "defaultColor": "C2"
+      },
+      {
+        "id": "bangs",
+        "name": "前刘海片",
+        "shape": {
+          "kind": "flat-round",
+          "diameterCm": 6.5
+        },
+        "defaultColor": "C2"
+      },
+      {
+        "id": "body",
+        "name": "躯干（深蓝燕尾服）",
+        "shape": {
+          "kind": "capsule",
+          "diameterCm": 3.5,
+          "heightCm": 4
+        },
+        "defaultColor": "C3",
+        "colorRounds": [
+          {
+            "from": 1,
+            "to": 2,
+            "color": "C1"
+          },
+          {
+            "from": 3,
+            "to": 4,
+            "color": "C3"
+          },
+          {
+            "from": 5,
+            "to": 6,
+            "color": "C4"
+          },
+          {
+            "from": 7,
+            "to": 99,
+            "color": "C3"
+          }
+        ]
+      },
+      {
+        "id": "hat",
+        "name": "礼帽筒身（织 1 只）",
+        "shape": {
+          "kind": "cylinder",
+          "diameterCm": 4,
+          "heightCm": 1.5
+        },
+        "defaultColor": "C3"
+      },
+      {
+        "id": "hat-top",
+        "name": "礼帽顶珠",
+        "shape": {
+          "kind": "sphere",
+          "diameterCm": 1.5
+        },
+        "defaultColor": "C5"
+      },
+      {
+        "id": "arm",
+        "name": "手臂（织 2 只）",
+        "shape": {
+          "kind": "capsule",
+          "diameterCm": 1.5,
+          "heightCm": 3
+        },
+        "defaultColor": "C1",
+        "colorRounds": [
+          {
+            "from": 1,
+            "to": 2,
+            "color": "C3"
+          }
+        ]
+      },
+      {
+        "id": "leg",
+        "name": "腿（织 2 只）",
+        "shape": {
+          "kind": "capsule",
+          "diameterCm": 1.5,
+          "heightCm": 2.5
+        },
+        "defaultColor": "C1",
+        "colorRounds": [
+          {
+            "from": 5,
+            "to": 99,
+            "color": "C3"
+          }
+        ]
+      },
+      {
+        "id": "eye",
+        "name": "眼睛（织 2 片）",
+        "shape": {
+          "kind": "flat-round",
+          "diameterCm": 0.5
+        },
+        "defaultColor": "C6"
+      }
+    ],
+    "buildOrder": [
+      "头部：环形起针，塞棉收口，前脸压平。",
+      "发帽：环形起针，封口后套在头上。",
+      "前刘海片：环形起针递增，贴在额头前方，压住发帽下缘。",
+      "礼帽筒身：平织直筒，套在发帽顶部偏后位置。",
+      "礼帽顶珠：塞棉收口，缝在礼帽筒身顶端。",
+      "躯干：环形起针，深蓝主色换紫色领结区，收口后与头部底部缝合。",
+      "手臂 ×2：深蓝袖口，缝合在躯干上方两侧。",
+      "腿 ×2：深蓝鞋边，缝合在躯干底部。",
+      "紫色领结：片织小方块，缝在躯干领口中央。",
+      "眼睛 ×2：水蓝圆片，缝在前额下方。",
+      "金色装饰刺绣：领结中心、礼帽侧面缝金色点缀（用金色线简单打圈即可）。",
+      "腮红：C7 粉色在眼睛下方扫两小块棉线点。"
+    ]
+  },
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    {
+      "id": "C1",
+      "name": "奶肤",
+      "hex": "#F5E6D8",
+      "role": "skin",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C2",
+      "name": "银白",
+      "hex": "#E8F4F8",
+      "role": "hair",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C3",
+      "name": "深蓝",
+      "hex": "#1A2B5C",
+      "role": "main",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C4",
+      "name": "深紫",
+      "hex": "#5D3A8A",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C5",
+      "name": "金色",
+      "hex": "#D4AF37",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C6",
+      "name": "水蓝",
+      "hex": "#3D8ED4",
+      "role": "eye",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C7",
+      "name": "腮红粉",
+      "hex": "#F2B6B6",
+      "role": "blush",
+      "yarnMetersPerGram": 4.2
+    }
+  ],
+  "parts": [
+    {
+      "id": "head",
+      "name": "头部",
+      "shape": {
+        "kind": "sphere",
+        "diameterCm": 6.5,
+        "color": "C1"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C1",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 24,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,V)"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 30,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,V)"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 36,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,V)"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 42,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 42
+            }
+          ],
+          "note": "42X"
+        },
+        {
+          "r": 9,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 42,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 42
+            }
+          ],
+          "note": "42X"
+        },
+        {
+          "r": 10,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 42,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,A)"
+        },
+        {
+          "r": 11,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 36,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,A)"
+        },
+        {
+          "r": 12,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 30,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,A)"
+        },
+        {
+          "r": 13,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 24,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,A)"
+        },
+        {
+          "r": 14,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 18,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(X,A)"
+        },
+        {
+          "r": 15,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 414,
+        "rounds": 15
+      },
+      "plan": {
+        "kind": "sphere",
+        "maxStitches": 42,
+        "diameterCm": 6.5,
+        "circumferenceCm": 20.42,
+        "incRounds": 6,
+        "totalRoundsTarget": 14,
+        "straightRounds": 2,
+        "totalRounds": 15
+      },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "hair-cap",
+      "name": "发帽",
+      "shape": {
+        "kind": "sphere",
+        "diameterCm": 6.8,
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 24,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,V)"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 30,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,V)"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 36,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,V)"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 42,
+          "stitchesOut": 48,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(6X,V)"
+        },
+        {
+          "r": 9,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 48,
+          "stitchesOut": 48,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 48
+            }
+          ],
+          "note": "48X"
+        },
+        {
+          "r": 10,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 48,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(6X,A)"
+        },
+        {
+          "r": 11,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 42,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,A)"
+        },
+        {
+          "r": 12,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 36,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,A)"
+        },
+        {
+          "r": 13,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 30,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,A)"
+        },
+        {
+          "r": 14,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 24,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,A)"
+        },
+        {
+          "r": 15,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 18,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(X,A)"
+        },
+        {
+          "r": 16,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 474,
+        "rounds": 16
+      },
+      "plan": {
+        "kind": "sphere",
+        "maxStitches": 48,
+        "diameterCm": 6.8,
+        "circumferenceCm": 21.36,
+        "incRounds": 7,
+        "totalRoundsTarget": 15,
+        "straightRounds": 1,
+        "totalRounds": 16
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "bangs",
+      "name": "前刘海片",
+      "shape": {
+        "kind": "flat-round",
+        "diameterCm": 6.5,
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 24,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,V)"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 30,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,V)"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 36,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,V)"
+        }
+      ],
+      "subtotal": {
+        "stitches": 168,
+        "rounds": 7
+      },
+      "plan": {
+        "kind": "flat-round",
+        "maxStitches": 42,
+        "diameterCm": 6.5,
+        "circumferenceCm": 20.42,
+        "incRounds": 6,
+        "totalRounds": 7
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "body",
+      "name": "躯干（深蓝燕尾服）",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 3.5,
+        "heightCm": 4,
+        "color": "C3"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C1",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 24,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 24
+            }
+          ],
+          "note": "24X"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 24,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,A)"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 18,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(X,A)"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 138,
+        "rounds": 8
+      },
+      "plan": {
+        "kind": "capsule",
+        "maxStitches": 24,
+        "diameterCm": 3.5,
+        "circumferenceCm": 11,
+        "incRounds": 3,
+        "straightRounds": 1,
+        "totalRounds": 8
+      },
+      "defaultColor": "C3"
+    },
+    {
+      "id": "hat",
+      "name": "礼帽筒身（织 1 只）",
+      "shape": {
+        "kind": "cylinder",
+        "diameterCm": 4,
+        "heightCm": 1.5,
+        "color": "C3"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C3",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 24,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,V)"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 30,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 30
+            }
+          ],
+          "note": "30X"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 30,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 30
+            }
+          ],
+          "note": "30X"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 30,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 30
+            }
+          ],
+          "note": "30X"
+        }
+      ],
+      "subtotal": {
+        "stitches": 180,
+        "rounds": 8
+      },
+      "plan": {
+        "kind": "cylinder",
+        "maxStitches": 30,
+        "diameterCm": 4,
+        "circumferenceCm": 12.57,
+        "incRounds": 4,
+        "straightRounds": 3,
+        "totalRounds": 8
+      },
+      "defaultColor": "C3"
+    },
+    {
+      "id": "hat-top",
+      "name": "礼帽顶珠",
+      "shape": {
+        "kind": "sphere",
+        "diameterCm": 1.5,
+        "color": "C5"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C5",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 42,
+        "rounds": 4
+      },
+      "plan": {
+        "kind": "sphere",
+        "maxStitches": 12,
+        "diameterCm": 1.5,
+        "circumferenceCm": 4.71,
+        "incRounds": 1,
+        "totalRoundsTarget": 3,
+        "straightRounds": 1,
+        "totalRounds": 4
+      },
+      "defaultColor": "C5"
+    },
+    {
+      "id": "arm",
+      "name": "手臂（织 2 只）",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 1.5,
+        "heightCm": 3,
+        "color": "C1"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C3",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 66,
+        "rounds": 6
+      },
+      "plan": {
+        "kind": "capsule",
+        "maxStitches": 12,
+        "diameterCm": 1.5,
+        "circumferenceCm": 4.71,
+        "incRounds": 1,
+        "straightRounds": 3,
+        "totalRounds": 6
+      },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "leg",
+      "name": "腿（织 2 只）",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 1.5,
+        "heightCm": 2.5,
+        "color": "C1"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C1",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 54,
+        "rounds": 5
+      },
+      "plan": {
+        "kind": "capsule",
+        "maxStitches": 12,
+        "diameterCm": 1.5,
+        "circumferenceCm": 4.71,
+        "incRounds": 1,
+        "straightRounds": 2,
+        "totalRounds": 5
+      },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "eye",
+      "name": "眼睛（织 2 片）",
+      "shape": {
+        "kind": "flat-round",
+        "diameterCm": 0.5,
+        "color": "C6"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C6",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        }
+      ],
+      "subtotal": {
+        "stitches": 6,
+        "rounds": 1
+      },
+      "plan": {
+        "kind": "flat-round",
+        "maxStitches": 6,
+        "diameterCm": 0.5,
+        "circumferenceCm": 1.57,
+        "incRounds": 0,
+        "totalRounds": 1
+      },
+      "defaultColor": "C6"
+    }
+  ],
+  "buildOrder": [
+    "头部：环形起针，塞棉收口，前脸压平。",
+    "发帽：环形起针，封口后套在头上。",
+    "前刘海片：环形起针递增，贴在额头前方，压住发帽下缘。",
+    "礼帽筒身：平织直筒，套在发帽顶部偏后位置。",
+    "礼帽顶珠：塞棉收口，缝在礼帽筒身顶端。",
+    "躯干：环形起针，深蓝主色换紫色领结区，收口后与头部底部缝合。",
+    "手臂 ×2：深蓝袖口，缝合在躯干上方两侧。",
+    "腿 ×2：深蓝鞋边，缝合在躯干底部。",
+    "紫色领结：片织小方块，缝在躯干领口中央。",
+    "眼睛 ×2：水蓝圆片，缝在前额下方。",
+    "金色装饰刺绣：领结中心、礼帽侧面缝金色点缀（用金色线简单打圈即可）。",
+    "腮红：C7 粉色在眼睛下方扫两小块棉线点。"
+  ],
+  "yarn": {
+    "perPart": [
+      {
+        "id": "head",
+        "stitches": 414,
+        "meters": 10.4,
+        "grams": 2.5
+      },
+      {
+        "id": "hair-cap",
+        "stitches": 474,
+        "meters": 11.9,
+        "grams": 2.8
+      },
+      {
+        "id": "bangs",
+        "stitches": 168,
+        "meters": 4.2,
+        "grams": 1
+      },
+      {
+        "id": "body",
+        "stitches": 138,
+        "meters": 3.5,
+        "grams": 0.8
+      },
+      {
+        "id": "hat",
+        "stitches": 180,
+        "meters": 4.5,
+        "grams": 1.1
+      },
+      {
+        "id": "hat-top",
+        "stitches": 42,
+        "meters": 1.1,
+        "grams": 0.3
+      },
+      {
+        "id": "arm",
+        "stitches": 66,
+        "meters": 1.7,
+        "grams": 0.4
+      },
+      {
+        "id": "leg",
+        "stitches": 54,
+        "meters": 1.4,
+        "grams": 0.3
+      },
+      {
+        "id": "eye",
+        "stitches": 6,
+        "meters": 0.2,
+        "grams": 0
+      }
+    ],
+    "perColor": [
+      {
+        "color": "C2",
+        "stitches": 642,
+        "meters": 16.1,
+        "grams": 3.8
+      },
+      {
+        "color": "C1",
+        "stitches": 522,
+        "meters": 13.1,
+        "grams": 3.1
+      },
+      {
+        "color": "C3",
+        "stitches": 282,
+        "meters": 7.1,
+        "grams": 1.7
+      },
+      {
+        "color": "C4",
+        "stitches": 48,
+        "meters": 1.2,
+        "grams": 0.3
+      },
+      {
+        "color": "C5",
+        "stitches": 42,
+        "meters": 1.1,
+        "grams": 0.3
+      },
+      {
+        "color": "C6",
+        "stitches": 6,
+        "meters": 0.2,
+        "grams": 0
+      }
+    ],
+    "total": {
+      "stitches": 1542,
+      "meters": 38.9,
+      "grams": 9.2
+    },
+    "withBuffer": {
+      "meters": 48.6,
+      "grams": 11.5
+    },
+    "bufferRatio": 0.25,
+    "constants": {
+      "metersPerStitch": 0.025,
+      "note": "单短针用线按 2.5cm 计（2.5mm 钩针 + 4ply 棉线）；实际用量随手劲浮动，已含 25% 损耗缓冲"
+    }
+  },
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "parts": [
+      {
+        "id": "head",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 8,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 9,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 10,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 11,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 12,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 13,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 14,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 15,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "hair-cap",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 8,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 48,
+            "declaredOut": 48,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 9,
+            "consumed": 48,
+            "declaredIn": 48,
+            "produced": 48,
+            "declaredOut": 48,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 10,
+            "consumed": 48,
+            "declaredIn": 48,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 11,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 12,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 13,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 14,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 15,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 16,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "bangs",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "body",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 8,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "hat",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 8,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "hat-top",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "arm",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "leg",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "eye",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "parts": 9,
+      "rounds": 70,
+      "totalStitches": 1542,
+      "colorChanges": 5,
+      "decorCount": 0,
+      "decorStitches": 0,
+      "reservedLoops": 0
+    }
+  }
+}

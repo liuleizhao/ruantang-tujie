@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>软糖图解</title>
+<style>
+/* ============================================================
+   软糖图解 · 自包含样式
+   配色走 CSS 变量；柔和圆润，但保证打印与对比度可用。
+   ============================================================ */
+:root{
+  --ink:#3B3730; --ink2:#6B6458; --ink3:#948C7E;
+  --line:#E6E0D3; --bg:#FBF8F1; --card:#FFFFFF;
+  --accent:#6FA84A; --accent2:#A5D06B; --accentSoft:#EFF8E1;
+  --warn:#B45309; --warnBg:#FEF6E7; --warnLine:#F3D9A4;
+  --ok:#4E7A33; --okBg:#F2F8E9; --okLine:#D6E7BE;
+  --bad:#C2410C; --badBg:#FEF0EC; --badLine:#F6C9B8;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.7;font-size:15px;
+}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 20px 96px}
+
+/* ── 页头 ── */
+header.top{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.badge{width:62px;height:62px;border-radius:22px;flex:none;position:relative;
+  background:radial-gradient(circle at 34% 30%,#C6E59B,#A5D06B 46%,#6FA84A 100%);
+  box-shadow:inset 0 -6px 14px rgba(0,0,0,.14),0 6px 16px rgba(61,107,58,.20)}
+.badge::after{content:"";position:absolute;left:9px;right:9px;bottom:12px;height:5px;
+  border-radius:5px;background:#FBF8F1;opacity:.9}
+h1{font-size:25px;margin:0;letter-spacing:.4px}
+.sub{color:var(--ink2);font-size:13.5px;margin-top:2px}
+h2{font-size:19px;margin:34px 0 12px;padding-bottom:8px;border-bottom:2px solid #EFE9DA}
+h3{font-size:15.5px;margin:20px 0 8px}
+p{margin:8px 0}
+
+/* ── 卡片 ── */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.kv{display:grid;grid-template-columns:104px 1fr;gap:5px 12px;font-size:14px;margin:0}
+.kv dt{color:var(--ink3)}
+.kv dd{margin:0}
+
+/* ── 色卡 ── */
+.swatches{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.sw{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink2);
+  border:1px solid var(--line);border-radius:999px;padding:4px 12px 4px 5px;background:#fff}
+.dot{width:17px;height:17px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.10);flex:none}
+.sw small{color:var(--ink3);font-size:11.5px}
+
+/* ── 顶部工具栏 ── */
+.toolbar{position:sticky;top:0;z-index:30;background:rgba(251,248,241,.95);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 0;margin:20px 0 6px}
+.tb-inner{max-width:1060px;margin:0 auto;padding:0 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.bar{flex:1;min-width:170px;height:9px;border-radius:99px;background:#EAE4D6;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--accent2),var(--accent));transition:width .3s}
+.tb-txt{font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums;min-width:112px}
+button{font:inherit;font-size:13px;border:1px solid var(--line);background:#fff;color:var(--ink2);
+  border-radius:9px;padding:5px 13px;cursor:pointer}
+button:hover{border-color:#CFC8B6;color:var(--ink)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ── 部件 ── */
+.part{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:18px 0;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);page-break-inside:avoid;break-inside:avoid}
+.part-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.part-head h2{margin:0;border:0;padding:0;font-size:18px}
+.chip{font-size:12px;border-radius:999px;padding:2px 10px;background:#F3F0E6;color:var(--ink2)}
+.part-body{display:grid;grid-template-columns:310px 1fr;gap:20px;align-items:start}
+@media(max-width:880px){.part-body{grid-template-columns:1fr}}
+svg.chart{width:100%;height:auto;display:block}
+svg.legend-svg{width:100%;height:auto;display:block;max-width:700px}
+
+/* ── 图解表 ── */
+table.rounds{width:100%;border-collapse:collapse;font-size:13.5px}
+table.rounds th{text-align:left;font-weight:600;color:var(--ink3);font-size:12px;letter-spacing:.3px;
+  padding:6px 8px;border-bottom:1.5px solid var(--line);white-space:nowrap}
+table.rounds td{padding:6px 8px;border-bottom:1px solid #F2EEE4;vertical-align:middle}
+table.rounds td.num{font-variant-numeric:tabular-nums;text-align:center;white-space:nowrap}
+table.rounds td.pat{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+tr.round{cursor:pointer;transition:background .12s}
+tr.round:hover{background:#FAF8F0}
+tr.round.done td{color:var(--ink3)}
+tr.round.done .pat{text-decoration:line-through;text-decoration-color:#CFC8B6}
+tr.round.hl{background:var(--accentSoft);box-shadow:inset 3px 0 0 var(--accent)}
+tr.round.hl td{border-bottom-color:#DDEBC9}
+.sw-cell{width:14px}
+.sw-cell i{display:block;width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.10)}
+.decor-tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:999px;
+  background:#F0EEFF;border:1px solid #DAD4F5;color:#5B4B99;font-size:11.5px;white-space:nowrap}
+.loop-tag{display:inline-block;margin-left:5px;padding:1px 6px;border-radius:999px;
+  background:#EAF3FA;border:1px solid #C6DCEC;color:#2F6E96;font-size:11px;white-space:nowrap}
+.ok{color:var(--ok);font-weight:600}
+.bad{color:var(--bad);font-weight:600}
+input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+
+/* ── 结论条 ── */
+.verdict{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:12px 16px;
+  margin:12px 0;font-size:14px;border:1px solid}
+.verdict.pass{background:var(--okBg);border-color:var(--okLine)}
+.verdict.fail{background:var(--badBg);border-color:var(--badLine)}
+.verdict .ic{font-weight:700;flex:none}
+.verdict.pass .ic{color:var(--ok)}
+.verdict.fail .ic{color:var(--bad)}
+.warnbar{display:flex;gap:10px;align-items:flex-start;background:var(--warnBg);
+  border:1px solid var(--warnLine);border-radius:12px;padding:12px 16px;margin:12px 0;font-size:13.5px}
+.warnbar .ic{color:var(--warn);font-weight:700;flex:none}
+.warnbar ul{margin:4px 0 0;padding-left:20px}
+
+/* ── 校验表 ── */
+table.verify{width:100%;border-collapse:collapse;font-size:13px}
+table.verify th{background:#F6F2E8;color:var(--ink2);font-weight:600;padding:7px 8px;text-align:left;
+  border-bottom:1.5px solid var(--line);font-size:12px;white-space:nowrap}
+table.verify td{padding:5px 8px;border-bottom:1px solid #F2EEE4;font-variant-numeric:tabular-nums}
+table.verify tr.tot td{font-weight:600;background:#FBF9F2}
+
+.muted{color:var(--ink3);font-size:12.5px}
+
+/* ── 参考图 · 部件对照 ── */
+.ref-wrap{display:grid;grid-template-columns:minmax(220px,320px) 1fr;gap:18px;align-items:start}
+@media(max-width:760px){.ref-wrap{grid-template-columns:1fr}}
+.ref-stage{position:relative;border-radius:14px;border:1px solid var(--line);background:#FCFAF4;overflow:hidden}
+.ref-stage svg.ref-map{width:100%;height:auto;display:block;touch-action:manipulation}
+.ref-region{cursor:pointer;transition:opacity .15s,stroke-width .15s}
+.ref-region:hover,.ref-region:focus{outline:none}
+.ref-region.is-on{filter:brightness(1.05)}
+.ref-region.is-dim{opacity:.28}
+.ref-legend{display:flex;flex-direction:column;gap:6px;max-height:420px;overflow:auto}
+.ref-item{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;
+  padding:7px 10px;background:#fff;cursor:pointer;font-size:13px;color:var(--ink2);text-align:left}
+.ref-item:hover,.ref-item.is-on{border-color:var(--accent);background:var(--accentSoft);color:var(--ink)}
+.ref-item .swatch{width:14px;height:14px;border-radius:4px;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.ref-item .goto{margin-left:auto;font-size:11px;color:var(--accent);white-space:nowrap}
+.part.is-mapped{box-shadow:0 0 0 2px var(--accent),0 1px 3px rgba(0,0,0,.04)}
+.part-pin{font-size:12px;border:1px solid var(--line);background:#fff;color:var(--ink2);
+  border-radius:999px;padding:2px 10px;cursor:pointer}
+.part-pin:hover{border-color:var(--accent);color:var(--ink);background:var(--accentSoft)}
+.part-mini{width:72px;height:100px;flex:none;border-radius:10px;border:1px solid var(--line);background:#FCFAF4;overflow:hidden}
+.part-mini svg{width:100%;height:100%;display:block}
+@media print{
+  .ref-wrap{grid-template-columns:240px 1fr;gap:10px}
+  .ref-legend{max-height:none}
+  .part-pin{display:none}
+}
+
+ul.tight{margin:6px 0;padding-left:20px}
+ul.tight li{margin:3px 0}
+ol.tight{margin:6px 0;padding-left:22px}
+ol.tight li{margin:4px 0}
+.tip{font-size:13px;color:var(--ink2)}
+code{background:#F4F1E7;border-radius:5px;padding:1px 5px;font-size:.92em;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink3);font-size:12.5px}
+.scroll{overflow-x:auto}
+
+/* ============================================================
+   打印
+   ============================================================ */
+@media print{
+  @page{margin:12mm}
+  body{background:#fff;font-size:10.5pt;line-height:1.45}
+  .wrap{max-width:none;padding:0}
+  .toolbar,.no-print,.drop{display:none !important}
+  .part{break-inside:avoid;box-shadow:none;border-color:#DDD;margin:10px 0;padding:10px 12px}
+  .part-body{grid-template-columns:240px 1fr;gap:12px}
+  svg.chart{max-width:240px}
+  h1{font-size:17pt}
+  h2{font-size:12.5pt;margin:14px 0 6px}
+  .card{box-shadow:none;padding:10px 12px}
+  table.rounds{font-size:9.5pt}
+  table.rounds td,table.rounds th{padding:3px 6px}
+  /* 打印时去掉已钩删除线与高亮底色，省墨且更清楚 */
+  tr.round.done .pat{text-decoration:none}
+  tr.round.hl{background:none;box-shadow:none}
+  a{color:inherit;text-decoration:none}
+  .pagebreak{break-before:page}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="badge" aria-hidden="true"></div>
+    <div>
+      <h1 id="title">软糖图解</h1>
+      <div class="sub" id="subtitle">钩织图解</div>
+    </div>
+  </header>
+
+  <div id="app">
+    <!-- 渲染骨架：JS 从这里接管；无 JS 时显示提示 -->
+    <noscript><div class="card">本图解需要 JavaScript 才能渲染逐圈表格与符号图。请用浏览器打开。</div></noscript>
+  </div>
+
+  <footer id="foot">
+    由「软糖图解」生成 · 单个自包含 HTML，离线可开 · 进度只保存在本机浏览器
+  </footer>
+</div>
+
+<!-- ============================================================
+     引擎（构建时注入；占位符必须原样保留）
+     ============================================================ -->
+<script>
+/*__GUMMY_ENGINE__*/
+</script>
+
+<!-- 作品数据（构建时注入） -->
+<script>
+window.__GUMMY_CHART__ = /*__GUMMY_CHART__*/null;
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ────────────────────────────────────────────────────────────
+   * 0. 取引擎与数据；模板单独打开（未注入）时用内置 demo 兜底
+   * ────────────────────────────────────────────────────────── */
+  var E = window.GummyEngine || null;
+  var chart = window.__GUMMY_CHART__ || null;
+  var isDemo = false;
+
+  if (!E) {
+    document.getElementById('app').innerHTML =
+      '<div class="card"><b>引擎未注入。</b> 这份 HTML 看起来是未经过 ' +
+      '<code>node tools/render-html.mjs</code> 处理的原始模板。</div>';
+    return;
+  }
+
+  if (!chart) {
+    chart = demoChart();
+    isDemo = true;
+  }
+
+  /** 模板单独预览时用的小样，保证不白屏。 */
+  function demoChart() {
+    var spec = {
+      name: '示例 · 小圆球',
+      heightCm: 8,
+      palette: [
+        { id: 'C1', name: '奶油白', hex: '#F6E9D8', role: 'skin' },
+        { id: 'C2', name: '浅草绿', hex: '#A5D06B', role: 'main' }
+      ],
+      parts: [
+        { id: 'ball', name: '球体', shape: { kind: 'sphere', diameterCm: 5 }, defaultColor: 'C2' }
+      ]
+    };
+    return E.buildChart(spec);
+  }
+
+  var paletteById = {};
+  (chart.palette || []).forEach(function (c) { paletteById[c.id] = c; });
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function el(tag, cls, html) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (html != null) n.innerHTML = html;
+    return n;
+  }
+  function colorOf(id) {
+    var c = paletteById[id];
+    return c ? c.hex : '#CCCCCC';
+  }
+  function colorName(id) {
+    var c = paletteById[id];
+    return c ? c.name : id;
+  }
+
+  var DECOR_NAMES = { curly: '卷曲针', bobble: '枣针', petal: '花瓣针', picot: '狗牙针' };
+
+  /* ────────────────────────────────────────────────────────────
+   * 1. 页头 + 材料规格
+   * ────────────────────────────────────────────────────────── */
+  function renderHeader() {
+    document.getElementById('title').textContent = chart.name + ' · 钩织图解';
+    var g = chart.gauge || {};
+    var totalH = null;
+    if (chart.spec && chart.spec.heightCm) totalH = chart.spec.heightCm;
+    document.getElementById('subtitle').textContent = [
+      totalH ? '成品约 ' + totalH + ' cm 高' : null,
+      g.hookMm ? g.hookMm + ' mm 钩针' : null,
+      g.yarn || null,
+      (chart.validation && chart.validation.summary
+        ? chart.validation.summary.rounds + ' 圈 / ' + chart.validation.summary.parts + ' 部件'
+        : null)
+    ].filter(Boolean).join(' ｜ ');
+    document.title = chart.name + ' · 钩织图解';
+  }
+
+  function renderMaterials() {
+    var g = chart.gauge || {};
+    var y = chart.yarn || {};
+    var s = (chart.validation && chart.validation.summary) || {};
+    var spec = chart.spec || {};
+
+    var left = el('div', 'card');
+    left.innerHTML =
+      '<h3 style="margin-top:0">用线与用针</h3>' +
+      '<dl class="kv">' +
+      '<dt>线材</dt><dd>' + esc(g.yarn || '未指定') + '</dd>' +
+      '<dt>钩针</dt><dd>' + esc(g.hookMm != null ? g.hookMm + ' mm' : '未指定') + '</dd>' +
+      '<dt>密度</dt><dd>1 cm ≈ ' + esc(g.stPerCm) + ' 针 × ' + esc(g.roundsPerCm) + ' 圈</dd>' +
+      (spec.heightCm ? '<dt>成品高</dt><dd>约 ' + esc(spec.heightCm) + ' cm</dd>' : '') +
+      (spec.style ? '<dt>风格</dt><dd>' + (spec.style === 'chibi' ? 'Q 版（头身比 1:1.2）' : esc(spec.style)) + '</dd>' : '') +
+      '<dt>规模</dt><dd>' + (s.parts || 0) + ' 部件 · ' + (s.rounds || 0) + ' 圈 · ' + (s.totalStitches || 0) + ' 针</dd>' +
+      '</dl>' +
+      '<div class="swatches">' + (chart.palette || []).map(function (c) {
+        return '<span class="sw"><i class="dot" style="background:' + esc(c.hex) + '"></i>' +
+          esc(c.name) + ' <small>' + esc(c.id) + (c.role ? ' · ' + esc(c.role) : '') + '</small></span>';
+      }).join('') + '</div>';
+
+    var right = el('div', 'card');
+    var perColor = (y.perColor || []).map(function (pc) {
+      return '<dt><i class="dot" style="background:' + esc(colorOf(pc.color)) +
+        ';width:12px;height:12px;display:inline-block;vertical-align:-1px;margin-right:5px"></i>' +
+        esc(colorName(pc.color)) + '</dt><dd>约 ' +
+        esc(pc.meters) + ' m / ' + esc(pc.grams) + ' g</dd>';
+    }).join('');
+    right.innerHTML =
+      '<h3 style="margin-top:0">用线量（含 ' + Math.round((y.bufferRatio || 0.25) * 100) + '% 缓冲）</h3>' +
+      '<dl class="kv">' +
+      (perColor || '<dt>合计</dt><dd>—</dd>') +
+      '<dt><b>总计</b></dt><dd><b>' + esc((y.withBuffer || {}).meters) + ' m / ' +
+        esc((y.withBuffer || {}).grams) + ' g</b>' +
+        '<br><span class="muted">净用量 ' + esc((y.total || {}).meters) + ' m / ' +
+        esc((y.total || {}).grams) + ' g</span></dd>' +
+      '</dl>' +
+      '<p class="tip" style="margin-bottom:0">还需要：填充棉、缝合针、记号扣、绣线' +
+      (spec.heightCm && spec.heightCm <= 10 ? '、腮红或色粉' : '') + '。</p>';
+
+    var grid = el('div', 'grid2');
+    grid.appendChild(left);
+    grid.appendChild(right);
+    return grid;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 1b. 参考图 · 部件对照（热区 ↔ 图解双向定位）
+   * ────────────────────────────────────────────────────────── */
+  function getReference() {
+    if (chart.reference && chart.reference.regions && chart.reference.regions.length) {
+      return chart.reference;
+    }
+    if (typeof E.resolveReference === 'function') {
+      return E.resolveReference(chart, chart.reference || null);
+    }
+    if (typeof E.layoutPartMap === 'function') {
+      var map = E.layoutPartMap(chart);
+      return {
+        caption: '部件对照 · 点击定位到图解',
+        image: null,
+        width: map.width,
+        height: map.height,
+        regions: map.regions
+      };
+    }
+    return null;
+  }
+
+  function regionFill(reg, part) {
+    if (reg.color) return reg.color;
+    if (part && part.defaultColor) return colorOf(part.defaultColor);
+    if (part && part.rounds && part.rounds[0]) return colorOf(part.rounds[0].color);
+    return '#C8C0B0';
+  }
+
+  function drawRegionEllipse(parent, reg, fill, opts) {
+    opts = opts || {};
+    function one(cx, cy, rx, ry, suffix) {
+      var e = document.createElementNS('http://www.w3.org/2000/svg', 'ellipse');
+      e.setAttribute('cx', cx);
+      e.setAttribute('cy', cy);
+      e.setAttribute('rx', rx);
+      e.setAttribute('ry', ry);
+      e.setAttribute('fill', fill);
+      e.setAttribute('fill-opacity', opts.fillOpacity != null ? opts.fillOpacity : '0.72');
+      e.setAttribute('stroke', opts.stroke || '#3B3730');
+      e.setAttribute('stroke-opacity', opts.strokeOpacity || '0.35');
+      e.setAttribute('stroke-width', opts.strokeWidth || '0.8');
+      if (opts.cls) e.setAttribute('class', opts.cls);
+      if (opts.partId) {
+        e.setAttribute('data-part', opts.partId);
+        e.setAttribute('tabindex', '0');
+        e.setAttribute('role', 'button');
+        e.setAttribute('aria-label', (opts.label || opts.partId) + ' · 跳转到图解');
+      }
+      parent.appendChild(e);
+      return e;
+    }
+    var nodes = [one(reg.cx, reg.cy, reg.rx, reg.ry, '')];
+    if (reg.mirror) {
+      nodes.push(one(reg.mirror.cx, reg.mirror.cy, reg.mirror.rx, reg.mirror.ry, '-m'));
+    }
+    return nodes;
+  }
+
+  function buildRefSvg(ref, highlightId, mini) {
+    var W = ref.width || 100;
+    var H = ref.height || 140;
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.setAttribute('class', mini ? 'ref-mini' : 'ref-map');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', ref.caption || '部件对照图');
+
+    // 底：参考照片（可选）或素体剪影
+    if (ref.image && !mini) {
+      var img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
+      img.setAttribute('href', ref.image);
+      img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', ref.image);
+      img.setAttribute('x', '0');
+      img.setAttribute('y', '0');
+      img.setAttribute('width', String(W));
+      img.setAttribute('height', String(H));
+      img.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      svg.appendChild(img);
+      var veil = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      veil.setAttribute('x', '0'); veil.setAttribute('y', '0');
+      veil.setAttribute('width', String(W)); veil.setAttribute('height', String(H));
+      veil.setAttribute('fill', '#FBF8F1');
+      veil.setAttribute('fill-opacity', '0.18');
+      svg.appendChild(veil);
+    } else {
+      var bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      bg.setAttribute('x', '0'); bg.setAttribute('y', '0');
+      bg.setAttribute('width', String(W)); bg.setAttribute('height', String(H));
+      bg.setAttribute('fill', mini ? '#FCFAF4' : '#F7F3EA');
+      svg.appendChild(bg);
+      // 简易素体剪影（帮助读出头/身位置）
+      if (!mini) {
+        var silhouette = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        silhouette.setAttribute('opacity', '0.14');
+        var neck = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        neck.setAttribute('x', '46'); neck.setAttribute('y', '62');
+        neck.setAttribute('width', '8'); neck.setAttribute('height', '8');
+        neck.setAttribute('rx', '2'); neck.setAttribute('fill', '#8A8070');
+        silhouette.appendChild(neck);
+        svg.appendChild(silhouette);
+      }
+    }
+
+    var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', 'ref-regions');
+    (ref.regions || []).forEach(function (reg) {
+      var part = (chart.parts || []).find(function (p) { return p.id === reg.partId; });
+      var fill = regionFill(reg, part);
+      var active = highlightId && reg.partId === highlightId;
+      var dim = highlightId && reg.partId !== highlightId;
+      drawRegionEllipse(g, reg, fill, {
+        partId: mini ? null : reg.partId,
+        label: reg.name,
+        cls: 'ref-region' + (active ? ' is-on' : '') + (dim ? ' is-dim' : ''),
+        fillOpacity: mini ? (active ? '0.92' : '0.18') : (active ? '0.88' : (dim ? '0.22' : '0.70')),
+        strokeWidth: active ? '1.6' : '0.7',
+        strokeOpacity: active ? '0.75' : '0.30'
+      });
+      if (!mini && !reg.side) {
+        var label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        label.setAttribute('x', String(reg.cx));
+        label.setAttribute('y', String(reg.cy + 1.2));
+        label.setAttribute('text-anchor', 'middle');
+        label.setAttribute('font-size', '3.6');
+        label.setAttribute('fill', '#3B3730');
+        label.setAttribute('fill-opacity', dim ? '0.25' : '0.85');
+        label.setAttribute('pointer-events', 'none');
+        label.setAttribute('font-family', 'sans-serif');
+        // 短标签：取名称前 4 字或 id
+        var short = (reg.name || reg.partId || '').replace(/（.*）/g, '');
+        if (short.length > 5) short = short.slice(0, 4);
+        label.textContent = short;
+        g.appendChild(label);
+      }
+    });
+    svg.appendChild(g);
+    return svg;
+  }
+
+  function focusPart(partId, fromRef) {
+    clearPartFocus();
+    var sec = document.getElementById('part-' + partId);
+    if (sec) {
+      sec.classList.add('is-mapped');
+      if (fromRef) {
+        try { sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {
+          sec.scrollIntoView(true);
+        }
+      }
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.ref-region[data-part="' + partId + '"]'), function (n) {
+      n.classList.add('is-on');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.ref-region'), function (n) {
+      if (n.getAttribute('data-part') !== partId) n.classList.add('is-dim');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.ref-item'), function (n) {
+      if (n.getAttribute('data-part') === partId) n.classList.add('is-on');
+      else n.classList.remove('is-on');
+    });
+    // 刷新迷你图高亮
+    Array.prototype.forEach.call(document.querySelectorAll('.part-mini[data-part]'), function (box) {
+      var pid = box.getAttribute('data-part');
+      var ref = getReference();
+      if (!ref) return;
+      box.innerHTML = '';
+      box.appendChild(buildRefSvg(ref, pid, true));
+    });
+  }
+
+  function clearPartFocus() {
+    Array.prototype.forEach.call(document.querySelectorAll('.part.is-mapped'), function (n) {
+      n.classList.remove('is-mapped');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.ref-region'), function (n) {
+      n.classList.remove('is-on');
+      n.classList.remove('is-dim');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.ref-item.is-on'), function (n) {
+      n.classList.remove('is-on');
+    });
+  }
+
+  function renderReferenceMap() {
+    var ref = getReference();
+    var card = el('div', 'card');
+    if (!ref || !(ref.regions || []).length) {
+      card.innerHTML = '<p class="tip" style="margin:0">本图解未附带部件对照区。可用 ' +
+        '<code>node tools/render-html.mjs chart.json --ref 照片.jpg --out 作品.html</code> 嵌入参考图。</p>';
+      return card;
+    }
+
+    var head = '<h3 style="margin-top:0">' + esc(ref.caption || '参考图 · 部件对照') + '</h3>' +
+      '<p class="tip" style="margin-top:0">点击图上色块或右侧列表，跳到对应部件的逐圈图解；' +
+      '在部件标题点「在图上定位」可反向高亮。' +
+      (ref.image ? '已嵌入参考照片。' : '当前为 Q 版素体示意图（无照片时自动生成）。') + '</p>';
+    card.innerHTML = head;
+
+    var wrap = el('div', 'ref-wrap');
+    var stage = el('div', 'ref-stage');
+    stage.id = 'refStage';
+    stage.appendChild(buildRefSvg(ref, null, false));
+    wrap.appendChild(stage);
+
+    var legend = el('div', 'ref-legend');
+    legend.setAttribute('aria-label', '部件列表');
+    (ref.regions || []).forEach(function (reg) {
+      var part = (chart.parts || []).find(function (p) { return p.id === reg.partId; });
+      var rounds = part ? part.rounds.length : 0;
+      var btn = el('button', 'ref-item');
+      btn.type = 'button';
+      btn.setAttribute('data-part', reg.partId);
+      btn.innerHTML =
+        '<span class="swatch" style="background:' + esc(regionFill(reg, part)) + '"></span>' +
+        '<span><b>' + esc(reg.name || reg.partId) + '</b>' +
+        (rounds ? '<br><span class="muted">' + rounds + ' 圈 · #' + esc(reg.partId) + '</span>' : '') +
+        '</span><span class="goto">去图解 →</span>';
+      legend.appendChild(btn);
+    });
+    wrap.appendChild(legend);
+    card.appendChild(wrap);
+    return card;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 2. 符号图（SVG）
+   * ────────────────────────────────────────────────────────── */
+  function markPath(st) {
+    switch (st) {
+      case 'X': return '<path d="M-3.4,-3.4 L3.4,3.4 M3.4,-3.4 L-3.4,3.4"/>';
+      case 'V': return '<path d="M-4.2,3 L0,-3.5 L4.2,3"/>';
+      case 'A': return '<path d="M-4.2,-3 L0,3.5 L4.2,-3"/>';
+      case 'T': return '<path d="M-3.6,0 L3.6,0 M0,-3.6 L0,3.6"/>';
+      case 'F': return '<path d="M-3.6,-2 L3.6,-2 M0,-3.6 L0,3.6"/>';
+      case 'W': return '<path d="M-4,3 L0,-3.5 L4,3"/><path d="M-1.6,3 L1.6,3"/>';
+      case 'M': return '<path d="M-4,-3 L0,3.5 L4,-3"/><path d="M-1.6,-3 L1.6,-3"/>';
+      case 'CH': return '<circle r="2.6" fill="none"/>';
+      case 'SL': return '<path d="M-3,2 L3,-2"/><circle r="1.3" cx="3" cy="-2"/>';
+      case 'K': return '<path d="M-3.4,-3.4 L3.4,3.4" opacity=".45"/>';
+      default: return '';
+    }
+  }
+
+  /** 每个部件一张符号图：同心圆环，针目按 circleLayout 归一化坐标落点。 */
+  function chartSvg(part) {
+    var layout = E.circleLayout(part);
+    var NS = 'http://www.w3.org/2000/svg';
+    var R = 150;                 // 1.0 半径 = 150px
+    var pad = 34;
+    var size = (R + pad) * 2;
+    var cx = size / 2, cy = size / 2;
+
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + size + ' ' + size);
+    svg.setAttribute('class', 'chart');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', part.name + ' 符号图');
+
+    var bg = document.createElementNS(NS, 'circle');
+    bg.setAttribute('cx', cx); bg.setAttribute('cy', cy);
+    bg.setAttribute('r', R + pad - 8);
+    bg.setAttribute('fill', '#FFFFFF');
+    bg.setAttribute('stroke', '#E7E1D4');
+    svg.appendChild(bg);
+
+    layout.forEach(function (ring, idx) {
+      var rd = part.rounds[idx] || {};
+      var stroke = colorOf(rd.color);
+      var g = document.createElementNS(NS, 'g');
+      g.setAttribute('class', 'ring');
+      g.setAttribute('id', part.id + '-r' + rd.r);
+
+      // 圈线
+      if (ring.radius > 0) {
+        var guide = document.createElementNS(NS, 'circle');
+        guide.setAttribute('cx', cx); guide.setAttribute('cy', cy);
+        guide.setAttribute('r', (ring.radius * R).toFixed(2));
+        guide.setAttribute('fill', 'none');
+        guide.setAttribute('stroke', stroke);
+        guide.setAttribute('stroke-opacity', '.22');
+        guide.setAttribute('stroke-width', '1');
+        guide.setAttribute('stroke-dasharray', '2 3');
+        g.appendChild(guide);
+      }
+
+      // 针目：用 figure 上的 ops 展开，才能画出正确的符号
+      var flat = E.expandOps(rd.ops || []);
+      var n = ring.stitches.length;
+      for (var i = 0; i < n; i++) {
+        var s = ring.stitches[i];
+        var px = cx + s.x * R;
+        var py = cy + s.y * R;
+        var sym = flat[i] || 'X';
+        var mg = document.createElementNS(NS, 'g');
+        var ang = Math.atan2(s.y, s.x) * 180 / Math.PI + 90;   // 让符号朝外
+        mg.setAttribute('transform', 'translate(' + px.toFixed(2) + ',' + py.toFixed(2) +
+          ') rotate(' + ang.toFixed(2) + ')');
+        mg.setAttribute('stroke', stroke);
+        mg.setAttribute('stroke-width', n > 60 ? '1.1' : '1.6');
+        mg.setAttribute('stroke-linecap', 'round');
+        mg.setAttribute('fill', 'none');
+        mg.innerHTML = markPath(sym);
+        g.appendChild(mg);
+      }
+
+      // 圈号（放在 12 点方向外侧）
+      var label = document.createElementNS(NS, 'text');
+      label.setAttribute('x', cx);
+      label.setAttribute('y', (cy - ring.radius * R - 5).toFixed(1));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '10');
+      label.setAttribute('fill', stroke);
+      label.setAttribute('stroke', '#FFFFFF');
+      label.setAttribute('stroke-width', '2.6');
+      label.setAttribute('paint-order', 'stroke');
+      label.textContent = 'R' + rd.r;
+      g.appendChild(label);
+
+      svg.appendChild(g);
+    });
+
+    // 圆心 = 起针点
+    var center = document.createElementNS(NS, 'circle');
+    center.setAttribute('cx', cx); center.setAttribute('cy', cy);
+    center.setAttribute('r', '3.6');
+    center.setAttribute('fill', colorOf((part.rounds[0] || {}).color));
+    center.setAttribute('fill-opacity', '.6');
+    svg.appendChild(center);
+
+    return svg;
+  }
+
+  function legendSvg() {
+    var NS = 'http://www.w3.org/2000/svg';
+    var items = [
+      ['X', '短针 X'], ['V', '加针 V'], ['A', '减针 A'],
+      ['T', '中长针 T'], ['CH', '锁针 CH'], ['SL', '引拔 SL']
+    ];
+    var w = 720, h = 92;
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    svg.setAttribute('class', 'legend-svg');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', '符号图例');
+
+    var rect = document.createElementNS(NS, 'rect');
+    rect.setAttribute('x', 1); rect.setAttribute('y', 1);
+    rect.setAttribute('width', w - 2); rect.setAttribute('height', h - 2);
+    rect.setAttribute('rx', 10);
+    rect.setAttribute('fill', '#FCFAF4');
+    rect.setAttribute('stroke', '#E7E1D4');
+    svg.appendChild(rect);
+
+    var x = 26;
+    items.forEach(function (it) {
+      var g = document.createElementNS(NS, 'g');
+      g.setAttribute('transform', 'translate(' + x + ',36)');
+      g.setAttribute('stroke', '#4E7A33');
+      g.setAttribute('stroke-width', '1.9');
+      g.setAttribute('stroke-linecap', 'round');
+      g.innerHTML = markPath(it[0]);
+      svg.appendChild(g);
+      var t = document.createElementNS(NS, 'text');
+      t.setAttribute('x', x + 14); t.setAttribute('y', 40);
+      t.setAttribute('font-size', '12.5'); t.setAttribute('fill', '#4A4438');
+      t.textContent = it[1];
+      svg.appendChild(t);
+      x += 116;
+    });
+
+    var note = document.createElementNS(NS, 'text');
+    note.setAttribute('x', 26); note.setAttribute('y', 74);
+    note.setAttribute('font-size', '11.5'); note.setAttribute('fill', '#8C8272');
+    note.textContent = '同心圆 = 圈号 R1…Rn；圆心是起针点，由内向外读；每个符号 = 一个针目，按该圈针数等分。';
+    svg.appendChild(note);
+
+    return svg;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 4. 逐圈表格
+   * ────────────────────────────────────────────────────────── */
+  function partSection(part, idx) {
+    var sec = el('section', 'part');
+    sec.id = 'part-' + part.id;
+
+    var last = part.rounds[part.rounds.length - 1];
+    var head = el('div', 'part-head');
+    head.innerHTML =
+      '<h2>' + esc(part.name) + '</h2>' +
+      '<span class="chip">' + part.rounds.length + ' 圈</span>' +
+      (last ? '<span class="chip">末圈 ' + last.stitchesOut + ' 针</span>' : '') +
+      '<span class="chip">进度 <b id="prog-' + esc(part.id) + '">0/' + part.rounds.length + '</b></span>' +
+      '<button type="button" class="part-pin no-print" data-part="' + esc(part.id) +
+        '" title="在参考图上高亮此部件">在图上定位</button>';
+
+    var chartBox = el('div');
+    var ref = getReference();
+    if (ref && (ref.regions || []).some(function (r) { return r.partId === part.id; })) {
+      var mini = el('div', 'part-mini');
+      mini.setAttribute('data-part', part.id);
+      mini.title = '此部件在参考图上的位置';
+      mini.appendChild(buildRefSvg(ref, part.id, true));
+      var row = el('div');
+      row.style.cssText = 'display:flex;gap:10px;align-items:flex-start';
+      row.appendChild(mini);
+      var svgWrap = el('div');
+      svgWrap.style.flex = '1';
+      svgWrap.appendChild(chartSvg(part));
+      row.appendChild(svgWrap);
+      chartBox.appendChild(row);
+    } else {
+      chartBox.appendChild(chartSvg(part));
+    }
+
+    var table = el('table', 'rounds');
+    var thead = el('thead');
+    thead.innerHTML = '<tr><th class="sw-cell"></th><th>圈</th><th>图解</th>' +
+      '<th>消耗</th><th>产出</th><th>增减</th><th>✓</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = el('tbody');
+    part.rounds.forEach(function (rd) {
+      var tr = el('tr', 'round');
+      tr.setAttribute('data-part', part.id);
+      tr.setAttribute('data-r', rd.r);
+
+      var pat = esc(rd.note || '');
+      if (rd.kind === 'magic-ring') pat = '<span class="muted">环形起针</span> ' + pat;
+      else if (rd.kind === 'attach') pat = '<span class="muted">接留针</span> ' + pat;
+      else if (rd.kind === 'row') pat = '<span class="muted">片织</span> ' + pat;
+
+      var tags = '';
+      if (rd.loop === 'blo') tags += '<span class="loop-tag">内半针</span>';
+      else if (rd.loop === 'flo') tags += '<span class="loop-tag">外半针</span>';
+      if (rd.decor && rd.decor.length) {
+        rd.decor.forEach(function (d) {
+          var nm = DECOR_NAMES[d.kind] || d.kind;
+          var txt = d.note || (d.count + '×' + nm + (d.ch != null ? '(' + d.ch + 'CH)' : ''));
+          tags += '<span class="decor-tag" title="' + esc(nm) + '">⟡ ' + esc(txt) + '</span>';
+        });
+      }
+
+      var delta = rd.stitchesOut - rd.stitchesIn;
+      var deltaTxt = rd.kind === 'magic-ring' ? '+6' : (delta > 0 ? '+' + delta : String(delta));
+
+      tr.innerHTML =
+        '<td class="sw-cell"><i style="background:' + esc(colorOf(rd.color)) + '" title="' +
+          esc(colorName(rd.color)) + '"></i></td>' +
+        '<td class="num">' + rd.r + '</td>' +
+        '<td class="pat">' + pat + tags + '</td>' +
+        '<td class="num">' + (rd.kind === 'magic-ring' ? '—' : rd.stitchesIn) + '</td>' +
+        '<td class="num">' + rd.stitchesOut + '</td>' +
+        '<td class="num">' + deltaTxt + '</td>' +
+        '<td class="num"><input class="pchk" type="checkbox" data-key="' +
+          esc(part.id + '-' + rd.r) + '" data-part="' + esc(part.id) + '" ' +
+          'aria-label="标记 ' + esc(part.name) + ' R' + rd.r + ' 完成"></td>';
+
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+
+    var body = el('div', 'part-body');
+    body.appendChild(chartBox);
+    var rightCol = el('div');
+    rightCol.appendChild(table);
+    body.appendChild(rightCol);
+
+    sec.appendChild(head);
+    sec.appendChild(body);
+    return sec;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 5. 制作顺序
+   * ────────────────────────────────────────────────────────── */
+  function renderBuildOrder() {
+    var order = chart.buildOrder || [];
+    if (!order.length) return null;
+    var card = el('div', 'card');
+    card.innerHTML = '<ol class="tight" style="margin:0">' +
+      order.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ol>';
+    return card;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 6. 校验区
+   * ────────────────────────────────────────────────────────── */
+  function renderValidation() {
+    var v = chart.validation || { summary: {} };
+    var frag = document.createDocumentFragment();
+
+    var box = el('div', 'verdict ' + (v.ok ? 'pass' : 'fail'));
+    var s = v.summary || {};
+    box.innerHTML = '<span class="ic">' + (v.ok ? '✓ 通过' : '✗ 未通过') + '</span>' +
+      '<div>共 <b>' + (s.rounds || 0) + '</b> 圈，逐圈核对：<br>' +
+      '① 本圈消耗针数 = 上一圈产出针数 &nbsp;→&nbsp; ' +
+        (v.ok ? '全部相等' : '存在不符') + '<br>' +
+      '② 本圈产出 − 消耗 = 加针数 − 减针数 &nbsp;→&nbsp; ' +
+        (v.ok ? '全部相等' : '存在不符') + '<br>' +
+      '③ 各部件末圈针数合计 = <b>' + (s.totalStitches || 0) + '</b> 针' +
+      (s.decorCount ? '　·　装饰针迹 <b>' + s.decorCount + '</b> 个（不改变针数）' : '') +
+      (s.reservedLoops ? '　·　半针留针 <b>' + s.reservedLoops + '</b> 处' : '') +
+      '</div>';
+    frag.appendChild(box);
+
+    if (v.warnings && v.warnings.length) {
+      var wb = el('div', 'warnbar');
+      wb.innerHTML = '<span class="ic">⚠</span><div><b>' + v.warnings.length +
+        ' 条提醒</b>（不影响结论）<ul>' +
+        v.warnings.map(function (w) { return '<li>' + esc(w) + '</li>'; }).join('') +
+        '</ul></div>';
+      frag.appendChild(wb);
+    }
+
+    if (!v.ok && v.errors && v.errors.length) {
+      var eb = el('div', 'card scroll');
+      eb.innerHTML = '<h3 style="margin-top:0">发现的问题</h3><ul class="tight">' +
+        v.errors.map(function (e) { return '<li class="bad">' + esc(e) + '</li>'; }).join('') +
+        '</ul>';
+      frag.appendChild(eb);
+    }
+
+    // 逐部件汇总表
+    var table = el('table', 'verify');
+    var rows = (v.parts || []).map(function (p) {
+      var src = (chart.parts || []).find(function (x) { return x.id === p.id; });
+      var last = src && src.rounds.length ? src.rounds[src.rounds.length - 1].stitchesOut : 0;
+      return '<tr><td>' + esc(src ? src.name : p.id) + '</td>' +
+        '<td>' + p.rounds.length + '</td>' +
+        '<td>' + last + '</td>' +
+        '<td>' + (p.ok ? '<span class="ok">✓ 全部吻合</span>'
+          : '<span class="bad">✗ ' + p.errors.length + ' 处</span>') + '</td></tr>';
+    }).join('');
+    table.innerHTML = '<thead><tr><th>部件</th><th>圈数</th><th>末圈针数</th><th>逐圈结论</th></tr></thead>' +
+      '<tbody>' + rows + '</tbody>';
+    var tcard = el('div', 'card scroll');
+    tcard.appendChild(table);
+    frag.appendChild(tcard);
+
+    return frag;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 7. 组装
+   * ────────────────────────────────────────────────────────── */
+  function build() {
+    var app = document.getElementById('app');
+    app.innerHTML = '';
+
+    if (isDemo) {
+      app.appendChild(el('div', 'card',
+        '<b>这是模板自带的示例。</b> 正式图解请用 ' +
+        '<code>node tools/render-html.mjs chart.json --out 作品.html</code> 生成。'));
+    }
+
+    renderHeader();
+
+    var h = el('h2'); h.textContent = '材料与规格';
+    app.appendChild(h);
+    app.appendChild(renderMaterials());
+
+    h = el('h2'); h.textContent = '参考图 · 部件对照';
+    app.appendChild(h);
+    app.appendChild(renderReferenceMap());
+
+    h = el('h2'); h.textContent = '符号图例';
+    var lcard = el('div', 'card');
+    lcard.appendChild(legendSvg());
+    app.appendChild(h);
+    app.appendChild(lcard);
+
+    var bo = renderBuildOrder();
+    if (bo) {
+      h = el('h2'); h.textContent = '制作顺序';
+      app.appendChild(h);
+      app.appendChild(bo);
+    }
+
+    h = el('h2'); h.textContent = '逐圈图解';
+    app.appendChild(h);
+    (chart.parts || []).forEach(function (p, i) { app.appendChild(partSection(p, i)); });
+
+    h = el('h2'); h.textContent = '自检结果';
+    app.appendChild(h);
+    app.appendChild(renderValidation());
+
+    // 工具栏必须在表格之后创建（要收集 checkbox）
+    app.appendChild(makeToolbar());
+    bindInteractions();
+    refreshProgress();
+  }
+
+  var KEY = 'gummy-diagram-progress-v1';
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { store = {}; }
+
+  function makeToolbar() {
+    var bar = el('div', 'toolbar no-print');
+    bar.innerHTML = '<div class="tb-inner">' +
+      '<div class="bar"><i id="bar"></i></div>' +
+      '<div class="tb-txt" id="ptxt">0 / 0 圈 · 0%</div>' +
+      '<button id="reset" type="button">清空进度</button>' +
+      '<button id="printBtn" type="button">打印</button>' +
+      '</div>';
+    return bar;
+  }
+
+  function checks() {
+    return Array.prototype.slice.call(document.querySelectorAll('input.pchk'));
+  }
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) { /* 隐私模式忽略 */ }
+  }
+
+  function refreshProgress() {
+    var done = 0, per = {};
+    checks().forEach(function (c) {
+      var key = c.getAttribute('data-key');
+      var pid = c.getAttribute('data-part');
+      var tr = c.closest('tr');
+      if (!per[pid]) per[pid] = [0, 0];
+      per[pid][1]++;
+      if (c.checked) {
+        done++; per[pid][0]++;
+        if (tr) tr.classList.add('done');
+      } else if (tr) {
+        tr.classList.remove('done');
+      }
+    });
+    var tot = checks().length;
+    var pct = tot ? Math.round(done / tot * 100) : 0;
+    var barEl = document.getElementById('bar');
+    var txtEl = document.getElementById('ptxt');
+    if (barEl) barEl.style.width = pct + '%';
+    if (txtEl) txtEl.textContent = done + ' / ' + tot + ' 圈 · ' + pct + '%';
+    Object.keys(per).forEach(function (pid) {
+      var t = document.getElementById('prog-' + pid);
+      if (t) t.textContent = per[pid][0] + '/' + per[pid][1];
+    });
+  }
+
+  function clearHl() {
+    Array.prototype.forEach.call(document.querySelectorAll('tr.round.hl'), function (t) {
+      t.classList.remove('hl');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('g.ring'), function (g) {
+      g.removeAttribute('stroke-width');
+      var kids = g.querySelectorAll('g');
+      Array.prototype.forEach.call(kids, function (k) {
+        k.setAttribute('stroke-width', k.getAttribute('data-sw') || '1.6');
+      });
+    });
+  }
+
+  function highlight(tr) {
+    clearHl();
+    tr.classList.add('hl');
+    var pid = tr.getAttribute('data-part');
+    var r = tr.getAttribute('data-r');
+    var g = document.getElementById(pid + '-r' + r);
+    if (g) {
+      // 让该圈更醒目：加大其针目描边
+      Array.prototype.forEach.call(g.querySelectorAll('g'), function (k) {
+        if (!k.getAttribute('data-sw')) k.setAttribute('data-sw', k.getAttribute('stroke-width') || '1.6');
+        k.setAttribute('stroke-width', '2.8');
+      });
+      g.parentNode.appendChild(g);       // 提到最上层
+    }
+  }
+
+  function bindInteractions() {
+    var all = checks();
+    all.forEach(function (c) {
+      var key = c.getAttribute('data-key');
+      c.checked = !!store[key];
+      c.addEventListener('change', function () {
+        store[key] = c.checked ? 1 : 0;
+        save();
+        refreshProgress();
+      });
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('tr.round'), function (tr) {
+      tr.addEventListener('click', function (e) {
+        if (e.target.tagName === 'INPUT') return;
+        var already = tr.classList.contains('hl');
+        clearHl();
+        if (!already) highlight(tr);
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest || !e.target.closest('tr.round')) clearHl();
+    });
+
+    var reset = document.getElementById('reset');
+    if (reset) reset.addEventListener('click', function () {
+      store = {};
+      save();
+      checks().forEach(function (c) { c.checked = false; });
+      refreshProgress();
+    });
+
+    var printBtn = document.getElementById('printBtn');
+    if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+
+    // 参考图热区 / 列表 / 「在图上定位」：部件 ↔ 图解双向跳转
+    function onRefActivate(e) {
+      var t = e.target.closest ? e.target.closest('[data-part]') : null;
+      if (!t) return;
+      // 不要抢走表格 checkbox / 圈行自己的逻辑
+      if (t.tagName === 'TR' || t.classList.contains('pchk')) return;
+      if (!t.classList.contains('ref-region') &&
+          !t.classList.contains('ref-item') &&
+          !t.classList.contains('part-pin') &&
+          !t.classList.contains('part-mini')) return;
+      var pid = t.getAttribute('data-part');
+      if (!pid) return;
+      e.preventDefault();
+      var fromRef = t.classList.contains('ref-region') || t.classList.contains('ref-item');
+      focusPart(pid, fromRef);
+      if (!fromRef) {
+        var stage = document.getElementById('refStage');
+        if (stage) {
+          try { stage.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (err) {
+            stage.scrollIntoView(true);
+          }
+        }
+      }
+    }
+    document.addEventListener('click', onRefActivate);
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      var t = e.target;
+      if (t && t.classList && t.classList.contains('ref-region')) onRefActivate(e);
+    });
+
+    // 打印前清除高亮，避免打出一张被强调色污染的图
+    window.addEventListener('beforeprint', function () { clearHl(); clearPartFocus(); });
+  }
+
+  build();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+{
+  "name": "绿发少女 · 五件套",
+  "heightCm": 14,
+  "style": "chibi",
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    {
+      "id": "C1",
+      "name": "雪白",
+      "hex": "#F7F3EE",
+      "role": "skin",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C2",
+      "name": "苔绿",
+      "hex": "#5B8C5A",
+      "role": "hair",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C3",
+      "name": "奶油黄",
+      "hex": "#F2D59B",
+      "role": "main",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C4",
+      "name": "腮红粉",
+      "hex": "#F2A7A0",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    }
+  ],
+  "defaultColor": "C3",
+  "parts": [
+    {
+      "id": "head",
+      "name": "头部",
+      "shape": {
+        "kind": "sphere",
+        "diameterCm": 8
+      },
+      "colorRounds": [
+        {
+          "from": 1,
+          "to": 6,
+          "color": "C1"
+        },
+        {
+          "from": 7,
+          "to": 999,
+          "color": "C2"
+        }
+      ]
+    },
+    {
+      "id": "body",
+      "name": "身体",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 6.5,
+        "heightCm": 8
+      },
+      "colorRounds": [
+        {
+          "from": 1,
+          "to": 999,
+          "color": "C3"
+        }
+      ]
+    },
+    {
+      "id": "armL",
+      "name": "左臂",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 2.5,
+        "heightCm": 5
+      },
+      "colorRounds": [
+        {
+          "from": 1,
+          "to": 999,
+          "color": "C1"
+        }
+      ]
+    },
+    {
+      "id": "armR",
+      "name": "右臂",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 2.5,
+        "heightCm": 5
+      },
+      "colorRounds": [
+        {
+          "from": 1,
+          "to": 999,
+          "color": "C1"
+        }
+      ]
+    },
+    {
+      "id": "leg",
+      "name": "腿",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 3,
+        "heightCm": 4
+      },
+      "colorRounds": [
+        {
+          "from": 1,
+          "to": 999,
+          "color": "C4"
+        }
+      ]
+    }
+  ]
+}

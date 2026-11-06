@@ -1,0 +1,12 @@
+{
+  "name": "@local/dsh-gummy-diagram-preset",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "「软糖图解」钩织图解 Agent 预设：只做钩织图解，交付自包含 HTML。",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

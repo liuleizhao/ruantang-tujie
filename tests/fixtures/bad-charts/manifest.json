@@ -1,0 +1,50 @@
+[
+  {
+    "file": "bad-charts/bad-r1-consume.json",
+    "rule": "R1",
+    "round": 3,
+    "why": "第 3 圈 ops 为 13X，消耗 13 针，但 stitchesIn 声明 12（上一圈产出）。R1 应报错。"
+  },
+  {
+    "file": "bad-charts/bad-r2-produce.json",
+    "rule": "R2",
+    "round": 3,
+    "why": "第 3 圈 ops 为 11X+1SL，消耗 12 针（R1 通过），但产出 11 针 ≠ stitchesOut 12。R2 应报错。"
+  },
+  {
+    "file": "bad-charts/bad-r3-chain.json",
+    "rule": "R3",
+    "round": 3,
+    "why": "第 3 圈 stitchesIn 声明 11，但第 2 圈产出 12。R3 应报错。"
+  },
+  {
+    "file": "bad-charts/bad-r4-start.json",
+    "rule": "R4",
+    "round": 1,
+    "why": "第 1 圈 kind=magic-ring 但 stitchesIn=6（应为 0）。此图 R1/R2/R5 均自洽，只有 R4 会被抓。"
+  },
+  {
+    "file": "bad-charts/bad-r5-incdec.json",
+    "rule": "R5",
+    "round": 3,
+    "why": "第 3 圈 12→18，差值 +6，但 ops 只有 12X（#V/#W/#CH 全为 0）。R5 应报错：增量无法由增减针解释。"
+  },
+  {
+    "file": "bad-charts/bad-r6-color.json",
+    "rule": "R6",
+    "round": 2,
+    "why": "第 2 圈 color=C9，不在 palette（C1..C4）中。R6 应报错。"
+  },
+  {
+    "file": "bad-charts/bad-r7-bound.json",
+    "rule": "R7",
+    "round": 2,
+    "why": "第 2 圈 stitchesOut=240（>200 上限，且 6 针起针一圈不可能产出 240）。R7 应报错。"
+  },
+  {
+    "file": "bad-charts/bad-r8-decor.json",
+    "rule": "R8",
+    "round": 5,
+    "why": "第 5 圈 stitchesOut=36，decor 为 every=2 / count=17（17×2=34≠36）。R8 应报错。"
+  }
+]

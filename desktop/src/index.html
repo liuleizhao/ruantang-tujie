@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>软糖图解 · 本地生成</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="vendor/gummy-engine.js"></script>
+    <script type="module" src="main.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">本地 · 无 AI · 确定性引擎</p>
+          <h1>软糖图解</h1>
+          <p class="lead">从底模改配色与尺寸，一键生成可钩图解。针数由引擎计算，不调用任何模型。</p>
+        </div>
+        <div class="hero-meta" id="workspace-meta">仓库：检测中…</div>
+      </header>
+
+      <section class="panel">
+        <h2>1. 角色与底模</h2>
+        <div class="grid-2">
+          <label>
+            角色名（写入 characters/）
+            <input id="char-name" type="text" placeholder="例如：散兵" value="试做角色" />
+          </label>
+          <label>
+            成品高度 (cm)
+            <input id="height-cm" type="number" min="8" max="30" step="0.5" value="14" />
+          </label>
+        </div>
+        <div class="row gap">
+          <button type="button" id="btn-load-preset" class="primary">加载软糖体底模</button>
+          <button type="button" id="btn-refresh-chars" class="ghost">刷新已有角色</button>
+        </div>
+        <div id="char-list" class="chip-row"></div>
+      </section>
+
+      <section class="panel">
+        <h2>2. 配色（最多 8 色）</h2>
+        <p class="hint">改 hex 即可；role 决定识别层（发/肤/衣/眼）。</p>
+        <div id="palette-editor" class="palette"></div>
+      </section>
+
+      <section class="panel">
+        <h2>3. 生成</h2>
+        <div class="row gap">
+          <button type="button" id="btn-generate" class="primary">生成图解并保存</button>
+          <button type="button" id="btn-open" class="ghost" disabled>打开 gummy.html</button>
+        </div>
+        <pre id="log" class="log" aria-live="polite">准备就绪。先加载底模，再点生成。</pre>
+      </section>
+    </div>
+  </body>
+</html>

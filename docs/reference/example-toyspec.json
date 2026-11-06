@@ -1,0 +1,97 @@
+{
+  "name": "绿发少女",
+  "heightCm": 14,
+  "style": "chibi",
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    { "id": "C1", "name": "雪白", "hex": "#F7F3EE", "role": "skin", "yarnMetersPerGram": 4.2 },
+    { "id": "C2", "name": "墨绿", "hex": "#2E5B4E", "role": "hair", "yarnMetersPerGram": 4.2 },
+    { "id": "C3", "name": "抹茶绿", "hex": "#7FB69A", "role": "main", "yarnMetersPerGram": 4.2 },
+    { "id": "C4", "name": "燕麦米", "hex": "#E3D3BA", "role": "accent", "yarnMetersPerGram": 4.2 },
+    { "id": "C5", "name": "炭黑", "hex": "#2A2622", "role": "eye", "yarnMetersPerGram": 4.2 },
+    { "id": "C6", "name": "蜜桃粉", "hex": "#F2A6A0", "role": "blush", "yarnMetersPerGram": 4.2 }
+  ],
+  "parts": [
+    {
+      "id": "head",
+      "name": "头部",
+      "shape": { "kind": "sphere", "diameterCm": 6.5 },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "hair-back",
+      "name": "后脑发片",
+      "shape": { "kind": "sphere", "diameterCm": 6.8 },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "bangs",
+      "name": "刘海片",
+      "shape": { "kind": "flat-round", "diameterCm": 6.5 },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "body",
+      "name": "躯干",
+      "shape": { "kind": "capsule", "diameterCm": 3.5, "heightCm": 4.0 },
+      "defaultColor": "C3",
+      "loopRounds": [
+        { "round": 5, "loop": "blo", "reservedFor": "hem" }
+      ],
+      "colorRounds": [
+        { "from": 1, "to": 3, "color": "C1" },
+        { "from": 4, "to": 30, "color": "C3" }
+      ]
+    },
+    {
+      "id": "hem",
+      "name": "下摆荷叶边",
+      "shape": {
+        "kind": "flat-round",
+        "diameterCm": 5.0,
+        "heightCm": 1.0,
+        "attachTo": { "part": "body", "round": 5, "loop": "flo", "stitches": 24 }
+      },
+      "defaultColor": "C4"
+    },
+    {
+      "id": "arm",
+      "name": "手臂（织 2 只）",
+      "shape": { "kind": "capsule", "diameterCm": 1.5, "heightCm": 3.0 },
+      "defaultColor": "C1",
+      "colorRounds": [
+        { "from": 1, "to": 2, "color": "C3" }
+      ]
+    },
+    {
+      "id": "leg",
+      "name": "腿（织 2 只）",
+      "shape": { "kind": "capsule", "diameterCm": 1.5, "heightCm": 2.5 },
+      "defaultColor": "C1",
+      "colorRounds": [
+        { "from": 5, "to": 6, "color": "C5" }
+      ]
+    },
+    {
+      "id": "eye",
+      "name": "眼睛（织 2 片）",
+      "shape": { "kind": "flat-round", "diameterCm": 0.5 },
+      "defaultColor": "C5"
+    }
+  ],
+  "buildOrder": [
+    "头部：塞棉收口，前脸压平。",
+    "躯干：R6 只钩内半针，把 30 个外半针留下来给下摆荷叶边。",
+    "在下摆的外半针上钩荷叶边，边会自然外翻。",
+    "手臂 ×2、腿 ×2：少塞棉或不塞，收口后压扁。",
+    "后脑发片套在头上，刘海片压在前额。",
+    "把头部与躯干缝合，压住领口。",
+    "缝四肢：手臂缝在躯干上方两侧，腿缝在底部。",
+    "缝眼睛（2 片），绣嘴，扫腮红。"
+  ]
+}

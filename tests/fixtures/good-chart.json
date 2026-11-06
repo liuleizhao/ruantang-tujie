@@ -1,0 +1,416 @@
+{
+  "version": 1,
+  "name": "测试用合格图解 · 身体+荷叶边",
+  "createdAt": "2026-10-29T00:00:00.000Z",
+  "spec": {
+    "name": "测试用",
+    "heightCm": 9,
+    "style": "chibi"
+  },
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    {
+      "id": "C1",
+      "name": "雪白",
+      "hex": "#F7F3EE",
+      "role": "skin",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C2",
+      "name": "苔绿",
+      "hex": "#5B8C5A",
+      "role": "hair",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C3",
+      "name": "奶油黄",
+      "hex": "#F2D59B",
+      "role": "main",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C4",
+      "name": "腮红粉",
+      "hex": "#F2A7A0",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    }
+  ],
+  "parts": [
+    {
+      "id": "body",
+      "name": "身体",
+      "shape": {
+        "kind": "cylinder",
+        "diameterCm": 5.2,
+        "heightCm": 6.5
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C3",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 6
+            }
+          ],
+          "note": "6V = 12"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 6
+            }
+          ],
+          "note": "(X,V)×6 = 18"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            },
+            {
+              "sym": "V",
+              "n": 6
+            }
+          ],
+          "note": "(2X,V)×6 = 24"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 24,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 18
+            },
+            {
+              "sym": "V",
+              "n": 6
+            }
+          ],
+          "note": "(3X,V)×6 = 30"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 30,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 24
+            },
+            {
+              "sym": "V",
+              "n": 6
+            }
+          ],
+          "note": "(4X,V)×6 = 36"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 36,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 36
+            }
+          ],
+          "note": "36X（内半针，外半针留给荷叶边）",
+          "loop": "blo",
+          "reservedFor": "hem"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 36,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 36
+            }
+          ],
+          "note": "36X",
+          "decor": [
+            {
+              "kind": "curly",
+              "every": 2,
+              "count": 18,
+              "ch": 6,
+              "note": "18 个卷曲针，每个 6CH"
+            }
+          ]
+        },
+        {
+          "r": 9,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 36,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 24
+            },
+            {
+              "sym": "A",
+              "n": 6
+            }
+          ],
+          "note": "(4X,A)×6 = 30"
+        },
+        {
+          "r": 10,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 30,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 18
+            },
+            {
+              "sym": "A",
+              "n": 6
+            }
+          ],
+          "note": "(3X,A)×6 = 24"
+        },
+        {
+          "r": 11,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 24,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            },
+            {
+              "sym": "A",
+              "n": 6
+            }
+          ],
+          "note": "(2X,A)×6 = 18"
+        },
+        {
+          "r": 12,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 18,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 6
+            }
+          ],
+          "note": "(X,A)×6 = 12"
+        },
+        {
+          "r": 13,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 6
+            }
+          ],
+          "note": "6A = 6"
+        },
+        {
+          "r": 14,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 6,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "6X 收口"
+        }
+      ],
+      "subtotal": {
+        "stitches": 294,
+        "rounds": 14
+      }
+    },
+    {
+      "id": "hem",
+      "name": "荷叶边",
+      "shape": {
+        "kind": "flat-round",
+        "diameterCm": 5.2,
+        "attachTo": {
+          "part": "body",
+          "round": 7,
+          "loop": "flo",
+          "stitches": 36
+        }
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "attach",
+          "color": "C4",
+          "stitchesIn": 36,
+          "stitchesOut": 48,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 24
+            },
+            {
+              "sym": "V",
+              "n": 12
+            }
+          ],
+          "note": "接外半针 36 针：(2X,V)×12 = 48"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 48,
+          "stitchesOut": 48,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 48
+            }
+          ],
+          "note": "48X"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 48,
+          "stitchesOut": 60,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 36
+            },
+            {
+              "sym": "V",
+              "n": 12
+            }
+          ],
+          "note": "(3X,V)×12 = 60"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 60,
+          "stitchesOut": 60,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 60
+            }
+          ],
+          "note": "60X"
+        }
+      ],
+      "subtotal": {
+        "stitches": 216,
+        "rounds": 4
+      }
+    }
+  ],
+  "yarn": {
+    "perPart": [
+      {
+        "id": "body",
+        "stitches": 294,
+        "meters": 7.4,
+        "grams": 1.8
+      },
+      {
+        "id": "hem",
+        "stitches": 216,
+        "meters": 5.4,
+        "grams": 1.3
+      }
+    ],
+    "total": {
+      "stitches": 510,
+      "meters": 12.8,
+      "grams": 3
+    },
+    "withBuffer": {
+      "meters": 16,
+      "grams": 3.8
+    },
+    "bufferRatio": 0.25,
+    "constants": {
+      "metersPerStitch": 0.025,
+      "note": "fixture 手工按契约 §3.6 算出，仅用于结构参考"
+    }
+  }
+}

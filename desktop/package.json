@@ -1,0 +1,17 @@
+{
+  "name": "gummy-diagram-desktop",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "sync-vendor": "node scripts/sync-vendor.mjs",
+    "predev": "npm run sync-vendor",
+    "prebuild": "npm run sync-vendor",
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}

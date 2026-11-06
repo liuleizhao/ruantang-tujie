@@ -1,0 +1,119 @@
+{
+  "name": "绿发少女 · v1.1 装饰与留针",
+  "heightCm": 13,
+  "style": "chibi",
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    {
+      "id": "C1",
+      "name": "雪白",
+      "hex": "#F7F3EE",
+      "role": "skin",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C2",
+      "name": "苔绿",
+      "hex": "#5B8C5A",
+      "role": "hair",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C3",
+      "name": "奶油黄",
+      "hex": "#F2D59B",
+      "role": "main",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C4",
+      "name": "腮红粉",
+      "hex": "#F2A7A0",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    }
+  ],
+  "defaultColor": "C3",
+  "parts": [
+    {
+      "id": "body",
+      "name": "身体",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 6,
+        "heightCm": 7
+      },
+      "colorRounds": [
+        {
+          "from": 1,
+          "to": 999,
+          "color": "C3"
+        }
+      ],
+      "decorRounds": [
+        {
+          "round": 6,
+          "kind": "bobble",
+          "every": 1,
+          "count": 36
+        }
+      ],
+      "loopRounds": [
+        {
+          "round": 8,
+          "loop": "blo",
+          "reservedFor": "hem"
+        }
+      ]
+    },
+    {
+      "id": "hem",
+      "name": "荷叶边",
+      "shape": {
+        "kind": "flat-round",
+        "diameterCm": 5,
+        "attachTo": {
+          "part": "body",
+          "round": 8,
+          "loop": "flo",
+          "stitches": 30
+        }
+      }
+    },
+    {
+      "id": "head",
+      "name": "头部",
+      "shape": {
+        "kind": "sphere",
+        "diameterCm": 7.5
+      },
+      "colorRounds": [
+        {
+          "from": 1,
+          "to": 999,
+          "color": "C2"
+        }
+      ],
+      "decorRounds": [
+        {
+          "round": 9,
+          "kind": "curly",
+          "every": 2,
+          "count": 18,
+          "ch": 6
+        }
+      ]
+    }
+  ],
+  "buildOrder": [
+    "先钩身体，第 8 圈钩内半针",
+    "在外半针上钩荷叶边",
+    "钩头部并缝上",
+    "绣五官"
+  ]
+}

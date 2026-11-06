@@ -1,0 +1,81 @@
+{
+  "name": "软糖体底模（Q版）",
+  "heightCm": 14,
+  "style": "chibi",
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    { "id": "C1", "name": "肤色", "hex": "#F5E6D8", "role": "skin", "yarnMetersPerGram": 4.2 },
+    { "id": "C2", "name": "发色", "hex": "#2A2622", "role": "hair", "yarnMetersPerGram": 4.2 },
+    { "id": "C3", "name": "服装主色", "hex": "#3D6B9A", "role": "main", "yarnMetersPerGram": 4.2 },
+    { "id": "C4", "name": "点缀", "hex": "#D4AF37", "role": "accent", "yarnMetersPerGram": 4.2 },
+    { "id": "C5", "name": "眼睛", "hex": "#1A1A1A", "role": "eye", "yarnMetersPerGram": 4.2 },
+    { "id": "C6", "name": "腮红", "hex": "#F2A6A0", "role": "blush", "yarnMetersPerGram": 4.2 }
+  ],
+  "parts": [
+    {
+      "id": "head",
+      "name": "头部",
+      "shape": { "kind": "sphere", "diameterCm": 6.5 },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "hair-cap",
+      "name": "发帽",
+      "shape": { "kind": "sphere", "diameterCm": 6.8 },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "bangs",
+      "name": "前刘海片",
+      "shape": { "kind": "flat-round", "diameterCm": 6.5 },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "body",
+      "name": "躯干",
+      "shape": { "kind": "capsule", "diameterCm": 3.5, "heightCm": 4.0 },
+      "defaultColor": "C3",
+      "colorRounds": [
+        { "from": 1, "to": 2, "color": "C1" },
+        { "from": 3, "to": 99, "color": "C3" }
+      ]
+    },
+    {
+      "id": "arm",
+      "name": "手臂（织 2 只）",
+      "shape": { "kind": "capsule", "diameterCm": 1.5, "heightCm": 3.0 },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "leg",
+      "name": "腿（织 2 只）",
+      "shape": { "kind": "capsule", "diameterCm": 1.5, "heightCm": 2.5 },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "eye",
+      "name": "眼睛（织 2 片）",
+      "shape": { "kind": "flat-round", "diameterCm": 0.5 },
+      "defaultColor": "C5"
+    }
+  ],
+  "buildOrder": [
+    "头部：塞棉收口，前脸压平。",
+    "发帽套在头上，刘海片压在前额。",
+    "躯干：领口两圈肤色，其余服装主色；塞棉。",
+    "手臂 ×2、腿 ×2：少塞棉或不塞，收口后压扁。",
+    "头与躯干缝合。",
+    "缝四肢：手臂缝在躯干上方两侧，腿缝在底部。",
+    "缝眼睛（2 片）；需要时绣嘴、扫腮红。",
+    "换角色时：改 palette hex、加/换标志配件部件（帽/角/马甲等），底模比例不动。"
+  ],
+  "_meta": {
+    "preset": "softcandy-chibi",
+    "note": "通用软糖体底模：肤色素体 + 发帽/刘海 + 服装色块。角色差异只改 palette 与特征层配件。比例依据 skills/photo-to-toy §4.1（H=14）。"
+  }
+}

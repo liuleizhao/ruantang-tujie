@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "name": "合格图 · R9 reservedFor=null 显式声明不用",
+  "createdAt": "2026-10-29T00:00:00.000Z",
+  "spec": {
+    "name": "留针测试"
+  },
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    {
+      "id": "C1",
+      "name": "雪白",
+      "hex": "#F7F3EE",
+      "role": "skin",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C2",
+      "name": "苔绿",
+      "hex": "#5B8C5A",
+      "role": "hair",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C3",
+      "name": "奶油黄",
+      "hex": "#F2D59B",
+      "role": "main",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C4",
+      "name": "腮红粉",
+      "hex": "#F2A7A0",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    }
+  ],
+  "parts": [
+    {
+      "id": "body",
+      "name": "身体",
+      "shape": {
+        "kind": "cylinder",
+        "diameterCm": 5.2,
+        "heightCm": 3
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C3",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 6
+            }
+          ],
+          "note": "6V = 12"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 12,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 12
+            }
+          ],
+          "note": "12V = 24"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 24,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 24
+            }
+          ],
+          "note": "24X（外半针留用但不接）",
+          "loop": "flo",
+          "reservedFor": null
+        }
+      ],
+      "subtotal": {
+        "stitches": 66,
+        "rounds": 4
+      }
+    }
+  ],
+  "yarn": {
+    "perPart": [
+      {
+        "id": "body",
+        "stitches": 66,
+        "meters": 1.7,
+        "grams": 0.4
+      }
+    ],
+    "total": {
+      "stitches": 66,
+      "meters": 1.7,
+      "grams": 0.4
+    },
+    "withBuffer": {
+      "meters": 2.1,
+      "grams": 0.5
+    },
+    "bufferRatio": 0.25,
+    "constants": {
+      "metersPerStitch": 0.025,
+      "note": "fixture 手工按契约 §3.6 算出，仅用于结构参考"
+    }
+  }
+}

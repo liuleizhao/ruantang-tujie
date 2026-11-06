@@ -1,0 +1,6356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>软糖图解</title>
+<style>
+/* ============================================================
+   软糖图解 · 自包含样式
+   配色走 CSS 变量；柔和圆润，但保证打印与对比度可用。
+   ============================================================ */
+:root{
+  --ink:#3B3730; --ink2:#6B6458; --ink3:#948C7E;
+  --line:#E6E0D3; --bg:#FBF8F1; --card:#FFFFFF;
+  --accent:#6FA84A; --accent2:#A5D06B; --accentSoft:#EFF8E1;
+  --warn:#B45309; --warnBg:#FEF6E7; --warnLine:#F3D9A4;
+  --ok:#4E7A33; --okBg:#F2F8E9; --okLine:#D6E7BE;
+  --bad:#C2410C; --badBg:#FEF0EC; --badLine:#F6C9B8;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.7;font-size:15px;
+}
+.wrap{max-width:1060px;margin:0 auto;padding:28px 20px 96px}
+
+/* ── 页头 ── */
+header.top{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.badge{width:62px;height:62px;border-radius:22px;flex:none;position:relative;
+  background:radial-gradient(circle at 34% 30%,#C6E59B,#A5D06B 46%,#6FA84A 100%);
+  box-shadow:inset 0 -6px 14px rgba(0,0,0,.14),0 6px 16px rgba(61,107,58,.20)}
+.badge::after{content:"";position:absolute;left:9px;right:9px;bottom:12px;height:5px;
+  border-radius:5px;background:#FBF8F1;opacity:.9}
+h1{font-size:25px;margin:0;letter-spacing:.4px}
+.sub{color:var(--ink2);font-size:13.5px;margin-top:2px}
+h2{font-size:19px;margin:34px 0 12px;padding-bottom:8px;border-bottom:2px solid #EFE9DA}
+h3{font-size:15.5px;margin:20px 0 8px}
+p{margin:8px 0}
+
+/* ── 卡片 ── */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 18px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+.kv{display:grid;grid-template-columns:104px 1fr;gap:5px 12px;font-size:14px;margin:0}
+.kv dt{color:var(--ink3)}
+.kv dd{margin:0}
+
+/* ── 色卡 ── */
+.swatches{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.sw{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--ink2);
+  border:1px solid var(--line);border-radius:999px;padding:4px 12px 4px 5px;background:#fff}
+.dot{width:17px;height:17px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.10);flex:none}
+.sw small{color:var(--ink3);font-size:11.5px}
+
+/* ── 顶部工具栏 ── */
+.toolbar{position:sticky;top:0;z-index:30;background:rgba(251,248,241,.95);
+  backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 0;margin:20px 0 6px}
+.tb-inner{max-width:1060px;margin:0 auto;padding:0 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.bar{flex:1;min-width:170px;height:9px;border-radius:99px;background:#EAE4D6;overflow:hidden}
+.bar>i{display:block;height:100%;width:0;border-radius:99px;
+  background:linear-gradient(90deg,var(--accent2),var(--accent));transition:width .3s}
+.tb-txt{font-size:13px;color:var(--ink2);font-variant-numeric:tabular-nums;min-width:112px}
+button{font:inherit;font-size:13px;border:1px solid var(--line);background:#fff;color:var(--ink2);
+  border-radius:9px;padding:5px 13px;cursor:pointer}
+button:hover{border-color:#CFC8B6;color:var(--ink)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ── 部件 ── */
+.part{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:18px 0;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);page-break-inside:avoid;break-inside:avoid}
+.part-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.part-head h2{margin:0;border:0;padding:0;font-size:18px}
+.chip{font-size:12px;border-radius:999px;padding:2px 10px;background:#F3F0E6;color:var(--ink2)}
+.part-body{display:grid;grid-template-columns:310px 1fr;gap:20px;align-items:start}
+@media(max-width:880px){.part-body{grid-template-columns:1fr}}
+svg.chart{width:100%;height:auto;display:block}
+svg.legend-svg{width:100%;height:auto;display:block;max-width:700px}
+
+/* ── 图解表 ── */
+table.rounds{width:100%;border-collapse:collapse;font-size:13.5px}
+table.rounds th{text-align:left;font-weight:600;color:var(--ink3);font-size:12px;letter-spacing:.3px;
+  padding:6px 8px;border-bottom:1.5px solid var(--line);white-space:nowrap}
+table.rounds td{padding:6px 8px;border-bottom:1px solid #F2EEE4;vertical-align:middle}
+table.rounds td.num{font-variant-numeric:tabular-nums;text-align:center;white-space:nowrap}
+table.rounds td.pat{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}
+tr.round{cursor:pointer;transition:background .12s}
+tr.round:hover{background:#FAF8F0}
+tr.round.done td{color:var(--ink3)}
+tr.round.done .pat{text-decoration:line-through;text-decoration-color:#CFC8B6}
+tr.round.hl{background:var(--accentSoft);box-shadow:inset 3px 0 0 var(--accent)}
+tr.round.hl td{border-bottom-color:#DDEBC9}
+.sw-cell{width:14px}
+.sw-cell i{display:block;width:13px;height:13px;border-radius:4px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.10)}
+.decor-tag{display:inline-block;margin-left:6px;padding:1px 7px;border-radius:999px;
+  background:#F0EEFF;border:1px solid #DAD4F5;color:#5B4B99;font-size:11.5px;white-space:nowrap}
+.loop-tag{display:inline-block;margin-left:5px;padding:1px 6px;border-radius:999px;
+  background:#EAF3FA;border:1px solid #C6DCEC;color:#2F6E96;font-size:11px;white-space:nowrap}
+.ok{color:var(--ok);font-weight:600}
+.bad{color:var(--bad);font-weight:600}
+input[type=checkbox]{width:16px;height:16px;accent-color:var(--accent);cursor:pointer}
+
+/* ── 结论条 ── */
+.verdict{display:flex;gap:10px;align-items:flex-start;border-radius:12px;padding:12px 16px;
+  margin:12px 0;font-size:14px;border:1px solid}
+.verdict.pass{background:var(--okBg);border-color:var(--okLine)}
+.verdict.fail{background:var(--badBg);border-color:var(--badLine)}
+.verdict .ic{font-weight:700;flex:none}
+.verdict.pass .ic{color:var(--ok)}
+.verdict.fail .ic{color:var(--bad)}
+.warnbar{display:flex;gap:10px;align-items:flex-start;background:var(--warnBg);
+  border:1px solid var(--warnLine);border-radius:12px;padding:12px 16px;margin:12px 0;font-size:13.5px}
+.warnbar .ic{color:var(--warn);font-weight:700;flex:none}
+.warnbar ul{margin:4px 0 0;padding-left:20px}
+
+/* ── 校验表 ── */
+table.verify{width:100%;border-collapse:collapse;font-size:13px}
+table.verify th{background:#F6F2E8;color:var(--ink2);font-weight:600;padding:7px 8px;text-align:left;
+  border-bottom:1.5px solid var(--line);font-size:12px;white-space:nowrap}
+table.verify td{padding:5px 8px;border-bottom:1px solid #F2EEE4;font-variant-numeric:tabular-nums}
+table.verify tr.tot td{font-weight:600;background:#FBF9F2}
+
+/* ── 照片区 ── */
+.drop{border:2px dashed #D5CDBA;border-radius:14px;padding:22px;text-align:center;
+  color:var(--ink2);font-size:13.5px;background:#FCFAF4;transition:border-color .15s,background .15s;cursor:pointer}
+.drop.hot{border-color:var(--accent);background:var(--accentSoft)}
+.drop input{display:none}
+.photo-row{display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:start;margin-top:14px}
+@media(max-width:640px){.photo-row{grid-template-columns:1fr}}
+#photoPreview{width:200px;max-width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+#photoCanvas{display:none}
+.muted{color:var(--ink3);font-size:12.5px}
+
+ul.tight{margin:6px 0;padding-left:20px}
+ul.tight li{margin:3px 0}
+ol.tight{margin:6px 0;padding-left:22px}
+ol.tight li{margin:4px 0}
+.tip{font-size:13px;color:var(--ink2)}
+code{background:#F4F1E7;border-radius:5px;padding:1px 5px;font-size:.92em;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+footer{margin-top:44px;padding-top:16px;border-top:1px solid var(--line);color:var(--ink3);font-size:12.5px}
+.scroll{overflow-x:auto}
+
+/* ============================================================
+   打印
+   ============================================================ */
+@media print{
+  @page{margin:12mm}
+  body{background:#fff;font-size:10.5pt;line-height:1.45}
+  .wrap{max-width:none;padding:0}
+  .toolbar,.no-print,.drop{display:none !important}
+  .part{break-inside:avoid;box-shadow:none;border-color:#DDD;margin:10px 0;padding:10px 12px}
+  .part-body{grid-template-columns:240px 1fr;gap:12px}
+  svg.chart{max-width:240px}
+  h1{font-size:17pt}
+  h2{font-size:12.5pt;margin:14px 0 6px}
+  .card{box-shadow:none;padding:10px 12px}
+  table.rounds{font-size:9.5pt}
+  table.rounds td,table.rounds th{padding:3px 6px}
+  /* 打印时去掉已钩删除线与高亮底色，省墨且更清楚 */
+  tr.round.done .pat{text-decoration:none}
+  tr.round.hl{background:none;box-shadow:none}
+  a{color:inherit;text-decoration:none}
+  .pagebreak{break-before:page}
+  #photoPreview{max-width:120px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="badge" aria-hidden="true"></div>
+    <div>
+      <h1 id="title">软糖图解</h1>
+      <div class="sub" id="subtitle">钩织图解</div>
+    </div>
+  </header>
+
+  <div id="app">
+    <!-- 渲染骨架：JS 从这里接管；无 JS 时显示提示 -->
+    <noscript><div class="card">本图解需要 JavaScript 才能渲染逐圈表格与符号图。请用浏览器打开。</div></noscript>
+  </div>
+
+  <footer id="foot">
+    由「软糖图解」生成 · 单个自包含 HTML，离线可开 · 进度只保存在本机浏览器
+  </footer>
+</div>
+
+<!-- ============================================================
+     引擎（构建时注入；占位符必须原样保留）
+     ============================================================ -->
+<script>
+/**
+ * 「软糖图解」确定性引擎 · gummy-engine.js
+ *
+ * 设计原则：
+ *   1. 零依赖，UMD 单文件，浏览器与 Node 双用。
+ *   2. 所有针数计算必须是纯函数、确定性、可复现。
+ *   3. 一切针数由本引擎计算，调用方（模型）不得手写针数。
+ *
+ * 契约见 docs/CONTRACT.md。本文件实现其 §1 / §3 / §5b 的全部 API。
+ *
+ * 记号守恒（契约 §1）：
+ *   X 1/1  V 1/2  A 2/1  T 1/1  F 1/1  W 1/3  M 3/1  CH 0/1  SL 1/0  K 1/0
+ *   （前一个数字=消耗针数，后一个=产出针数）
+ */
+(function (root, factory) {
+  'use strict';
+  var api = factory();
+  if (typeof module === 'object' && module.exports) {
+    // CommonJS：默认导出即引擎，同时挂一个具名属性，
+    // 便于 cjs-module-lexer 在 ESM 里识别 `import { GummyEngine }`。
+    module.exports = api;
+    module.exports.GummyEngine = api;
+    module.exports.default = api;
+  } else if (typeof define === 'function' && define.amd) {
+    define([], function () { return api; });
+  } else {
+    root.GummyEngine = api;
+  }
+}(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+
+  var VERSION = '1.0.0';
+
+  /* ============================================================
+   * §1 记号表
+   * ========================================================== */
+  var OPS = {
+    X:  { cn: '短针',     en: 'sc',  consume: 1, produce: 1 },
+    V:  { cn: '加针',     en: 'inc', consume: 1, produce: 2 },
+    A:  { cn: '减针',     en: 'dec', consume: 2, produce: 1 },
+    T:  { cn: '中长针',   en: 'hdc', consume: 1, produce: 1 },
+    F:  { cn: '长针',     en: 'dc',  consume: 1, produce: 1 },
+    W:  { cn: '一针三短针', en: '3sc', consume: 1, produce: 3 },
+    M:  { cn: '三针并一针', en: '3tog', consume: 3, produce: 1 },
+    CH: { cn: '锁针',     en: 'ch',  consume: 0, produce: 1 },
+    SL: { cn: '引拔',     en: 'sl',  consume: 1, produce: 0 },
+    K:  { cn: '空针',     en: 'skip', consume: 1, produce: 0 }
+  };
+
+  var DEFAULT_GAUGE = {
+    stPerCm: 2.2,
+    roundsPerCm: 2.2,
+    hookMm: 2.5,
+    yarn: '4ply 牛奶棉'
+  };
+
+  var SHAPE_KINDS = ['sphere', 'capsule', 'cylinder', 'cone', 'flat-round', 'flat-row'];
+
+  /** 各形状必填字段（契约 §3.4）。漏字段必须报错，静默产出会让圈数算成 0。 */
+  var SHAPE_REQUIRED = {
+    'sphere':     ['diameterCm'],
+    'capsule':    ['diameterCm', 'heightCm'],
+    'cylinder':   ['diameterCm', 'heightCm'],
+    'cone':       ['diameterCm', 'heightCm'],
+    'flat-round': ['diameterCm'],
+    'flat-row':   ['widthCm', 'heightCm']
+  };
+
+  /* ============================================================
+   * 小工具
+   * ========================================================== */
+  function round1(n) { return Math.round(n * 10) / 10; }
+  function round2(n) { return Math.round(n * 100) / 100; }
+  function isNum(v) { return typeof v === 'number' && isFinite(v); }
+  function isPositiveNum(v) { return isNum(v) && v > 0; }
+  function delimJoin(parts, sep) {
+    var out = [];
+    for (var i = 0; i < parts.length; i++) if (parts[i]) out.push(parts[i]);
+    return out.join(sep || ' ');
+  }
+
+  /* ============================================================
+   * 记号 <-> 针数
+   * ========================================================== */
+
+  /** 统计一圈 ops 的消耗/产出与各符号次数。 */
+  function opsTotals(ops) {
+    var consume = 0, produce = 0, counts = {};
+    var list = ops || [];
+    for (var i = 0; i < list.length; i++) {
+      var o = list[i];
+      var sym = o && o.sym;
+      var meta = OPS[sym];
+      if (!meta) continue;                       // ✱ 等排版符号直接跳过
+      var n = isNum(o.n) && o.n > 0 ? Math.floor(o.n) : 1;
+      consume += meta.consume * n;
+      produce += meta.produce * n;
+      counts[sym] = (counts[sym] || 0) + n;
+    }
+    return { consume: consume, produce: produce, counts: counts };
+  }
+
+  /** 把 ops 展开成扁平的符号数组。 */
+  function expandOps(ops) {
+    var flat = [];
+    var list = ops || [];
+    for (var i = 0; i < list.length; i++) {
+      var o = list[i];
+      if (!OPS[o && o.sym]) continue;
+      var n = isNum(o.n) && o.n > 0 ? Math.floor(o.n) : 1;
+      for (var k = 0; k < n; k++) flat.push(o.sym);
+    }
+    return flat;
+  }
+
+  /** 连续相同符号压缩成 `6X` 形式。 */
+  function runsToString(arr) {
+    var out = '', i = 0;
+    while (i < arr.length) {
+      var j = i;
+      while (j < arr.length && arr[j] === arr[i]) j++;
+      var c = j - i;
+      out += (c > 1 ? String(c) : '') + arr[i];
+      i = j;
+    }
+    return out;
+  }
+
+  /**
+   * 把扁平符号数组压缩成人类记法：优先找最小重复周期。
+   *   [X,X,X,X,V] 重复 6 次 -> "6(4X,V)"
+   *   [X,X,X,X,X,X]        -> "6X"
+   * 周期体内的不同符号之间用逗号分隔（`6(X,V)` 而非 `6(XV)`），
+   * 这是钩织图解的通行写法，可读性明显更好。
+   */
+  function compressSymbols(flat) {
+    if (!flat.length) return '';
+    var allSame = true;
+    for (var i = 1; i < flat.length; i++) if (flat[i] !== flat[0]) { allSame = false; break; }
+    if (allSame) return runsToString(flat);
+
+    // 找最小周期 p（p >= 2，因为全同已处理）
+    for (var p = 2; p <= flat.length; p++) {
+      if (flat.length % p !== 0) continue;
+      var ok = true;
+      for (var q = p; q < flat.length; q++) {
+        if (flat[q] !== flat[q - p]) { ok = false; break; }
+      }
+      if (!ok) continue;
+      var times = flat.length / p;
+      if (times < 2) continue;
+      return String(times) + '(' + runsList(flat.slice(0, p)) + ')';
+    }
+    return runsList(flat);
+  }
+
+  /** 同 runsToString，但不同符号段之间用逗号分隔。 */
+  function runsList(arr) {
+    var segs = [], i = 0;
+    while (i < arr.length) {
+      var j = i;
+      while (j < arr.length && arr[j] === arr[i]) j++;
+      var c = j - i;
+      segs.push((c > 1 ? String(c) : '') + arr[i]);
+      i = j;
+    }
+    return segs.join(',');
+  }
+
+  function compressOps(ops) { return compressSymbols(expandOps(ops)); }
+
+  /**
+   * §3.3 buildRound(ops) -> { stitchesIn, stitchesOut, note }
+   * 把 ops 折算成针数并生成人类可读 note。
+   */
+  function buildRound(ops) {
+    var t = opsTotals(ops);
+    return {
+      stitchesIn: t.consume,
+      stitchesOut: t.produce,
+      note: compressOps(ops)
+    };
+  }
+
+  /* ============================================================
+   * 形状推导（契约 §3.4）
+   * ========================================================== */
+
+  function normalizeGauge(g) {
+    var src = g || {};
+    return {
+      stPerCm: isPositiveNum(src.stPerCm) ? src.stPerCm : DEFAULT_GAUGE.stPerCm,
+      roundsPerCm: isPositiveNum(src.roundsPerCm) ? src.roundsPerCm : DEFAULT_GAUGE.roundsPerCm,
+      hookMm: isPositiveNum(src.hookMm) ? src.hookMm : DEFAULT_GAUGE.hookMm,
+      yarn: typeof src.yarn === 'string' && src.yarn ? src.yarn : DEFAULT_GAUGE.yarn
+    };
+  }
+
+  function circumference(diameterCm) { return Math.PI * diameterCm; }
+
+  /** 取最接近的 6 的倍数，且至少 6。 */
+  function nearest6(x) {
+    var v = Math.round(x / 6) * 6;
+    if (v < 6) v = 6;
+    return v;
+  }
+
+  /**
+   * 递增圈（第 2 圈起）：从 6(r-1) 增到 6r，写法 `6((r-2)X,V)`。
+   * 递减圈：从 S 减到 S-6，写法 `6((S/6-2)X,A)`。
+   * 两者都展开成 ops 数组（交错而非分块，因为交错才是真实钩法）。
+   */
+  function incOpsForRound(r) {
+    var xCount = r - 2;                 // 每单元里的 X 数
+    var unit = [];
+    if (xCount > 0) unit.push({ sym: 'X', n: xCount });
+    unit.push({ sym: 'V', n: 1 });
+    var out = [];
+    for (var i = 0; i < 6; i++) out = out.concat(unit);
+    return out;
+  }
+
+  function decOpsForStitches(s) {
+    var xCount = s / 6 - 2;             // 每单元里的 X 数
+    var unit = [];
+    if (xCount > 0) unit.push({ sym: 'X', n: xCount });
+    unit.push({ sym: 'A', n: 1 });
+    var out = [];
+    for (var i = 0; i < 6; i++) out = out.concat(unit);
+    return out;
+  }
+
+  function magicRingRound(color) {
+    return {
+      r: 1,
+      kind: 'magic-ring',
+      color: color,
+      stitchesIn: 0,
+      stitchesOut: 6,
+      ops: [{ sym: 'X', n: 6 }],
+      note: '环形起针 6X'
+    };
+  }
+
+  /**
+   * 生成「环形起针 → 递增到 max → 平织 → 对称递减」的通用序列。
+   * sphere / capsule / cylinder / cone 都复用它，只是平织段与收口方式不同。
+   */
+  function ringSequence(opts) {
+    var maxStitches = opts.maxStitches;
+    var incRounds = maxStitches / 6 - 1;                 // 递增圈数
+    var straightRounds = Math.max(0, opts.straightRounds || 0);
+    var doClose = opts.doClose !== false;
+    var color = opts.color;
+
+    var rounds = [];
+    rounds.push(magicRingRound(color));
+
+    // 递增：R2..R(1+incRounds)，第 r 圈产出 6r
+    for (var i = 1; i <= incRounds; i++) {
+      var r = i + 1;
+      var ops = incOpsForRound(r);
+      rounds.push({
+        r: r, kind: 'round', color: color,
+        stitchesIn: 6 * (r - 1),
+        stitchesOut: 6 * r,
+        ops: ops,
+        note: ''
+      });
+    }
+
+    // 平织
+    for (var s = 0; s < straightRounds; s++) {
+      rounds.push({
+        r: rounds.length + 1, kind: 'round', color: color,
+        stitchesIn: maxStitches, stitchesOut: maxStitches,
+        ops: [{ sym: 'X', n: maxStitches }],
+        note: ''
+      });
+    }
+
+    // 对称递减：max -> max-6 -> ... -> 6
+    if (doClose && incRounds > 0) {
+      for (var d = 0; d < incRounds; d++) {
+        var from = maxStitches - 6 * d;
+        var ops2;
+        if (from === 6) {
+          // 6 针无法再减（R7 下限 6），以引拔收口
+          ops2 = [{ sym: 'SL', n: 6 }];
+          rounds.push({
+            r: rounds.length + 1, kind: 'round', color: color,
+            stitchesIn: 6, stitchesOut: 0, ops: ops2, note: ''
+          });
+          break;
+        }
+        ops2 = decOpsForStitches(from);
+        rounds.push({
+          r: rounds.length + 1, kind: 'round', color: color,
+          stitchesIn: from, stitchesOut: from - 6,
+          ops: ops2, note: ''
+        });
+      }
+    }
+
+    // 补 note（在针数确定后统一生成，保证与 ops 一致）
+    for (var k = 0; k < rounds.length; k++) {
+      if (!rounds[k].note) rounds[k].note = compressOps(rounds[k].ops);
+    }
+    return rounds;
+  }
+
+  /** 部件接在留针上时的序列：R1 接 N 针，R2 外扩，R3 平织。 */
+  function attachSequence(opts) {
+    var n = opts.stitches;
+    var color = opts.color;
+    var rounds = [];
+
+    // R1：接在留针上，钩 N 个短针（消耗 N = 留针数）
+    rounds.push({
+      r: 1, kind: 'attach', color: color,
+      stitchesIn: n, stitchesOut: n,
+      ops: [{ sym: 'X', n: n }],
+      note: ''
+    });
+
+    // R2：外扩。vCount 个加针，其余短针均匀分布。
+    if (n >= 2) {
+      var vCount = Math.floor(n / 2);
+      var xCount = n - vCount;                  // 与 vCount 配对消耗
+      // 每单元 (xPer V) 个 X + 1 个 V，需要 xPer = xCount / vCount
+      if (xCount % vCount === 0) {
+        var xPer = xCount / vCount;
+        var unit = [];
+        if (xPer > 0) unit.push({ sym: 'X', n: xPer });
+        unit.push({ sym: 'V', n: 1 });
+        var ops = [];
+        for (var i = 0; i < vCount; i++) ops = ops.concat(unit);
+        rounds.push({
+          r: 2, kind: 'round', color: color,
+          stitchesIn: n, stitchesOut: n + vCount,
+          ops: ops, note: ''
+        });
+
+        // R3：平织（荷叶边的外缘），按 heightCm 追加更多平织圈
+        var flareOut = n + vCount;
+        var plain = Math.max(1, isPositiveNum(opts.heightCm)
+          ? Math.round(opts.heightCm * opts.roundsPerCm) : 1);
+        for (var p = 0; p < plain; p++) {
+          rounds.push({
+            r: rounds.length + 1, kind: 'round', color: color,
+            stitchesIn: flareOut, stitchesOut: flareOut,
+            ops: [{ sym: 'X', n: flareOut }], note: ''
+          });
+        }
+      }
+    }
+
+    for (var k = 0; k < rounds.length; k++) {
+      if (!rounds[k].note) rounds[k].note = compressOps(rounds[k].ops);
+    }
+    return rounds;
+  }
+
+  /**
+   * §3.4 buildShape(shape, gauge) -> { rounds, plan }
+   */
+  function buildShape(shape, gauge) {
+    var g = normalizeGauge(gauge);
+    var sh = shape || {};
+    var kind = sh.kind;
+    var plan = { kind: kind };
+    var rounds = [];
+    var color = sh.color || null;
+
+    if (SHAPE_KINDS.indexOf(kind) === -1) {
+      return { rounds: [], plan: plan, error: '未知形状 ' + String(kind) +
+        '，可选：' + SHAPE_KINDS.join(' / ') };
+    }
+
+    // 必填字段校验
+    var required = SHAPE_REQUIRED[kind] || [];
+    for (var i = 0; i < required.length; i++) {
+      if (!isPositiveNum(sh[required[i]])) {
+        return { rounds: [], plan: plan,
+          error: '形状 ' + kind + ' 缺少必填字段 ' + required[i] + '（必须是正数）' };
+      }
+    }
+
+    // —— 接在留针上：走 attachSequence ——
+    if (sh.attachTo && isPositiveNum(sh.attachTo.stitches)) {
+      rounds = attachSequence({
+        stitches: Math.round(sh.attachTo.stitches),
+        color: color,
+        heightCm: sh.heightCm,
+        roundsPerCm: g.roundsPerCm
+      });
+      plan.attachTo = sh.attachTo;
+      plan.totalRounds = rounds.length;
+      return { rounds: rounds, plan: plan };
+    }
+
+    var maxStitches = nearest6(circumference(sh.diameterCm) * g.stPerCm);
+    plan.maxStitches = maxStitches;
+    plan.diameterCm = sh.diameterCm;
+    plan.circumferenceCm = round2(circumference(sh.diameterCm));
+
+    if (kind === 'flat-row') {
+      // 片织：CH 起针 n -> 每行 n 针来回
+      var n = Math.max(1, Math.round(sh.widthCm * g.stPerCm));
+      var rows = Math.max(1, Math.round(sh.heightCm * g.roundsPerCm));
+      rounds.push({
+        r: 1, kind: 'row', color: color,
+        stitchesIn: 0, stitchesOut: n,
+        ops: [{ sym: 'CH', n: n }],
+        note: ''
+      });
+      for (var ri = 1; ri < rows; ri++) {
+        rounds.push({
+          r: ri + 1, kind: 'row', color: color,
+          stitchesIn: n, stitchesOut: n,
+          ops: [{ sym: 'X', n: n }],
+          note: ''
+        });
+      }
+      for (var ki = 0; ki < rounds.length; ki++) {
+        if (!rounds[ki].note) rounds[ki].note = compressOps(rounds[ki].ops);
+      }
+      plan.stitchesPerRow = n;
+      plan.rows = rows;
+      plan.totalRounds = rounds.length;
+      return { rounds: rounds, plan: plan };
+    }
+
+    var incRounds = maxStitches / 6 - 1;
+    plan.incRounds = incRounds;
+
+    if (kind === 'sphere') {
+      var totalRounds = Math.round(sh.diameterCm * g.roundsPerCm);
+      var straight = Math.max(0, totalRounds - 2 * incRounds);
+      plan.totalRoundsTarget = totalRounds;
+      plan.straightRounds = straight;
+      rounds = ringSequence({
+        maxStitches: maxStitches, straightRounds: straight,
+        doClose: sh.close !== 'open', color: color
+      });
+    } else if (kind === 'capsule') {
+      var straightC = Math.max(1, Math.round((sh.heightCm - sh.diameterCm) * g.roundsPerCm));
+      plan.straightRounds = straightC;
+      rounds = ringSequence({
+        maxStitches: maxStitches, straightRounds: straightC,
+        doClose: sh.close !== 'open', color: color
+      });
+    } else if (kind === 'cylinder') {
+      var straightY = Math.max(0, Math.round(sh.heightCm * g.roundsPerCm));
+      plan.straightRounds = straightY;
+      rounds = ringSequence({
+        maxStitches: maxStitches, straightRounds: straightY,
+        doClose: false, color: color
+      });
+    } else if (kind === 'cone') {
+      // 锥形：环形起针 -> 递增到 max，开口不收（锥尖在起针端）
+      rounds = ringSequence({
+        maxStitches: maxStitches, straightRounds: 0,
+        doClose: false, color: color
+      });
+    } else if (kind === 'flat-round') {
+      // 圆片：纯递增到 maxStitches，不分收口
+      rounds = ringSequence({
+        maxStitches: maxStitches, straightRounds: 0,
+        doClose: false, color: color
+      });
+    }
+
+    plan.totalRounds = rounds.length;
+    return { rounds: rounds, plan: plan };
+  }
+
+  /* ============================================================
+   * §3.5 buildChart(toySpec) -> chart
+   * ========================================================== */
+
+  function normalizePalette(palette) {
+    var out = [];
+    var src = palette || [];
+    for (var i = 0; i < src.length; i++) {
+      var p = src[i] || {};
+      out.push({
+        id: p.id || ('C' + (i + 1)),
+        name: p.name || ('色 ' + (i + 1)),
+        hex: typeof p.hex === 'string' ? p.hex.toUpperCase() : '#CCCCCC',
+        role: p.role || 'main',
+        yarnMetersPerGram: isPositiveNum(p.yarnMetersPerGram) ? p.yarnMetersPerGram : 4.2
+      });
+    }
+    return out;
+  }
+
+  /** 按 colorRounds 求某一圈的颜色。 */
+  function colorForRound(colorRounds, defaultColor, r, totalRounds) {
+    var list = colorRounds || [];
+    for (var i = 0; i < list.length; i++) {
+      var c = list[i] || {};
+      var from = isNum(c.from) ? c.from : 1;
+      var to = isNum(c.to) ? c.to : 99;
+      if (to >= 99) to = totalRounds;                  // 99 = 直到收口
+      if (r >= from && r <= to) return c.color;
+    }
+    return defaultColor || null;
+  }
+
+  function buildChart(toySpec) {
+    var spec = toySpec || {};
+    var g = normalizeGauge(spec.gauge);
+    var palette = normalizePalette(spec.palette);
+    var errors = [];
+    var warnings = [];
+
+    if (!palette.length) {
+      errors.push('palette 为空：至少需要 1 个线色');
+    }
+    var firstColor = palette.length ? palette[0].id : null;
+
+    var parts = [];
+    var specParts = spec.parts || [];
+    if (!specParts.length) errors.push('parts 为空：至少需要 1 个部件');
+
+    for (var pi = 0; pi < specParts.length; pi++) {
+      var sp = specParts[pi] || {};
+      var shape = sp.shape || {};
+      shape = JSON.parse(JSON.stringify(shape));       // 不改调用方的对象
+      if (!shape.color && sp.defaultColor) shape.color = sp.defaultColor;
+
+      var built = buildShape(shape, g);
+      if (built.error) {
+        errors.push('部件 "' + (sp.id || ('#' + pi)) + '"：' + built.error);
+        parts.push({
+          id: sp.id || ('part' + pi), name: sp.name || ('部件 ' + (pi + 1)),
+          shape: shape, rounds: [], subtotal: { stitches: 0, rounds: 0 },
+          plan: built.plan
+        });
+        continue;
+      }
+
+      var rounds = built.rounds;
+      var totalRounds = rounds.length;
+
+      // —— 配色 ——
+      for (var ri = 0; ri < rounds.length; ri++) {
+        var col = colorForRound(sp.colorRounds, sp.defaultColor || firstColor,
+                                rounds[ri].r, totalRounds);
+        rounds[ri].color = col || firstColor;
+      }
+
+      // —— §3.4b 映射①：decor 装饰针迹 ——
+      var decorSpecs = sp.decor || [];
+      for (var di = 0; di < decorSpecs.length; di++) {
+        var ds = decorSpecs[di] || {};
+        var from = isNum(ds.roundFrom) ? ds.roundFrom : 1;
+        var to = isNum(ds.roundTo) ? ds.roundTo : 99;
+        if (to >= 99) to = totalRounds;
+        var every = isPositiveNum(ds.every) ? Math.floor(ds.every) : 1;
+        for (var rr = 0; rr < rounds.length; rr++) {
+          var rd = rounds[rr];
+          if (rd.r < from || rd.r > to) continue;
+          var cnt = Math.floor(rd.stitchesOut / every);
+          if (cnt * every !== rd.stitchesOut) {
+            warnings.push('部件 "' + (sp.id || pi) + '" R' + rd.r +
+              '：装饰针迹 every=' + every + ' 不能整除本圈 ' + rd.stitchesOut +
+              ' 针，已向下取整为 ' + cnt + ' 个（R8 将不通过）');
+          }
+          var item = { kind: ds.kind || 'curly', every: every, count: cnt };
+          if (isNum(ds.ch)) item.ch = ds.ch;
+          if (typeof ds.note === 'string' && ds.note) item.note = ds.note;
+          if (!rd.decor) rd.decor = [];
+          rd.decor.push(item);
+        }
+      }
+
+      // —— §3.4b 映射②：loopRounds 半针留针 ——
+      var loopSpecs = sp.loopRounds || [];
+      for (var li = 0; li < loopSpecs.length; li++) {
+        var ls = loopSpecs[li] || {};
+        for (var rj = 0; rj < rounds.length; rj++) {
+          if (rounds[rj].r !== ls.round) continue;
+          rounds[rj].loop = ls.loop || 'blo';
+          if (Object.prototype.hasOwnProperty.call(ls, 'reservedFor')) {
+            rounds[rj].reservedFor = ls.reservedFor;
+          }
+          break;
+        }
+      }
+
+      var totalStitches = 0;
+      for (var si = 0; si < rounds.length; si++) {
+        totalStitches += Math.max(rounds[si].stitchesIn, rounds[si].stitchesOut);
+      }
+
+      parts.push({
+        id: sp.id || ('part' + pi),
+        name: sp.name || ('部件 ' + (pi + 1)),
+        shape: shape,
+        rounds: rounds,
+        subtotal: { stitches: totalStitches, rounds: rounds.length },
+        plan: built.plan,
+        defaultColor: sp.defaultColor || firstColor
+      });
+    }
+
+    var chart = {
+      version: 1,
+      name: spec.name || '未命名作品',
+      createdAt: new Date().toISOString(),
+      spec: spec,
+      gauge: {
+        stPerCm: g.stPerCm, roundsPerCm: g.roundsPerCm,
+        hookMm: g.hookMm, yarn: g.yarn
+      },
+      palette: palette,
+      parts: parts,
+      buildOrder: Array.isArray(spec.buildOrder) && spec.buildOrder.length
+        ? spec.buildOrder.slice()
+        : defaultBuildOrder(parts)
+    };
+
+    // 先算用线量（validateChart 的 summary 需要，且用线量不依赖校验结果）
+    chart.yarn = yarnEstimate(chart, spec.yarnOptions || {});
+
+    // —— 最终校验 ——
+    var v = validateChart(chart);
+    // 合并 buildChart 阶段的错误/警告（它们发生在 chart 字段成形之前）
+    if (errors.length || warnings.length) {
+      v.errors = errors.concat(v.errors);
+      v.warnings = warnings.concat(v.warnings || []);
+      v.ok = v.errors.length === 0;
+    }
+    chart.validation = v;
+
+    return chart;
+  }
+
+  /** 缺省制作顺序：主体 -> 附着件 -> 装饰 -> 缝合。 */
+  function defaultBuildOrder(parts) {
+    var main = [], attached = [], decor = [];
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      if (p.shape && p.shape.attachTo) attached.push(p);
+      else main.push(p);
+    }
+    var order = [];
+    for (var m = 0; m < main.length; m++) {
+      order.push('钩 ' + main[m].name + '（' + main[m].rounds.length + ' 圈）');
+    }
+    for (var a = 0; a < attached.length; a++) {
+      var at = attached[a].shape.attachTo || {};
+      order.push('在 ' + (at.part || '主体') + ' R' + (at.round || '?') +
+                 ' 的留针上钩 ' + attached[a].name);
+    }
+    var hasDecor = false;
+    for (var d = 0; d < parts.length; d++) {
+      for (var r = 0; r < parts[d].rounds.length; r++) {
+        if (parts[d].rounds[r].decor && parts[d].rounds[r].decor.length) hasDecor = true;
+      }
+    }
+    if (hasDecor) decor.push('在标记的圈上钩装饰针迹（卷曲针/枣针/花瓣针）');
+    return order.concat(decor).concat([
+      '塞棉：头部与躯干 7 分满，四肢少塞或不塞',
+      '按顺序缝合各部件，压住领口与接缝',
+      '绣五官、扫腮红，藏好所有线头'
+    ]);
+  }
+
+  /* ============================================================
+   * §3.2 validateChart —— R1..R9
+   * ========================================================== */
+
+  function validateChart(chart) {
+    var errors = [];
+    var warnings = [];
+    var partReports = [];
+    var ch = chart || {};
+    var parts = ch.parts || [];
+    var palette = ch.palette || [];
+
+    var paletteIds = {};
+    for (var p = 0; p < palette.length; p++) paletteIds[palette[p].id] = true;
+
+    var totalRounds = 0;
+    var totalStitches = 0;
+    var colorChanges = 0;
+    var decorCount = 0;       // 装饰针迹的「个体总数」（18 个卷曲针就记 18）
+    var decorSegments = 0;    // 装饰声明的「段数」（一圈上挂 2 种装饰就记 2）
+    var reservedLoops = 0;
+
+    // 收集所有 attachTo 引用，用于 R9
+    //   注意：parts 可能是稀疏数组或含 null，这里必须防住，
+    //   校验器自己不能崩——崩了就等于把「图纸有错」伪装成「工具坏了」。
+    var attachRefs = {};
+    for (var ai = 0; ai < parts.length; ai++) {
+      var ap = parts[ai];
+      if (!ap || !ap.shape) continue;
+      var at = ap.shape.attachTo;
+      if (at) {
+        var key = String(at.part) + '#' + String(at.round);
+        attachRefs[key] = true;
+      }
+    }
+
+    for (var pi = 0; pi < parts.length; pi++) {
+      var part = parts[pi] || {};
+      var rounds = part.rounds || [];
+      var pErrs = [];
+      var roundReports = [];
+
+      if (!rounds.length) pErrs.push('部件 "' + (part.id || pi) + '" 没有任何圈');
+
+      for (var ri = 0; ri < rounds.length; ri++) {
+        var rd = rounds[ri] || {};
+        var rErr = [];
+        var isLast = ri === rounds.length - 1;
+        var t = opsTotals(rd.ops);
+        var c = t.counts;
+
+        // R1 环内守恒：消耗总数 === stitchesIn
+        //   例外：magic-ring 的 6X 是钩进「环」里的，不是钩进已有针目，
+        //   所以它的 6 针消耗没有对应的 stitchesIn（契约 R4 规定 stitchesIn===0）。
+        if (rd.kind !== 'magic-ring' && t.consume !== rd.stitchesIn) {
+          rErr.push('R1 环内守恒不成立：本圈针法共消耗 ' + t.consume +
+                    ' 针，但 stitchesIn 声明为 ' + rd.stitchesIn +
+                    '（差 ' + (t.consume - rd.stitchesIn) + '）');
+        }
+
+        // R2 产出正确：产出总数 === stitchesOut
+        if (t.produce !== rd.stitchesOut) {
+          rErr.push('R2 产出不正确：本圈针法共产出 ' + t.produce +
+                    ' 针，但 stitchesOut 声明为 ' + rd.stitchesOut +
+                    '（差 ' + (t.produce - rd.stitchesOut) + '）');
+        }
+
+        // R3 衔接守恒
+        if (ri > 0) {
+          var prev = rounds[ri - 1] || {};
+          if (rd.stitchesIn !== prev.stitchesOut) {
+            rErr.push('R3 衔接不成立：本圈消耗 ' + rd.stitchesIn +
+                      ' 针，但上一圈产出 ' + prev.stitchesOut +
+                      ' 针（差 ' + (rd.stitchesIn - prev.stitchesOut) + '）');
+          }
+        } else {
+          // R4 起针
+          if (rd.kind === 'magic-ring' && rd.stitchesIn !== 0) {
+            rErr.push('R4 起针错误：环形起针的 stitchesIn 必须为 0，实际为 ' + rd.stitchesIn);
+          }
+          if (rd.kind === 'attach') {
+            var need = part.shape && part.shape.attachTo && part.shape.attachTo.stitches;
+            if (isPositiveNum(need) && rd.stitchesIn !== Math.round(need)) {
+              rErr.push('R4 接针错误：attachTo.stitches 声明 ' + Math.round(need) +
+                        '，但第 1 圈 stitchesIn 为 ' + rd.stitchesIn);
+            }
+          }
+          if (rd.kind !== 'magic-ring' && rd.kind !== 'attach' && rd.stitchesIn !== 0) {
+            rErr.push('R4 起针错误：第 1 圈 kind 为 "' + rd.kind +
+                      '"，若为环形起针 stitchesIn 应为 0，若接留针应为 attach');
+          }
+        }
+
+        // R5 增减一致
+        //   例外：magic-ring 的「起针 6 针」不是加针得来的，是环本身提供的，
+        //   因此不参与增减解释（否则任何环形起针都会误报）。
+        var delta = rd.stitchesOut - rd.stitchesIn;
+        var incdec = (c.V || 0) + 2 * (c.W || 0) + (c.CH || 0)
+                   - (c.A || 0) - 2 * (c.M || 0) - (c.SL || 0) - (c.K || 0);
+        if (rd.kind !== 'magic-ring' && delta !== incdec) {
+          rErr.push('R5 增减不一致：产出−消耗 = ' + delta +
+                    '，但加针/减针解释的增量 = ' + incdec +
+                    '（差 ' + (delta - incdec) + '）');
+        }
+
+        // R6 配色合法
+        if (paletteIds && Object.keys(paletteIds).length) {
+          if (!rd.color || !paletteIds[rd.color]) {
+            rErr.push('R6 配色非法：color "' + String(rd.color) + '" 不在 palette 中');
+          }
+        }
+
+        // R7 可钩性
+        if (typeof rd.stitchesOut !== 'number' || !isFinite(rd.stitchesOut) ||
+            rd.stitchesOut !== Math.floor(rd.stitchesOut)) {
+          rErr.push('R7 可钩性：stitchesOut 必须是整数，实际为 ' + rd.stitchesOut);
+        } else if (rd.stitchesOut > 200) {
+          rErr.push('R7 可钩性：stitchesOut = ' + rd.stitchesOut + ' 超过上限 200');
+        } else if (rd.stitchesOut < 6) {
+          // 例外：最后一圈允许为 0（全减完收口）
+          if (!(isLast && rd.stitchesOut === 0)) {
+            rErr.push('R7 可钩性：stitchesOut = ' + rd.stitchesOut +
+                      ' 低于下限 6（只有最后一圈允许为 0）');
+          }
+        }
+
+        // R8 装饰针迹
+        if (rd.decor && rd.decor.length) {
+          for (var dj = 0; dj < rd.decor.length; dj++) {
+            var dec = rd.decor[dj] || {};
+            var every = isPositiveNum(dec.every) ? dec.every : 1;
+            var cnt = isNum(dec.count) ? dec.count : 0;
+            if (cnt * every !== rd.stitchesOut) {
+              rErr.push('R8 装饰针迹数量不匹配：' + cnt + ' 个 × every ' + every +
+                        ' = ' + (cnt * every) + '，但本圈 ' + rd.stitchesOut + ' 针');
+            }
+            decorCount += cnt;
+            decorSegments += 1;
+          }
+        }
+
+        // R9 半针留针（警告级）
+        if (rd.loop && rd.loop !== 'both') {
+          reservedLoops++;
+          var hasRef = attachRefs[String(part.id) + '#' + String(rd.r)];
+          var explicitlyUnused = Object.prototype.hasOwnProperty.call(rd, 'reservedFor')
+            && rd.reservedFor === null;
+          if (!hasRef && !explicitlyUnused) {
+            warnings.push('部件 "' + (part.id || pi) + '" R' + rd.r + ' 标记了 ' +
+              (rd.loop === 'blo' ? '内半针' : '外半针') +
+              ' 留针，但没有部件通过 attachTo 接上去（如确定不用，写 "reservedFor": null）');
+          }
+        }
+
+        if (ri > 0) {
+          var prevC = (rounds[ri - 1] || {}).color;
+          if (prevC !== rd.color) colorChanges++;
+        }
+
+        totalRounds++;
+        totalStitches += Math.max(rd.stitchesIn || 0, rd.stitchesOut || 0);
+
+        roundReports.push({
+          r: rd.r,
+          consumed: t.consume,
+          declaredIn: rd.stitchesIn,
+          produced: t.produce,
+          declaredOut: rd.stitchesOut,
+          delta: delta,
+          incdec: incdec,
+          ok: rErr.length === 0,
+          errors: rErr
+        });
+
+        for (var e = 0; e < rErr.length; e++) pErrs.push('部件 "' + (part.id || pi) +
+          '" R' + rd.r + '：' + rErr[e]);
+      }
+
+      partReports.push({
+        id: part.id || ('part' + pi),
+        ok: pErrs.length === 0,
+        errors: pErrs,
+        rounds: roundReports
+      });
+      errors = errors.concat(pErrs);
+    }
+
+    // R10 接针一致性：attachTo 引用的圈必须真的存在、真的留了半针、针数对得上
+    for (var qi = 0; qi < parts.length; qi++) {
+      var qp = parts[qi] || {};
+      var qat = qp.shape && qp.shape.attachTo;
+      if (!qat) continue;
+
+      var target = null;
+      for (var qj = 0; qj < parts.length; qj++) {
+        if (parts[qj] && parts[qj].id === qat.part) { target = parts[qj]; break; }
+      }
+      if (!target) {
+        errors.push('部件 "' + qp.id + '" 的 attachTo.part = "' + qat.part +
+          '" 找不到对应部件');
+        continue;
+      }
+
+      var targetRound = null;
+      for (var qk = 0; qk < (target.rounds || []).length; qk++) {
+        if (target.rounds[qk].r === qat.round) { targetRound = target.rounds[qk]; break; }
+      }
+      if (!targetRound) {
+        errors.push('部件 "' + qp.id + '" 的 attachTo 指向 ' + qat.part +
+          ' 的 R' + qat.round + '，但该部件只有 ' + (target.rounds || []).length + ' 圈');
+        continue;
+      }
+
+      // 引用的圈必须标记了留针
+      if (!targetRound.loop || targetRound.loop === 'both') {
+        warnings.push('部件 "' + qp.id + '" 接在 ' + qat.part + ' R' + qat.round +
+          ' 上，但该圈没有标记 loop（内/外半针留针）——请确认这是有意的');
+      }
+
+      // 针数必须精确相等，差 1 针就缝不上
+      if (isPositiveNum(qat.stitches) && targetRound.stitchesOut !== qat.stitches) {
+        errors.push('R10 接针不一致：部件 "' + qp.id + '" 声明接 ' + qat.stitches +
+          ' 针，但 ' + qat.part + ' R' + qat.round + ' 实际产出 ' +
+          targetRound.stitchesOut + ' 针（差 ' +
+          (qat.stitches - targetRound.stitchesOut) + '）');
+      }
+    }
+
+    return {
+      ok: errors.length === 0,
+      errors: errors,
+      warnings: warnings,
+      parts: partReports,
+      summary: {
+        parts: parts.length,
+        rounds: totalRounds,
+        totalStitches: totalStitches,
+        colorChanges: colorChanges,
+        decorCount: decorSegments,   // 装饰「段数」：一圈挂 2 种装饰记 2（契约 §5b.3 的 38 示例即此口径）
+        decorStitches: decorCount,   // 装饰「个体总数」：18 个卷曲针记 18
+        reservedLoops: reservedLoops
+      }
+    };
+  }
+
+  /* ============================================================
+   * §3.6 yarnEstimate
+   * ========================================================== */
+
+  function yarnEstimate(chart, opts) {
+    var o = opts || {};
+    var ch = chart || {};
+    var metersPerStitch = isPositiveNum(o.metersPerStitch) ? o.metersPerStitch : 0.025;
+    var bufferRatio = isNum(o.bufferRatio) ? o.bufferRatio : 0.25;
+
+    var palette = ch.palette || [];
+    var mpgByColor = {};
+    for (var i = 0; i < palette.length; i++) {
+      mpgByColor[palette[i].id] = isPositiveNum(palette[i].yarnMetersPerGram)
+        ? palette[i].yarnMetersPerGram : 4.2;
+    }
+
+    var parts = ch.parts || [];
+    var perPart = [];
+    var colorStitches = {};
+    var totalStitches = 0;
+
+    for (var p = 0; p < parts.length; p++) {
+      var part = parts[p] || {};
+      var rounds = part.rounds || [];
+      var pStitches = 0;
+      for (var r = 0; r < rounds.length; r++) {
+        var rd = rounds[r] || {};
+        // 实际钩织的针数：取消耗与产出的较大者
+        //   X 圈: 两者相等;  V 圈: 产出更大（一针里钩两针）;
+        //   A 圈: 消耗更大（两针并一针要动两针）; 环形起针: 产出 6
+        var worked = Math.max(rd.stitchesIn || 0, rd.stitchesOut || 0);
+        pStitches += worked;
+        var col = rd.color || (palette[0] && palette[0].id);
+        colorStitches[col] = (colorStitches[col] || 0) + worked;
+      }
+      totalStitches += pStitches;
+      perPart.push({
+        id: part.id,
+        stitches: pStitches,
+        meters: round1(pStitches * metersPerStitch),
+        grams: round1((pStitches * metersPerStitch) / 4.2)
+      });
+    }
+
+    var perColor = [];
+    for (var cid in colorStitches) {
+      if (!Object.prototype.hasOwnProperty.call(colorStitches, cid)) continue;
+      var st = colorStitches[cid];
+      var m = st * metersPerStitch;
+      var mpg = mpgByColor[cid] || 4.2;
+      perColor.push({
+        color: cid,
+        stitches: st,
+        meters: round1(m),
+        grams: round1(m / mpg)
+      });
+    }
+    perColor.sort(function (a, b) { return b.stitches - a.stitches; });
+
+    // 修正 perPart 的 grams 用各自部件主色的 mpg
+    for (var pp = 0; pp < perPart.length; pp++) {
+      var pid = perPart[pp].id;
+      var ppart = null;
+      for (var q = 0; q < parts.length; q++) if (parts[q].id === pid) ppart = parts[q];
+      var rc = (ppart && ppart.rounds && ppart.rounds[0] && ppart.rounds[0].color) || null;
+      var mpgPart = (rc && mpgByColor[rc]) || 4.2;
+      perPart[pp].grams = round1(perPart[pp].meters / mpgPart);
+    }
+
+    // 合计必须与逐部件显示值一致：
+    //   用户看到的是 perPart 各自四舍五入后的数字，把它们加起来应当等于 total，
+    //   否则页面上「各部件相加 ≠ 总计」会被当成图纸错误。
+    //   所以 total 由已取整的 perPart 累加而来，而不是另算一遍。
+    var totalMetersRaw = 0, totalGramsRaw = 0;
+    for (var pmet = 0; pmet < perPart.length; pmet++) {
+      totalMetersRaw += perPart[pmet].meters;
+      totalGramsRaw += perPart[pmet].grams;
+    }
+    var totalMeters = round1(totalMetersRaw);
+    var totalGrams = round1(totalGramsRaw);
+
+    return {
+      perPart: perPart,
+      perColor: perColor,
+      total: { stitches: totalStitches, meters: totalMeters, grams: totalGrams },
+      withBuffer: {
+        meters: round1(totalMeters * (1 + bufferRatio)),
+        grams: round1(totalGrams * (1 + bufferRatio))
+      },
+      bufferRatio: bufferRatio,
+      constants: {
+        metersPerStitch: metersPerStitch,
+        note: '单短针用线按 2.5cm 计（2.5mm 钩针 + 4ply 棉线）；实际用量随手劲浮动，已含 ' +
+              Math.round(bufferRatio * 100) + '% 损耗缓冲'
+      }
+    };
+  }
+
+  /* ============================================================
+   * §3.7 circleLayout
+   * ========================================================== */
+
+  function circleLayout(part, opts) {
+    var o = opts || {};
+    var rounds = (part && part.rounds) || [];
+    var maxStitches = 1;
+    for (var i = 0; i < rounds.length; i++) {
+      if (rounds[i].stitchesOut > maxStitches) maxStitches = rounds[i].stitchesOut;
+    }
+    var out = [];
+    for (var r = 0; r < rounds.length; r++) {
+      var rd = rounds[r];
+      var n = Math.max(0, Math.round(rd.stitchesOut || 0));
+      var radius = n > 0 ? Math.sqrt(n / maxStitches) : 0;
+      var stitches = [];
+      for (var k = 0; k < n; k++) {
+        // 起始角 -π/2（12 点方向），顺时针
+        var angle = -Math.PI / 2 + (2 * Math.PI * k) / n;
+        stitches.push({
+          i: k,
+          x: radius * Math.cos(angle),
+          y: radius * Math.sin(angle)
+        });
+      }
+      out.push({ r: rd.r, radius: radius, stitches: stitches });
+    }
+    return out;
+  }
+
+  /* ============================================================
+   * §3.8 toNotation
+   * ========================================================== */
+
+  function decorSuffix(rd) {
+    if (!rd.decor || !rd.decor.length) return '';
+    var names = { curly: '卷曲针', bobble: '枣针', petal: '花瓣针', picot: '狗牙针' };
+    var segs = [];
+    for (var i = 0; i < rd.decor.length; i++) {
+      var d = rd.decor[i];
+      var nm = names[d.kind] || d.kind;
+      var s = String(d.count) + '×' + nm;
+      if (isNum(d.ch)) s += '(' + d.ch + 'CH)';
+      segs.push(s);
+    }
+    return '  ⟡ ' + segs.join('、');
+  }
+
+  function toNotation(part) {
+    var rounds = (part && part.rounds) || [];
+    var out = [];
+    for (var i = 0; i < rounds.length; i++) {
+      var rd = rounds[i];
+      var body;
+      if (rd.kind === 'magic-ring') {
+        body = '环形起针 ' + compressOps(rd.ops);
+      } else if (rd.kind === 'attach') {
+        body = '接留针 ' + compressOps(rd.ops);
+      } else if (rd.kind === 'row') {
+        body = (i === 0 ? '起针 ' : '') + compressOps(rd.ops);
+      } else {
+        body = compressOps(rd.ops);
+      }
+      var tail = '';
+      if (rd.kind !== 'magic-ring' && rd.kind !== 'attach' && rd.kind !== 'row') {
+        tail = ' = ' + rd.stitchesOut;
+      }
+      var loopTag = '';
+      if (rd.loop === 'blo') loopTag = ' ［内半针］';
+      else if (rd.loop === 'flo') loopTag = ' ［外半针］';
+      out.push('R' + rd.r + ' ' + body + tail + loopTag + decorSuffix(rd));
+    }
+    return out;
+  }
+
+  /* ============================================================
+   * §3.9 / §3.10 颜色量化
+   * ========================================================== */
+
+  /** 确定性 PRNG（mulberry32）。 */
+  function mulberry32(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6D2B79F5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function srgbToLinear(c) {
+    c = c / 255;
+    return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  }
+
+  function linearToSrgb(c) {
+    var v = c <= 0.0031308 ? c * 12.92 : 1.055 * Math.pow(c, 1 / 2.4) - 0.055;
+    return Math.max(0, Math.min(255, Math.round(v * 255)));
+  }
+
+  /** sRGB -> CIELAB (D65) */
+  function rgbToLab(r, g, b) {
+    var lr = srgbToLinear(r), lg = srgbToLinear(g), lb = srgbToLinear(b);
+    var x = lr * 0.4124564 + lg * 0.3575761 + lb * 0.1804375;
+    var y = lr * 0.2126729 + lg * 0.7151522 + lb * 0.0721750;
+    var z = lr * 0.0193339 + lg * 0.1191920 + lb * 0.9503041;
+    var xn = 0.95047, yn = 1.0, zn = 1.08883;
+    var fx = fxyz(x / xn), fy = fxyz(y / yn), fz = fxyz(z / zn);
+    return { L: 116 * fy - 16, a: 500 * (fx - fy), b: 200 * (fy - fz) };
+  }
+
+  function fxyz(t) {
+    return t > 0.008856 ? Math.pow(t, 1 / 3) : (7.787 * t + 16 / 116);
+  }
+
+  /** CIELAB -> sRGB */
+  function labToRgb(L, A, B) {
+    var fy = (L + 16) / 116;
+    var fx = fy + A / 500;
+    var fz = fy - B / 200;
+    var xn = 0.95047, yn = 1.0, zn = 1.08883;
+    var x = xn * finv(fx), y = yn * finv(fy), z = zn * finv(fz);
+    var rl = x * 3.2404542 + y * -1.5371385 + z * -0.4985314;
+    var gl = x * -0.9692660 + y * 1.8760108 + z * 0.0415560;
+    var bl = x * 0.0556434 + y * -0.2040259 + z * 1.0572252;
+    return { r: linearToSrgb(rl), g: linearToSrgb(gl), b: linearToSrgb(bl) };
+  }
+
+  function finv(t) {
+    var t3 = t * t * t;
+    return t3 > 0.008856 ? t3 : (t - 16 / 116) / 7.787;
+  }
+
+  function toHex(r, g, b) {
+    function h(v) {
+      var s = Math.max(0, Math.min(255, Math.round(v))).toString(16).toUpperCase();
+      return s.length === 1 ? '0' + s : s;
+    }
+    return '#' + h(r) + h(g) + h(b);
+  }
+
+  /**
+   * 把像素统一成 [{r,g,b}]。支持的输入：
+   *   · [[r,g,b], ...]            —— 数组三元组
+   *   · [r,g,b, r,g,b, ...]       —— 扁平数组
+   *   · [{r,g,b}, ...]            —— 已经是归一化形态（必须幂等！）
+   *
+   * 幂等性是硬要求：summarizePhotoRegions 会先归一化再交给 quantize，
+   * 而 quantize 内部还会再归一化一次。早期版本不认对象数组，第二次调用
+   * 会把 {r,g,b} 当成扁平数组取值 → undefined → NaN → 颜色全成 "#NANNANNAN"。
+   */
+  function normalizePixels(pixels) {
+    var out = [];
+    if (!pixels || !pixels.length) return out;
+    var first = pixels[0];
+    if (first && typeof first === 'object' && !Array.isArray(first)) {
+      // 已经是 {r,g,b} 形态：原样复制（幂等）
+      for (var k = 0; k < pixels.length; k++) {
+        var o = pixels[k];
+        if (!o || typeof o !== 'object') continue;
+        out.push({ r: o.r, g: o.g, b: o.b });
+      }
+    } else if (Array.isArray(first)) {
+      for (var i = 0; i < pixels.length; i++) {
+        var p = pixels[i];
+        out.push({ r: p[0], g: p[1], b: p[2] });
+      }
+    } else {
+      for (var j = 0; j + 2 < pixels.length; j += 3) {
+        out.push({ r: pixels[j], g: pixels[j + 1], b: pixels[j + 2] });
+      }
+    }
+    return out;
+  }
+
+  function dist2Lab(a, b) {
+    var dL = a.L - b.L, da = a.a - b.a, db = a.b - b.b;
+    return dL * dL + da * da + db * db;
+  }
+
+  /**
+   * §3.9 quantize(pixels, k, opts) -> { palette: [{hex,count,ratio}] }
+   * k-means++ / CIELAB / 固定种子 42 -> 确定性输出。
+   */
+  function quantize(pixels, k, opts) {
+    var o = opts || {};
+    var seed = isNum(o.seed) ? o.seed : 42;
+    var maxIter = isNum(o.maxIter) ? o.maxIter : 30;
+    var px = normalizePixels(pixels);
+    var kk = isPositiveNum(k) ? Math.floor(k) : 8;
+
+    if (!px.length) return { palette: [] };
+    if (kk > px.length) kk = px.length;
+
+    // 转 Lab
+    var labs = new Array(px.length);
+    for (var i = 0; i < px.length; i++) {
+      var p = px[i];
+      labs[i] = rgbToLab(p.r, p.g, p.b);
+    }
+
+    var rnd = mulberry32(seed);
+
+    // k-means++ 初始化
+    var centers = [];
+    var firstIdx = Math.floor(rnd() * labs.length);
+    centers.push({ L: labs[firstIdx].L, a: labs[firstIdx].a, b: labs[firstIdx].b });
+
+    while (centers.length < kk) {
+      var d2 = new Array(labs.length);
+      var sum = 0;
+      for (var di = 0; di < labs.length; di++) {
+        var best = Infinity;
+        for (var ci = 0; ci < centers.length; ci++) {
+          var dd = dist2Lab(labs[di], centers[ci]);
+          if (dd < best) best = dd;
+        }
+        d2[di] = best;
+        sum += best;
+      }
+      if (sum <= 0) {
+        // 所有点重合，补重复中心
+        centers.push({ L: centers[0].L, a: centers[0].a, b: centers[0].b });
+        continue;
+      }
+      var target = rnd() * sum;
+      var acc = 0, pick = labs.length - 1;
+      for (var si = 0; si < d2.length; si++) {
+        acc += d2[si];
+        if (acc >= target) { pick = si; break; }
+      }
+      centers.push({ L: labs[pick].L, a: labs[pick].a, b: labs[pick].b });
+    }
+
+    // 迭代
+    var assign = new Array(labs.length);
+    for (var it = 0; it < maxIter; it++) {
+      var changed = false;
+      for (var ai = 0; ai < labs.length; ai++) {
+        var bi = 0, bd = Infinity;
+        for (var cj = 0; cj < centers.length; cj++) {
+          var ddd = dist2Lab(labs[ai], centers[cj]);
+          if (ddd < bd) { bd = ddd; bi = cj; }
+        }
+        if (assign[ai] !== bi) { assign[ai] = bi; changed = true; }
+      }
+      // 重算中心
+      var acc2 = [];
+      for (var c0 = 0; c0 < centers.length; c0++) acc2.push({ L: 0, a: 0, b: 0, n: 0 });
+      for (var pi2 = 0; pi2 < labs.length; pi2++) {
+        var cluster = assign[pi2];
+        var ac = acc2[cluster];
+        ac.L += labs[pi2].L; ac.a += labs[pi2].a; ac.b += labs[pi2].b; ac.n++;
+      }
+      for (var c1 = 0; c1 < centers.length; c1++) {
+        var a1 = acc2[c1];
+        if (a1.n > 0) {
+          centers[c1] = { L: a1.L / a1.n, a: a1.a / a1.n, b: a1.b / a1.n };
+        }
+      }
+      if (!changed && it > 0) break;
+    }
+
+    // 统计
+    var counts = new Array(centers.length);
+    for (var ci2 = 0; ci2 < centers.length; ci2++) counts[ci2] = 0;
+    for (var pj = 0; pj < assign.length; pj++) counts[assign[pj]]++;
+
+    var palette = [];
+    for (var ck = 0; ck < centers.length; ck++) {
+      var rgb = labToRgb(centers[ck].L, centers[ck].a, centers[ck].b);
+      palette.push({
+        hex: toHex(rgb.r, rgb.g, rgb.b),
+        count: counts[ck],
+        ratio: counts[ck] / labs.length
+      });
+    }
+    palette.sort(function (x, y) {
+      if (y.count !== x.count) return y.count - x.count;
+      return x.hex < y.hex ? -1 : (x.hex > y.hex ? 1 : 0);   // 平手按 hex 定序，保证确定性
+    });
+    return { palette: palette };
+  }
+
+  /** sRGB -> HSL（用于判断肤色/暗色） */
+  function rgbToHsl(r, g, b) {
+    r /= 255; g /= 255; b /= 255;
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var l = (max + min) / 2;
+    var h = 0, s = 0;
+    if (max !== min) {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      if (max === r) h = ((g - b) / d + (g < b ? 6 : 0));
+      else if (max === g) h = (b - r) / d + 2;
+      else h = (r - g) / d + 4;
+      h *= 60;
+    }
+    return { h: h, s: s, l: l };
+  }
+
+  function parseHex(hex) {
+    var s = String(hex || '').replace('#', '');
+    if (s.length !== 6) return { r: 128, g: 128, b: 128 };
+    return {
+      r: parseInt(s.slice(0, 2), 16),
+      g: parseInt(s.slice(2, 4), 16),
+      b: parseInt(s.slice(4, 6), 16)
+    };
+  }
+
+  function hexToLab(hex) {
+    var c = parseHex(hex);
+    return rgbToLab(c.r, c.g, c.b);
+  }
+
+  function hexHsl(hex) {
+    var c = parseHex(hex);
+    return rgbToHsl(c.r, c.g, c.b);
+  }
+
+  /**
+   * §3.10 summarizePhotoRegions(pixels, w, h, k)
+   * 把图像按 k 色量化，给出全局占比 + 上/中/下三段占比 + 发/肤/衣建议色。
+   */
+  function summarizePhotoRegions(pixels, w, h, k, opts) {
+    var kk = isPositiveNum(k) ? Math.floor(k) : 8;
+    var px = normalizePixels(pixels);
+    var width = isPositiveNum(w) ? Math.floor(w) : 0;
+    var height = isPositiveNum(h) ? Math.floor(h) : 0;
+
+    if (!width || !height) {
+      // 没给尺寸时，退化为正方形估算
+      var side = Math.max(1, Math.floor(Math.sqrt(px.length)));
+      width = side; height = side;
+    }
+
+    var q = quantize(px, kk, opts);
+    var dominant = q.palette;
+
+    // 建立「最近中心」映射，用来给每个像素分带
+    var dominantLabs = [];
+    for (var d = 0; d < dominant.length; d++) dominantLabs.push(hexToLab(dominant[d].hex));
+
+    function nearestIndex(p) {
+      var lab = rgbToLab(p.r, p.g, p.b);
+      var bi = 0, bd = Infinity;
+      for (var i = 0; i < dominantLabs.length; i++) {
+        var dd = dist2Lab(lab, dominantLabs[i]);
+        if (dd < bd) { bd = dd; bi = i; }
+      }
+      return bi;
+    }
+
+    // 三段：上/中/下，各占画面高度 1/3
+    var bandCounts = [{}, {}, {}];
+    var bandTotals = [0, 0, 0];
+    var total = Math.min(px.length, width * height);
+
+    for (var i2 = 0; i2 < total; i2++) {
+      var row = Math.floor(i2 / width);
+      var band = Math.min(2, Math.floor((row / height) * 3));
+      var idx = nearestIndex(px[i2]);
+      bandCounts[band][idx] = (bandCounts[band][idx] || 0) + 1;
+      bandTotals[band]++;
+    }
+
+    function bandSummary(band) {
+      var arr = [];
+      for (var idx2 in bandCounts[band]) {
+        if (!Object.prototype.hasOwnProperty.call(bandCounts[band], idx2)) continue;
+        var cnt = bandCounts[band][idx2];
+        arr.push({
+          hex: dominant[idx2].hex,
+          ratio: bandTotals[band] ? cnt / bandTotals[band] : 0
+        });
+      }
+      arr.sort(function (a, b) { return b.ratio - a.ratio; });
+      return arr;
+    }
+
+    var bands = {
+      top: bandSummary(0),
+      middle: bandSummary(1),
+      bottom: bandSummary(2)
+    };
+
+    // —— 启发式建议 ——
+    //
+    // 关键认识：单个 k-means 簇只是「一个颜色」，而人物特征是「一个色系」。
+    // 绿头发会被切成 3–4 个簇（亮绿/中绿/暗绿），每个簇占比都不大；
+    // 而背景墙往往就是一个大簇。按单簇比占比，绿色会输给墙。
+    // 所以这里先按**色相族**把簇合并，再在族层面判断，才符合人的直觉。
+    //
+    // 注意：这只是「建议」，不是判定。真正的发/肤/衣判断由模型看照片完成
+    // （见 skills/photo-to-toy 的交叉判定表）。这里的目标是「别给误导性的建议」。
+
+    function hueOf(hex) { return hexHsl(hex).h; }
+
+    /** 色相族：暖红/橙黄/绿/青绿/蓝/紫/洋红/中性。中性按明度再分。 */
+    function hueFamily(hex) {
+      var hsl = hexHsl(hex);
+      if (hsl.s < 0.15) {
+        if (hsl.l > 0.72) return 'neutral-light';   // 白墙、浅灰、米白背景
+        if (hsl.l < 0.22) return 'neutral-dark';    // 黑发、深色影
+        return 'neutral-mid';
+      }
+      var h = hsl.h;
+      if (h < 20 || h >= 330) return 'red';
+      if (h < 45) return 'orange';
+      if (h < 70) return 'yellow';
+      if (h < 170) return 'green';
+      if (h < 200) return 'cyan';
+      if (h < 260) return 'blue';
+      if (h < 300) return 'purple';
+      return 'magenta';
+    }
+
+    /** 把一段（top/middle/bottom）的簇按色相族聚合。 */
+    function familyAggregate(list) {
+      var fam = {};
+      for (var i = 0; i < list.length; i++) {
+        var f = hueFamily(list[i].hex);
+        if (!fam[f]) fam[f] = { family: f, ratio: 0, members: [] };
+        fam[f].ratio += list[i].ratio;
+        fam[f].members.push(list[i]);
+      }
+      var arr = [];
+      for (var k in fam) if (Object.prototype.hasOwnProperty.call(fam, k)) arr.push(fam[k]);
+      // 族内成员按占比降序，取代表色 = 族内占比最大的那个簇
+      for (var j = 0; j < arr.length; j++) {
+        arr[j].members.sort(function (a, b) { return b.ratio - a.ratio; });
+        arr[j].hex = arr[j].members[0].hex;
+      }
+      arr.sort(function (a, b) { return b.ratio - a.ratio; });
+      return arr;
+    }
+
+    var topFam = familyAggregate(bands.top);
+    var midFam = familyAggregate(bands.middle);
+    var botFam = familyAggregate(bands.bottom);
+
+    // 中性浅色族 = 背景墙嫌疑（白墙/浅灰/米色布景）
+    function isBgFamily(f) {
+      return f.family === 'neutral-light' || f.family === 'neutral-mid';
+    }
+
+    // 头发：上段里非背景、占比最大的色族
+    var hair = null;
+    for (var t = 0; t < topFam.length; t++) {
+      if (isBgFamily(topFam[t])) continue;
+      hair = topFam[t].hex;
+      break;
+    }
+    // 上段整段都是背景（近景全身照常见）：改用整图里最有辨识度的非背景色族
+    if (!hair) {
+      var allFam = topFam.concat(midFam, botFam).filter(function (f) { return !isBgFamily(f); });
+      allFam.sort(function (a, b) { return b.ratio - a.ratio; });
+      if (allFam.length) hair = allFam[0].hex;
+      else if (topFam.length) hair = topFam[0].hex;
+    }
+
+    // 肤色：中段里「明度偏高、饱和度中低」的**暖色**族。
+    // 中性族（灰/白/黑）一律不参与——那是墙、地板、虚化背景，不是皮肤。
+    var skin = null, skinScore = -Infinity;
+    for (var m = 0; m < midFam.length; m++) {
+      if (isBgFamily(midFam[m])) continue;
+      var hxM = midFam[m].hex;
+      var hslM = hexHsl(hxM);
+      if (hslM.l < 0.30) continue;
+      var warm = (hslM.h <= 70 || hslM.h >= 320) ? 1 : 0;
+      if (!warm) continue;                       // 冷色族不可能是皮肤
+      var scoreM = hslM.l * 1.8 - Math.abs(hslM.s - 0.28) * 2.2
+                 + warm * 1.2 + midFam[m].ratio * 1.2;
+      if (scoreM > skinScore) { skinScore = scoreM; skin = hxM; }
+    }
+    // 中段没有暖色族（如侧脸/背影）：放宽到全图的暖色族
+    if (!skin) {
+      var warmAll = topFam.concat(midFam, botFam).filter(function (f) {
+        if (isBgFamily(f)) return false;
+        var hh = hexHsl(f.hex);
+        return hh.l >= 0.30 && (hh.h <= 70 || hh.h >= 320);
+      });
+      warmAll.sort(function (a, b) { return b.ratio - a.ratio; });
+      if (warmAll.length) skin = warmAll[0].hex;
+    }
+
+    // 衣服：中段+下段合计占比最大、非肤色、非背景浅色的色族
+    var clothFam = {};
+    var combined = midFam.concat(botFam);
+    for (var ci = 0; ci < combined.length; ci++) {
+      var cHex = combined[ci].hex;
+      if (cHex === skin) continue;
+      if (isBgFamily(combined[ci])) continue;
+      if (!clothFam[cHex]) clothFam[cHex] = 0;
+      clothFam[cHex] += combined[ci].ratio;
+    }
+    var cloth = null, clothBest = -Infinity;
+    for (var cx in clothFam) {
+      if (clothFam[cx] > clothBest) { clothBest = clothFam[cx]; cloth = cx; }
+    }
+
+    // 兜底：三层都必须在有主导色时给出非空 hex，否则调用方（模板）会渲染成空白。
+    // 优先级：本层推断 → 全局主导色里第一个互不相同的 → 主导色首位。
+    function fallbackHex(notThese) {
+      for (var f = 0; f < dominant.length; f++) {
+        var h2 = dominant[f].hex;
+        var clash = false;
+        for (var n = 0; n < notThese.length; n++) if (notThese[n] === h2) clash = true;
+        if (!clash) return h2;
+      }
+      return dominant.length ? dominant[0].hex : null;
+    }
+    if (!hair) hair = fallbackHex([skin, cloth]);
+    if (!skin) skin = fallbackHex([hair]);
+    if (!cloth) cloth = fallbackHex([hair, skin]);
+
+    return {
+      width: width,
+      height: height,
+      dominant: dominant,
+      bands: bands,
+      suggested: { hair: hair, skin: skin, cloth: cloth }
+    };
+  }
+
+  /* ============================================================
+   * 导出
+   * ========================================================== */
+  return {
+    VERSION: VERSION,
+    OPS: OPS,
+    DEFAULT_GAUGE: DEFAULT_GAUGE,
+    SHAPE_KINDS: SHAPE_KINDS,
+    SHAPE_REQUIRED: SHAPE_REQUIRED,
+
+    opsTotals: opsTotals,
+    expandOps: expandOps,
+    compressOps: compressOps,
+    buildRound: buildRound,
+    buildShape: buildShape,
+    buildChart: buildChart,
+    validateChart: validateChart,
+    yarnEstimate: yarnEstimate,
+    circleLayout: circleLayout,
+    toNotation: toNotation,
+    quantize: quantize,
+    summarizePhotoRegions: summarizePhotoRegions,
+
+    // 颜色工具（模板/CLI 也会用到）
+    rgbToLab: rgbToLab,
+    labToRgb: labToRgb,
+    rgbToHsl: rgbToHsl,
+    toHex: toHex,
+    parseHex: parseHex,
+    mulberry32: mulberry32
+  };
+}));
+
+</script>
+
+<!-- 作品数据（构建时注入） -->
+<script>
+window.__GUMMY_CHART__ = {
+  "version": 1,
+  "name": "绿发少女",
+  "createdAt": "2026-10-29T05:06:57.904Z",
+  "spec": {
+    "name": "绿发少女",
+    "heightCm": 14,
+    "style": "chibi",
+    "gauge": {
+      "stPerCm": 2.2,
+      "roundsPerCm": 2.2,
+      "hookMm": 2.5,
+      "yarn": "4ply 牛奶棉"
+    },
+    "palette": [
+      {
+        "id": "C1",
+        "name": "雪白",
+        "hex": "#F7F3EE",
+        "role": "skin",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C2",
+        "name": "墨绿",
+        "hex": "#2E5B4E",
+        "role": "hair",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C3",
+        "name": "抹茶绿",
+        "hex": "#7FB69A",
+        "role": "main",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C4",
+        "name": "燕麦米",
+        "hex": "#E3D3BA",
+        "role": "accent",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C5",
+        "name": "炭黑",
+        "hex": "#2A2622",
+        "role": "eye",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C6",
+        "name": "蜜桃粉",
+        "hex": "#F2A6A0",
+        "role": "blush",
+        "yarnMetersPerGram": 4.2
+      }
+    ],
+    "parts": [
+      {
+        "id": "head",
+        "name": "头部",
+        "shape": {
+          "kind": "sphere",
+          "diameterCm": 6.5
+        },
+        "defaultColor": "C1"
+      },
+      {
+        "id": "hair-back",
+        "name": "后脑发片",
+        "shape": {
+          "kind": "sphere",
+          "diameterCm": 6.8
+        },
+        "defaultColor": "C2"
+      },
+      {
+        "id": "bangs",
+        "name": "刘海片",
+        "shape": {
+          "kind": "flat-round",
+          "diameterCm": 6.5
+        },
+        "defaultColor": "C2"
+      },
+      {
+        "id": "body",
+        "name": "躯干",
+        "shape": {
+          "kind": "capsule",
+          "diameterCm": 3.5,
+          "heightCm": 4
+        },
+        "defaultColor": "C3",
+        "loopRounds": [
+          {
+            "round": 5,
+            "loop": "blo",
+            "reservedFor": "hem"
+          }
+        ],
+        "colorRounds": [
+          {
+            "from": 1,
+            "to": 3,
+            "color": "C1"
+          },
+          {
+            "from": 4,
+            "to": 30,
+            "color": "C3"
+          }
+        ]
+      },
+      {
+        "id": "hem",
+        "name": "下摆荷叶边",
+        "shape": {
+          "kind": "flat-round",
+          "diameterCm": 5,
+          "heightCm": 1,
+          "attachTo": {
+            "part": "body",
+            "round": 5,
+            "loop": "flo",
+            "stitches": 24
+          }
+        },
+        "defaultColor": "C4"
+      },
+      {
+        "id": "arm",
+        "name": "手臂（织 2 只）",
+        "shape": {
+          "kind": "capsule",
+          "diameterCm": 1.5,
+          "heightCm": 3
+        },
+        "defaultColor": "C1",
+        "colorRounds": [
+          {
+            "from": 1,
+            "to": 2,
+            "color": "C3"
+          }
+        ]
+      },
+      {
+        "id": "leg",
+        "name": "腿（织 2 只）",
+        "shape": {
+          "kind": "capsule",
+          "diameterCm": 1.5,
+          "heightCm": 2.5
+        },
+        "defaultColor": "C1",
+        "colorRounds": [
+          {
+            "from": 5,
+            "to": 6,
+            "color": "C5"
+          }
+        ]
+      },
+      {
+        "id": "eye",
+        "name": "眼睛（织 2 片）",
+        "shape": {
+          "kind": "flat-round",
+          "diameterCm": 0.5
+        },
+        "defaultColor": "C5"
+      }
+    ],
+    "buildOrder": [
+      "头部：塞棉收口，前脸压平。",
+      "躯干：R6 只钩内半针，把 30 个外半针留下来给下摆荷叶边。",
+      "在下摆的外半针上钩荷叶边，边会自然外翻。",
+      "手臂 ×2、腿 ×2：少塞棉或不塞，收口后压扁。",
+      "后脑发片套在头上，刘海片压在前额。",
+      "把头部与躯干缝合，压住领口。",
+      "缝四肢：手臂缝在躯干上方两侧，腿缝在底部。",
+      "缝眼睛（2 片），绣嘴，扫腮红。"
+    ]
+  },
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    {
+      "id": "C1",
+      "name": "雪白",
+      "hex": "#F7F3EE",
+      "role": "skin",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C2",
+      "name": "墨绿",
+      "hex": "#2E5B4E",
+      "role": "hair",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C3",
+      "name": "抹茶绿",
+      "hex": "#7FB69A",
+      "role": "main",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C4",
+      "name": "燕麦米",
+      "hex": "#E3D3BA",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C5",
+      "name": "炭黑",
+      "hex": "#2A2622",
+      "role": "eye",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C6",
+      "name": "蜜桃粉",
+      "hex": "#F2A6A0",
+      "role": "blush",
+      "yarnMetersPerGram": 4.2
+    }
+  ],
+  "parts": [
+    {
+      "id": "head",
+      "name": "头部",
+      "shape": {
+        "kind": "sphere",
+        "diameterCm": 6.5,
+        "color": "C1"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C1",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 24,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,V)"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 30,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,V)"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 36,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,V)"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 42,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 42
+            }
+          ],
+          "note": "42X"
+        },
+        {
+          "r": 9,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 42,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 42
+            }
+          ],
+          "note": "42X"
+        },
+        {
+          "r": 10,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 42,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,A)"
+        },
+        {
+          "r": 11,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 36,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,A)"
+        },
+        {
+          "r": 12,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 30,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,A)"
+        },
+        {
+          "r": 13,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 24,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,A)"
+        },
+        {
+          "r": 14,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 18,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(X,A)"
+        },
+        {
+          "r": 15,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 414,
+        "rounds": 15
+      },
+      "plan": {
+        "kind": "sphere",
+        "maxStitches": 42,
+        "diameterCm": 6.5,
+        "circumferenceCm": 20.42,
+        "incRounds": 6,
+        "totalRoundsTarget": 14,
+        "straightRounds": 2,
+        "totalRounds": 15
+      },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "hair-back",
+      "name": "后脑发片",
+      "shape": {
+        "kind": "sphere",
+        "diameterCm": 6.8,
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 24,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,V)"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 30,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,V)"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 36,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,V)"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 42,
+          "stitchesOut": 48,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(6X,V)"
+        },
+        {
+          "r": 9,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 48,
+          "stitchesOut": 48,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 48
+            }
+          ],
+          "note": "48X"
+        },
+        {
+          "r": 10,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 48,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(6X,A)"
+        },
+        {
+          "r": 11,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 42,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,A)"
+        },
+        {
+          "r": 12,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 36,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,A)"
+        },
+        {
+          "r": 13,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 30,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,A)"
+        },
+        {
+          "r": 14,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 24,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,A)"
+        },
+        {
+          "r": 15,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 18,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(X,A)"
+        },
+        {
+          "r": 16,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 474,
+        "rounds": 16
+      },
+      "plan": {
+        "kind": "sphere",
+        "maxStitches": 48,
+        "diameterCm": 6.8,
+        "circumferenceCm": 21.36,
+        "incRounds": 7,
+        "totalRoundsTarget": 15,
+        "straightRounds": 1,
+        "totalRounds": 16
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "bangs",
+      "name": "刘海片",
+      "shape": {
+        "kind": "flat-round",
+        "diameterCm": 6.5,
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 24,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,V)"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 30,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(4X,V)"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 36,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,V)"
+        }
+      ],
+      "subtotal": {
+        "stitches": 168,
+        "rounds": 7
+      },
+      "plan": {
+        "kind": "flat-round",
+        "maxStitches": 42,
+        "diameterCm": 6.5,
+        "circumferenceCm": 20.42,
+        "incRounds": 6,
+        "totalRounds": 7
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "body",
+      "name": "躯干",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 3.5,
+        "heightCm": 4,
+        "color": "C3"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C1",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 24,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 24
+            }
+          ],
+          "note": "24X",
+          "loop": "blo",
+          "reservedFor": "hem"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 24,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,A)"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 18,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6(X,A)"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 138,
+        "rounds": 8
+      },
+      "plan": {
+        "kind": "capsule",
+        "maxStitches": 24,
+        "diameterCm": 3.5,
+        "circumferenceCm": 11,
+        "incRounds": 3,
+        "straightRounds": 1,
+        "totalRounds": 8
+      },
+      "defaultColor": "C3"
+    },
+    {
+      "id": "hem",
+      "name": "下摆荷叶边",
+      "shape": {
+        "kind": "flat-round",
+        "diameterCm": 5,
+        "heightCm": 1,
+        "attachTo": {
+          "part": "body",
+          "round": 5,
+          "loop": "flo",
+          "stitches": 24
+        },
+        "color": "C4"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "attach",
+          "color": "C4",
+          "stitchesIn": 24,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 24
+            }
+          ],
+          "note": "24X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 24,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "12(X,V)"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 36,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 36
+            }
+          ],
+          "note": "36X"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 36,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 36
+            }
+          ],
+          "note": "36X"
+        }
+      ],
+      "subtotal": {
+        "stitches": 132,
+        "rounds": 4
+      },
+      "plan": {
+        "kind": "flat-round",
+        "attachTo": {
+          "part": "body",
+          "round": 5,
+          "loop": "flo",
+          "stitches": 24
+        },
+        "totalRounds": 4
+      },
+      "defaultColor": "C4"
+    },
+    {
+      "id": "arm",
+      "name": "手臂（织 2 只）",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 1.5,
+        "heightCm": 3,
+        "color": "C1"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C3",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 66,
+        "rounds": 6
+      },
+      "plan": {
+        "kind": "capsule",
+        "maxStitches": 12,
+        "diameterCm": 1.5,
+        "circumferenceCm": 4.71,
+        "incRounds": 1,
+        "straightRounds": 3,
+        "totalRounds": 6
+      },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "leg",
+      "name": "腿（织 2 只）",
+      "shape": {
+        "kind": "capsule",
+        "diameterCm": 1.5,
+        "heightCm": 2.5,
+        "color": "C1"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C1",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 12,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 12
+            }
+          ],
+          "note": "12X"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 12,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "6A"
+        }
+      ],
+      "subtotal": {
+        "stitches": 54,
+        "rounds": 5
+      },
+      "plan": {
+        "kind": "capsule",
+        "maxStitches": 12,
+        "diameterCm": 1.5,
+        "circumferenceCm": 4.71,
+        "incRounds": 1,
+        "straightRounds": 2,
+        "totalRounds": 5
+      },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "eye",
+      "name": "眼睛（织 2 片）",
+      "shape": {
+        "kind": "flat-round",
+        "diameterCm": 0.5,
+        "color": "C5"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C5",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环形起针 6X"
+        }
+      ],
+      "subtotal": {
+        "stitches": 6,
+        "rounds": 1
+      },
+      "plan": {
+        "kind": "flat-round",
+        "maxStitches": 6,
+        "diameterCm": 0.5,
+        "circumferenceCm": 1.57,
+        "incRounds": 0,
+        "totalRounds": 1
+      },
+      "defaultColor": "C5"
+    }
+  ],
+  "buildOrder": [
+    "头部：塞棉收口，前脸压平。",
+    "躯干：R6 只钩内半针，把 30 个外半针留下来给下摆荷叶边。",
+    "在下摆的外半针上钩荷叶边，边会自然外翻。",
+    "手臂 ×2、腿 ×2：少塞棉或不塞，收口后压扁。",
+    "后脑发片套在头上，刘海片压在前额。",
+    "把头部与躯干缝合，压住领口。",
+    "缝四肢：手臂缝在躯干上方两侧，腿缝在底部。",
+    "缝眼睛（2 片），绣嘴，扫腮红。"
+  ],
+  "yarn": {
+    "perPart": [
+      {
+        "id": "head",
+        "stitches": 414,
+        "meters": 10.4,
+        "grams": 2.5
+      },
+      {
+        "id": "hair-back",
+        "stitches": 474,
+        "meters": 11.9,
+        "grams": 2.8
+      },
+      {
+        "id": "bangs",
+        "stitches": 168,
+        "meters": 4.2,
+        "grams": 1
+      },
+      {
+        "id": "body",
+        "stitches": 138,
+        "meters": 3.5,
+        "grams": 0.8
+      },
+      {
+        "id": "hem",
+        "stitches": 132,
+        "meters": 3.3,
+        "grams": 0.8
+      },
+      {
+        "id": "arm",
+        "stitches": 66,
+        "meters": 1.7,
+        "grams": 0.4
+      },
+      {
+        "id": "leg",
+        "stitches": 54,
+        "meters": 1.4,
+        "grams": 0.3
+      },
+      {
+        "id": "eye",
+        "stitches": 6,
+        "meters": 0.2,
+        "grams": 0
+      }
+    ],
+    "perColor": [
+      {
+        "color": "C2",
+        "stitches": 642,
+        "meters": 16.1,
+        "grams": 3.8
+      },
+      {
+        "color": "C1",
+        "stitches": 540,
+        "meters": 13.5,
+        "grams": 3.2
+      },
+      {
+        "color": "C4",
+        "stitches": 132,
+        "meters": 3.3,
+        "grams": 0.8
+      },
+      {
+        "color": "C3",
+        "stitches": 120,
+        "meters": 3,
+        "grams": 0.7
+      },
+      {
+        "color": "C5",
+        "stitches": 18,
+        "meters": 0.5,
+        "grams": 0.1
+      }
+    ],
+    "total": {
+      "stitches": 1452,
+      "meters": 36.6,
+      "grams": 8.6
+    },
+    "withBuffer": {
+      "meters": 45.8,
+      "grams": 10.8
+    },
+    "bufferRatio": 0.25,
+    "constants": {
+      "metersPerStitch": 0.025,
+      "note": "单短针用线按 2.5cm 计（2.5mm 钩针 + 4ply 棉线）；实际用量随手劲浮动，已含 25% 损耗缓冲"
+    }
+  },
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "parts": [
+      {
+        "id": "head",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 8,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 9,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 10,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 11,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 12,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 13,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 14,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 15,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "hair-back",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 8,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 48,
+            "declaredOut": 48,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 9,
+            "consumed": 48,
+            "declaredIn": 48,
+            "produced": 48,
+            "declaredOut": 48,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 10,
+            "consumed": 48,
+            "declaredIn": 48,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 11,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 12,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 13,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 14,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 15,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 16,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "bangs",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "body",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 8,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "hem",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 12,
+            "incdec": 12,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "arm",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "leg",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": -6,
+            "incdec": -6,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "eye",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "parts": 8,
+      "rounds": 62,
+      "totalStitches": 1452,
+      "colorChanges": 3,
+      "decorCount": 0,
+      "decorStitches": 0,
+      "reservedLoops": 1
+    }
+  }
+};
+</script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ────────────────────────────────────────────────────────────
+   * 0. 取引擎与数据；模板单独打开（未注入）时用内置 demo 兜底
+   * ────────────────────────────────────────────────────────── */
+  var E = window.GummyEngine || null;
+  var chart = window.__GUMMY_CHART__ || null;
+  var isDemo = false;
+
+  if (!E) {
+    document.getElementById('app').innerHTML =
+      '<div class="card"><b>引擎未注入。</b> 这份 HTML 看起来是未经过 ' +
+      '<code>node tools/render-html.mjs</code> 处理的原始模板。</div>';
+    return;
+  }
+
+  if (!chart) {
+    chart = demoChart();
+    isDemo = true;
+  }
+
+  /** 模板单独预览时用的小样，保证不白屏。 */
+  function demoChart() {
+    var spec = {
+      name: '示例 · 小圆球',
+      heightCm: 8,
+      palette: [
+        { id: 'C1', name: '奶油白', hex: '#F6E9D8', role: 'skin' },
+        { id: 'C2', name: '浅草绿', hex: '#A5D06B', role: 'main' }
+      ],
+      parts: [
+        { id: 'ball', name: '球体', shape: { kind: 'sphere', diameterCm: 5 }, defaultColor: 'C2' }
+      ]
+    };
+    return E.buildChart(spec);
+  }
+
+  var paletteById = {};
+  (chart.palette || []).forEach(function (c) { paletteById[c.id] = c; });
+
+  function esc(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function el(tag, cls, html) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (html != null) n.innerHTML = html;
+    return n;
+  }
+  function colorOf(id) {
+    var c = paletteById[id];
+    return c ? c.hex : '#CCCCCC';
+  }
+  function colorName(id) {
+    var c = paletteById[id];
+    return c ? c.name : id;
+  }
+
+  var DECOR_NAMES = { curly: '卷曲针', bobble: '枣针', petal: '花瓣针', picot: '狗牙针' };
+
+  /* ────────────────────────────────────────────────────────────
+   * 1. 页头 + 材料规格
+   * ────────────────────────────────────────────────────────── */
+  function renderHeader() {
+    document.getElementById('title').textContent = chart.name + ' · 钩织图解';
+    var g = chart.gauge || {};
+    var totalH = null;
+    if (chart.spec && chart.spec.heightCm) totalH = chart.spec.heightCm;
+    document.getElementById('subtitle').textContent = [
+      totalH ? '成品约 ' + totalH + ' cm 高' : null,
+      g.hookMm ? g.hookMm + ' mm 钩针' : null,
+      g.yarn || null,
+      (chart.validation && chart.validation.summary
+        ? chart.validation.summary.rounds + ' 圈 / ' + chart.validation.summary.parts + ' 部件'
+        : null)
+    ].filter(Boolean).join(' ｜ ');
+    document.title = chart.name + ' · 钩织图解';
+  }
+
+  function renderMaterials() {
+    var g = chart.gauge || {};
+    var y = chart.yarn || {};
+    var s = (chart.validation && chart.validation.summary) || {};
+    var spec = chart.spec || {};
+
+    var left = el('div', 'card');
+    left.innerHTML =
+      '<h3 style="margin-top:0">用线与用针</h3>' +
+      '<dl class="kv">' +
+      '<dt>线材</dt><dd>' + esc(g.yarn || '未指定') + '</dd>' +
+      '<dt>钩针</dt><dd>' + esc(g.hookMm != null ? g.hookMm + ' mm' : '未指定') + '</dd>' +
+      '<dt>密度</dt><dd>1 cm ≈ ' + esc(g.stPerCm) + ' 针 × ' + esc(g.roundsPerCm) + ' 圈</dd>' +
+      (spec.heightCm ? '<dt>成品高</dt><dd>约 ' + esc(spec.heightCm) + ' cm</dd>' : '') +
+      (spec.style ? '<dt>风格</dt><dd>' + (spec.style === 'chibi' ? 'Q 版（头身比 1:1.2）' : esc(spec.style)) + '</dd>' : '') +
+      '<dt>规模</dt><dd>' + (s.parts || 0) + ' 部件 · ' + (s.rounds || 0) + ' 圈 · ' + (s.totalStitches || 0) + ' 针</dd>' +
+      '</dl>' +
+      '<div class="swatches">' + (chart.palette || []).map(function (c) {
+        return '<span class="sw"><i class="dot" style="background:' + esc(c.hex) + '"></i>' +
+          esc(c.name) + ' <small>' + esc(c.id) + (c.role ? ' · ' + esc(c.role) : '') + '</small></span>';
+      }).join('') + '</div>';
+
+    var right = el('div', 'card');
+    var perColor = (y.perColor || []).map(function (pc) {
+      return '<dt><i class="dot" style="background:' + esc(colorOf(pc.color)) +
+        ';width:12px;height:12px;display:inline-block;vertical-align:-1px;margin-right:5px"></i>' +
+        esc(colorName(pc.color)) + '</dt><dd>约 ' +
+        esc(pc.meters) + ' m / ' + esc(pc.grams) + ' g</dd>';
+    }).join('');
+    right.innerHTML =
+      '<h3 style="margin-top:0">用线量（含 ' + Math.round((y.bufferRatio || 0.25) * 100) + '% 缓冲）</h3>' +
+      '<dl class="kv">' +
+      (perColor || '<dt>合计</dt><dd>—</dd>') +
+      '<dt><b>总计</b></dt><dd><b>' + esc((y.withBuffer || {}).meters) + ' m / ' +
+        esc((y.withBuffer || {}).grams) + ' g</b>' +
+        '<br><span class="muted">净用量 ' + esc((y.total || {}).meters) + ' m / ' +
+        esc((y.total || {}).grams) + ' g</span></dd>' +
+      '</dl>' +
+      '<p class="tip" style="margin-bottom:0">还需要：填充棉、缝合针、记号扣、绣线' +
+      (spec.heightCm && spec.heightCm <= 10 ? '、腮红或色粉' : '') + '。</p>';
+
+    var grid = el('div', 'grid2');
+    grid.appendChild(left);
+    grid.appendChild(right);
+    return grid;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 2. 照片区：拖入人物照片 → 本地量化配色
+   * ────────────────────────────────────────────────────────── */
+  function renderPhotoSection() {
+    var card = el('div', 'card');
+    card.innerHTML =
+      '<h3 style="margin-top:0">照片取色 <span class="muted">（可选，纯本地，不上传）</span></h3>' +
+      '<p class="tip" style="margin-top:0">拖入或选择一张人物照片，本页会在你的浏览器里直接分析出主色与' +
+      '上/中/下三段配色，方便对照线色。图片不会离开这台电脑。</p>' +
+      '<label class="drop no-print" id="dropZone">' +
+        '把照片拖到这里，或点击选择文件' +
+        '<input type="file" id="photoInput" accept="image/*">' +
+      '</label>' +
+      '<div class="photo-row" id="photoRow" style="display:none">' +
+        '<img id="photoPreview" alt="已选照片预览">' +
+        '<div id="photoResult"></div>' +
+      '</div>' +
+      '<canvas id="photoCanvas"></canvas>';
+
+    // 注意：这里逐个取子元素并判空。
+    // 模板可能被裁剪、也可能运行在无完整 DOM 的环境里，
+    // 一个可选的照片区不该让整份图解渲染失败。
+    var input = card.querySelector('#photoInput');
+    var drop = card.querySelector('#dropZone');
+    if (!input || !drop) return card;
+
+    var rowEl = card.querySelector('#photoRow');
+    var previewEl = card.querySelector('#photoPreview');
+    var resultEl = card.querySelector('#photoResult');
+    var canvasEl = card.querySelector('#photoCanvas');
+    if (!rowEl || !previewEl || !resultEl || !canvasEl) return card;
+
+    function handleFile(file) {
+      if (!file || !/^image\//.test(file.type)) return;
+      var url = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function () {
+        rowEl.style.display = '';
+        previewEl.src = url;
+        try {
+          analyze(img, resultEl, canvasEl);
+        } catch (err) {
+          resultEl.innerHTML = '<p class="bad">分析照片时出错：' + esc(err.message) + '</p>';
+        }
+      };
+      img.onerror = function () {
+        resultEl.innerHTML = '<p class="bad">这张图片读不出来，换一张试试。</p>';
+      };
+      img.src = url;
+    }
+
+    drop.addEventListener('dragover', function (e) {
+      e.preventDefault(); drop.classList.add('hot');
+    });
+    drop.addEventListener('dragleave', function () { drop.classList.remove('hot'); });
+    drop.addEventListener('drop', function (e) {
+      e.preventDefault(); drop.classList.remove('hot');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+    });
+    input.addEventListener('change', function () {
+      if (input.files && input.files[0]) handleFile(input.files[0]);
+    });
+
+    return card;
+  }
+
+  function analyze(img, out, canvas) {
+    // 缩到长边 <= 360，够取样又不卡
+    var maxSide = 360;
+    var scale = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+    var w = Math.max(1, Math.round(img.naturalWidth * scale));
+    var h = Math.max(1, Math.round(img.naturalHeight * scale));
+    canvas.width = w; canvas.height = h;
+    var ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    var data;
+    try { data = ctx.getImageData(0, 0, w, h).data; }
+    catch (e) { out.innerHTML = '<p class="bad">无法读取像素（可能是跨域图片）。</p>'; return; }
+
+    // 采样：步长取到约 2 万点以内
+    var stepPx = Math.max(1, Math.floor((w * h) / 20000));
+    var pixels = [];
+    for (var i = 0; i < w * h; i += stepPx) {
+      var o = i * 4;
+      if (data[o + 3] < 32) continue;               // 跳过全透明
+      pixels.push([data[o], data[o + 1], data[o + 2]]);
+    }
+    if (!pixels.length) { out.innerHTML = '<p class="bad">照片里没有可用像素。</p>'; return; }
+
+    var res = E.summarizePhotoRegions(pixels, w, h, 8);
+    var rows = (res.dominant || []).slice(0, 8).map(function (d) {
+      return '<span class="sw"><i class="dot" style="background:' + esc(d.hex) + '"></i>' +
+        esc(d.hex) + ' <small>' + Math.round(d.ratio * 100) + '%</small></span>';
+    }).join('');
+
+    function sugRow(label, hex) {
+      if (!hex) return '';
+      return '<span class="sw"><i class="dot" style="background:' + esc(hex) + '"></i>' +
+        esc(label) + ' <small>' + esc(hex) + '</small></span>';
+    }
+    var sug = res.suggested || {};
+
+    out.innerHTML =
+      '<p class="tip" style="margin-top:0"><b>照片里的主导色</b>（点击你的线色对照）</p>' +
+      '<div class="swatches" style="margin-top:6px">' + rows + '</div>' +
+      '<p class="tip"><b>建议对应</b>（自动猜测，请以你的实物线色为准）</p>' +
+      '<div class="swatches" style="margin-top:6px">' +
+        sugRow('头发', sug.hair) + sugRow('肤色', sug.skin) + sugRow('衣服', sug.cloth) +
+      '</div>' +
+      '<p class="muted" style="margin-bottom:0">三段占比（上/中/下）：' +
+        ['top', 'middle', 'bottom'].map(function (b) {
+          var t = (res.bands && res.bands[b] || [])[0];
+          return b + ' ' + (t ? t.hex + ' ' + Math.round(t.ratio * 100) + '%' : '—');
+        }).join(' · ') + '</p>';
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 3. 符号图（SVG）
+   * ────────────────────────────────────────────────────────── */
+  function markPath(st) {
+    switch (st) {
+      case 'X': return '<path d="M-3.4,-3.4 L3.4,3.4 M3.4,-3.4 L-3.4,3.4"/>';
+      case 'V': return '<path d="M-4.2,3 L0,-3.5 L4.2,3"/>';
+      case 'A': return '<path d="M-4.2,-3 L0,3.5 L4.2,-3"/>';
+      case 'T': return '<path d="M-3.6,0 L3.6,0 M0,-3.6 L0,3.6"/>';
+      case 'F': return '<path d="M-3.6,-2 L3.6,-2 M0,-3.6 L0,3.6"/>';
+      case 'W': return '<path d="M-4,3 L0,-3.5 L4,3"/><path d="M-1.6,3 L1.6,3"/>';
+      case 'M': return '<path d="M-4,-3 L0,3.5 L4,-3"/><path d="M-1.6,-3 L1.6,-3"/>';
+      case 'CH': return '<circle r="2.6" fill="none"/>';
+      case 'SL': return '<path d="M-3,2 L3,-2"/><circle r="1.3" cx="3" cy="-2"/>';
+      case 'K': return '<path d="M-3.4,-3.4 L3.4,3.4" opacity=".45"/>';
+      default: return '';
+    }
+  }
+
+  /** 每个部件一张符号图：同心圆环，针目按 circleLayout 归一化坐标落点。 */
+  function chartSvg(part) {
+    var layout = E.circleLayout(part);
+    var NS = 'http://www.w3.org/2000/svg';
+    var R = 150;                 // 1.0 半径 = 150px
+    var pad = 34;
+    var size = (R + pad) * 2;
+    var cx = size / 2, cy = size / 2;
+
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + size + ' ' + size);
+    svg.setAttribute('class', 'chart');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', part.name + ' 符号图');
+
+    var bg = document.createElementNS(NS, 'circle');
+    bg.setAttribute('cx', cx); bg.setAttribute('cy', cy);
+    bg.setAttribute('r', R + pad - 8);
+    bg.setAttribute('fill', '#FFFFFF');
+    bg.setAttribute('stroke', '#E7E1D4');
+    svg.appendChild(bg);
+
+    layout.forEach(function (ring, idx) {
+      var rd = part.rounds[idx] || {};
+      var stroke = colorOf(rd.color);
+      var g = document.createElementNS(NS, 'g');
+      g.setAttribute('class', 'ring');
+      g.setAttribute('id', part.id + '-r' + rd.r);
+
+      // 圈线
+      if (ring.radius > 0) {
+        var guide = document.createElementNS(NS, 'circle');
+        guide.setAttribute('cx', cx); guide.setAttribute('cy', cy);
+        guide.setAttribute('r', (ring.radius * R).toFixed(2));
+        guide.setAttribute('fill', 'none');
+        guide.setAttribute('stroke', stroke);
+        guide.setAttribute('stroke-opacity', '.22');
+        guide.setAttribute('stroke-width', '1');
+        guide.setAttribute('stroke-dasharray', '2 3');
+        g.appendChild(guide);
+      }
+
+      // 针目：用 figure 上的 ops 展开，才能画出正确的符号
+      var flat = E.expandOps(rd.ops || []);
+      var n = ring.stitches.length;
+      for (var i = 0; i < n; i++) {
+        var s = ring.stitches[i];
+        var px = cx + s.x * R;
+        var py = cy + s.y * R;
+        var sym = flat[i] || 'X';
+        var mg = document.createElementNS(NS, 'g');
+        var ang = Math.atan2(s.y, s.x) * 180 / Math.PI + 90;   // 让符号朝外
+        mg.setAttribute('transform', 'translate(' + px.toFixed(2) + ',' + py.toFixed(2) +
+          ') rotate(' + ang.toFixed(2) + ')');
+        mg.setAttribute('stroke', stroke);
+        mg.setAttribute('stroke-width', n > 60 ? '1.1' : '1.6');
+        mg.setAttribute('stroke-linecap', 'round');
+        mg.setAttribute('fill', 'none');
+        mg.innerHTML = markPath(sym);
+        g.appendChild(mg);
+      }
+
+      // 圈号（放在 12 点方向外侧）
+      var label = document.createElementNS(NS, 'text');
+      label.setAttribute('x', cx);
+      label.setAttribute('y', (cy - ring.radius * R - 5).toFixed(1));
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '10');
+      label.setAttribute('fill', stroke);
+      label.setAttribute('stroke', '#FFFFFF');
+      label.setAttribute('stroke-width', '2.6');
+      label.setAttribute('paint-order', 'stroke');
+      label.textContent = 'R' + rd.r;
+      g.appendChild(label);
+
+      svg.appendChild(g);
+    });
+
+    // 圆心 = 起针点
+    var center = document.createElementNS(NS, 'circle');
+    center.setAttribute('cx', cx); center.setAttribute('cy', cy);
+    center.setAttribute('r', '3.6');
+    center.setAttribute('fill', colorOf((part.rounds[0] || {}).color));
+    center.setAttribute('fill-opacity', '.6');
+    svg.appendChild(center);
+
+    return svg;
+  }
+
+  function legendSvg() {
+    var NS = 'http://www.w3.org/2000/svg';
+    var items = [
+      ['X', '短针 X'], ['V', '加针 V'], ['A', '减针 A'],
+      ['T', '中长针 T'], ['CH', '锁针 CH'], ['SL', '引拔 SL']
+    ];
+    var w = 720, h = 92;
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    svg.setAttribute('class', 'legend-svg');
+    svg.setAttribute('role', 'img');
+    svg.setAttribute('aria-label', '符号图例');
+
+    var rect = document.createElementNS(NS, 'rect');
+    rect.setAttribute('x', 1); rect.setAttribute('y', 1);
+    rect.setAttribute('width', w - 2); rect.setAttribute('height', h - 2);
+    rect.setAttribute('rx', 10);
+    rect.setAttribute('fill', '#FCFAF4');
+    rect.setAttribute('stroke', '#E7E1D4');
+    svg.appendChild(rect);
+
+    var x = 26;
+    items.forEach(function (it) {
+      var g = document.createElementNS(NS, 'g');
+      g.setAttribute('transform', 'translate(' + x + ',36)');
+      g.setAttribute('stroke', '#4E7A33');
+      g.setAttribute('stroke-width', '1.9');
+      g.setAttribute('stroke-linecap', 'round');
+      g.innerHTML = markPath(it[0]);
+      svg.appendChild(g);
+      var t = document.createElementNS(NS, 'text');
+      t.setAttribute('x', x + 14); t.setAttribute('y', 40);
+      t.setAttribute('font-size', '12.5'); t.setAttribute('fill', '#4A4438');
+      t.textContent = it[1];
+      svg.appendChild(t);
+      x += 116;
+    });
+
+    var note = document.createElementNS(NS, 'text');
+    note.setAttribute('x', 26); note.setAttribute('y', 74);
+    note.setAttribute('font-size', '11.5'); note.setAttribute('fill', '#8C8272');
+    note.textContent = '同心圆 = 圈号 R1…Rn；圆心是起针点，由内向外读；每个符号 = 一个针目，按该圈针数等分。';
+    svg.appendChild(note);
+
+    return svg;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 4. 逐圈表格
+   * ────────────────────────────────────────────────────────── */
+  function partSection(part, idx) {
+    var sec = el('section', 'part');
+    sec.id = 'part-' + part.id;
+
+    var last = part.rounds[part.rounds.length - 1];
+    var head = el('div', 'part-head');
+    head.innerHTML =
+      '<h2>' + esc(part.name) + '</h2>' +
+      '<span class="chip">' + part.rounds.length + ' 圈</span>' +
+      (last ? '<span class="chip">末圈 ' + last.stitchesOut + ' 针</span>' : '') +
+      '<span class="chip">进度 <b id="prog-' + esc(part.id) + '">0/' + part.rounds.length + '</b></span>';
+
+    var chartBox = el('div');
+    chartBox.appendChild(chartSvg(part));
+
+    var table = el('table', 'rounds');
+    var thead = el('thead');
+    thead.innerHTML = '<tr><th class="sw-cell"></th><th>圈</th><th>图解</th>' +
+      '<th>消耗</th><th>产出</th><th>增减</th><th>✓</th></tr>';
+    table.appendChild(thead);
+
+    var tbody = el('tbody');
+    part.rounds.forEach(function (rd) {
+      var tr = el('tr', 'round');
+      tr.setAttribute('data-part', part.id);
+      tr.setAttribute('data-r', rd.r);
+
+      var pat = esc(rd.note || '');
+      if (rd.kind === 'magic-ring') pat = '<span class="muted">环形起针</span> ' + pat;
+      else if (rd.kind === 'attach') pat = '<span class="muted">接留针</span> ' + pat;
+      else if (rd.kind === 'row') pat = '<span class="muted">片织</span> ' + pat;
+
+      var tags = '';
+      if (rd.loop === 'blo') tags += '<span class="loop-tag">内半针</span>';
+      else if (rd.loop === 'flo') tags += '<span class="loop-tag">外半针</span>';
+      if (rd.decor && rd.decor.length) {
+        rd.decor.forEach(function (d) {
+          var nm = DECOR_NAMES[d.kind] || d.kind;
+          var txt = d.note || (d.count + '×' + nm + (d.ch != null ? '(' + d.ch + 'CH)' : ''));
+          tags += '<span class="decor-tag" title="' + esc(nm) + '">⟡ ' + esc(txt) + '</span>';
+        });
+      }
+
+      var delta = rd.stitchesOut - rd.stitchesIn;
+      var deltaTxt = rd.kind === 'magic-ring' ? '+6' : (delta > 0 ? '+' + delta : String(delta));
+
+      tr.innerHTML =
+        '<td class="sw-cell"><i style="background:' + esc(colorOf(rd.color)) + '" title="' +
+          esc(colorName(rd.color)) + '"></i></td>' +
+        '<td class="num">' + rd.r + '</td>' +
+        '<td class="pat">' + pat + tags + '</td>' +
+        '<td class="num">' + (rd.kind === 'magic-ring' ? '—' : rd.stitchesIn) + '</td>' +
+        '<td class="num">' + rd.stitchesOut + '</td>' +
+        '<td class="num">' + deltaTxt + '</td>' +
+        '<td class="num"><input class="pchk" type="checkbox" data-key="' +
+          esc(part.id + '-' + rd.r) + '" data-part="' + esc(part.id) + '" ' +
+          'aria-label="标记 ' + esc(part.name) + ' R' + rd.r + ' 完成"></td>';
+
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+
+    var body = el('div', 'part-body');
+    body.appendChild(chartBox);
+    var rightCol = el('div');
+    rightCol.appendChild(table);
+    body.appendChild(rightCol);
+
+    sec.appendChild(head);
+    sec.appendChild(body);
+    return sec;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 5. 制作顺序
+   * ────────────────────────────────────────────────────────── */
+  function renderBuildOrder() {
+    var order = chart.buildOrder || [];
+    if (!order.length) return null;
+    var card = el('div', 'card');
+    card.innerHTML = '<ol class="tight" style="margin:0">' +
+      order.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ol>';
+    return card;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 6. 校验区
+   * ────────────────────────────────────────────────────────── */
+  function renderValidation() {
+    var v = chart.validation || { summary: {} };
+    var frag = document.createDocumentFragment();
+
+    var box = el('div', 'verdict ' + (v.ok ? 'pass' : 'fail'));
+    var s = v.summary || {};
+    box.innerHTML = '<span class="ic">' + (v.ok ? '✓ 通过' : '✗ 未通过') + '</span>' +
+      '<div>共 <b>' + (s.rounds || 0) + '</b> 圈，逐圈核对：<br>' +
+      '① 本圈消耗针数 = 上一圈产出针数 &nbsp;→&nbsp; ' +
+        (v.ok ? '全部相等' : '存在不符') + '<br>' +
+      '② 本圈产出 − 消耗 = 加针数 − 减针数 &nbsp;→&nbsp; ' +
+        (v.ok ? '全部相等' : '存在不符') + '<br>' +
+      '③ 各部件末圈针数合计 = <b>' + (s.totalStitches || 0) + '</b> 针' +
+      (s.decorCount ? '　·　装饰针迹 <b>' + s.decorCount + '</b> 个（不改变针数）' : '') +
+      (s.reservedLoops ? '　·　半针留针 <b>' + s.reservedLoops + '</b> 处' : '') +
+      '</div>';
+    frag.appendChild(box);
+
+    if (v.warnings && v.warnings.length) {
+      var wb = el('div', 'warnbar');
+      wb.innerHTML = '<span class="ic">⚠</span><div><b>' + v.warnings.length +
+        ' 条提醒</b>（不影响结论）<ul>' +
+        v.warnings.map(function (w) { return '<li>' + esc(w) + '</li>'; }).join('') +
+        '</ul></div>';
+      frag.appendChild(wb);
+    }
+
+    if (!v.ok && v.errors && v.errors.length) {
+      var eb = el('div', 'card scroll');
+      eb.innerHTML = '<h3 style="margin-top:0">发现的问题</h3><ul class="tight">' +
+        v.errors.map(function (e) { return '<li class="bad">' + esc(e) + '</li>'; }).join('') +
+        '</ul>';
+      frag.appendChild(eb);
+    }
+
+    // 逐部件汇总表
+    var table = el('table', 'verify');
+    var rows = (v.parts || []).map(function (p) {
+      var src = (chart.parts || []).find(function (x) { return x.id === p.id; });
+      var last = src && src.rounds.length ? src.rounds[src.rounds.length - 1].stitchesOut : 0;
+      return '<tr><td>' + esc(src ? src.name : p.id) + '</td>' +
+        '<td>' + p.rounds.length + '</td>' +
+        '<td>' + last + '</td>' +
+        '<td>' + (p.ok ? '<span class="ok">✓ 全部吻合</span>'
+          : '<span class="bad">✗ ' + p.errors.length + ' 处</span>') + '</td></tr>';
+    }).join('');
+    table.innerHTML = '<thead><tr><th>部件</th><th>圈数</th><th>末圈针数</th><th>逐圈结论</th></tr></thead>' +
+      '<tbody>' + rows + '</tbody>';
+    var tcard = el('div', 'card scroll');
+    tcard.appendChild(table);
+    frag.appendChild(tcard);
+
+    return frag;
+  }
+
+  /* ────────────────────────────────────────────────────────────
+   * 7. 组装
+   * ────────────────────────────────────────────────────────── */
+  function build() {
+    var app = document.getElementById('app');
+    app.innerHTML = '';
+
+    if (isDemo) {
+      app.appendChild(el('div', 'card',
+        '<b>这是模板自带的示例。</b> 正式图解请用 ' +
+        '<code>node tools/render-html.mjs chart.json --out 作品.html</code> 生成。'));
+    }
+
+    renderHeader();
+
+    var h = el('h2'); h.textContent = '材料与规格';
+    app.appendChild(h);
+    app.appendChild(renderMaterials());
+
+    h = el('h2'); h.textContent = '照片取色';
+    app.appendChild(h);
+    app.appendChild(renderPhotoSection());
+
+    h = el('h2'); h.textContent = '符号图例';
+    var lcard = el('div', 'card');
+    lcard.appendChild(legendSvg());
+    app.appendChild(h);
+    app.appendChild(lcard);
+
+    var bo = renderBuildOrder();
+    if (bo) {
+      h = el('h2'); h.textContent = '制作顺序';
+      app.appendChild(h);
+      app.appendChild(bo);
+    }
+
+    h = el('h2'); h.textContent = '逐圈图解';
+    app.appendChild(h);
+    (chart.parts || []).forEach(function (p, i) { app.appendChild(partSection(p, i)); });
+
+    h = el('h2'); h.textContent = '自检结果';
+    app.appendChild(h);
+    app.appendChild(renderValidation());
+
+    // 工具栏必须在表格之后创建（要收集 checkbox）
+    app.appendChild(makeToolbar());
+    bindInteractions();
+    refreshProgress();
+  }
+
+  var KEY = 'gummy-diagram-progress-v1';
+  var store = {};
+  try { store = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { store = {}; }
+
+  function makeToolbar() {
+    var bar = el('div', 'toolbar no-print');
+    bar.innerHTML = '<div class="tb-inner">' +
+      '<div class="bar"><i id="bar"></i></div>' +
+      '<div class="tb-txt" id="ptxt">0 / 0 圈 · 0%</div>' +
+      '<button id="reset" type="button">清空进度</button>' +
+      '<button id="printBtn" type="button">打印</button>' +
+      '</div>';
+    return bar;
+  }
+
+  function checks() {
+    return Array.prototype.slice.call(document.querySelectorAll('input.pchk'));
+  }
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) { /* 隐私模式忽略 */ }
+  }
+
+  function refreshProgress() {
+    var done = 0, per = {};
+    checks().forEach(function (c) {
+      var key = c.getAttribute('data-key');
+      var pid = c.getAttribute('data-part');
+      var tr = c.closest('tr');
+      if (!per[pid]) per[pid] = [0, 0];
+      per[pid][1]++;
+      if (c.checked) {
+        done++; per[pid][0]++;
+        if (tr) tr.classList.add('done');
+      } else if (tr) {
+        tr.classList.remove('done');
+      }
+    });
+    var tot = checks().length;
+    var pct = tot ? Math.round(done / tot * 100) : 0;
+    var barEl = document.getElementById('bar');
+    var txtEl = document.getElementById('ptxt');
+    if (barEl) barEl.style.width = pct + '%';
+    if (txtEl) txtEl.textContent = done + ' / ' + tot + ' 圈 · ' + pct + '%';
+    Object.keys(per).forEach(function (pid) {
+      var t = document.getElementById('prog-' + pid);
+      if (t) t.textContent = per[pid][0] + '/' + per[pid][1];
+    });
+  }
+
+  function clearHl() {
+    Array.prototype.forEach.call(document.querySelectorAll('tr.round.hl'), function (t) {
+      t.classList.remove('hl');
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('g.ring'), function (g) {
+      g.removeAttribute('stroke-width');
+      var kids = g.querySelectorAll('g');
+      Array.prototype.forEach.call(kids, function (k) {
+        k.setAttribute('stroke-width', k.getAttribute('data-sw') || '1.6');
+      });
+    });
+  }
+
+  function highlight(tr) {
+    clearHl();
+    tr.classList.add('hl');
+    var pid = tr.getAttribute('data-part');
+    var r = tr.getAttribute('data-r');
+    var g = document.getElementById(pid + '-r' + r);
+    if (g) {
+      // 让该圈更醒目：加大其针目描边
+      Array.prototype.forEach.call(g.querySelectorAll('g'), function (k) {
+        if (!k.getAttribute('data-sw')) k.setAttribute('data-sw', k.getAttribute('stroke-width') || '1.6');
+        k.setAttribute('stroke-width', '2.8');
+      });
+      g.parentNode.appendChild(g);       // 提到最上层
+    }
+  }
+
+  function bindInteractions() {
+    var all = checks();
+    all.forEach(function (c) {
+      var key = c.getAttribute('data-key');
+      c.checked = !!store[key];
+      c.addEventListener('change', function () {
+        store[key] = c.checked ? 1 : 0;
+        save();
+        refreshProgress();
+      });
+    });
+
+    Array.prototype.forEach.call(document.querySelectorAll('tr.round'), function (tr) {
+      tr.addEventListener('click', function (e) {
+        if (e.target.tagName === 'INPUT') return;
+        var already = tr.classList.contains('hl');
+        clearHl();
+        if (!already) highlight(tr);
+      });
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest || !e.target.closest('tr.round')) clearHl();
+    });
+
+    var reset = document.getElementById('reset');
+    if (reset) reset.addEventListener('click', function () {
+      store = {};
+      save();
+      checks().forEach(function (c) { c.checked = false; });
+      refreshProgress();
+    });
+
+    var printBtn = document.getElementById('printBtn');
+    if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+
+    // 打印前清除高亮，避免打出一张被强调色污染的图
+    window.addEventListener('beforeprint', function () { clearHl(); });
+  }
+
+  build();
+})();
+</script>
+</body>
+</html>

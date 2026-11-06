@@ -1,0 +1,133 @@
+{
+  "name": "散兵（放浪者）",
+  "heightCm": 14,
+  "style": "chibi",
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    { "id": "C1", "name": "奶肤",     "hex": "#F3E0D4", "role": "skin",   "yarnMetersPerGram": 4.2 },
+    { "id": "C2", "name": "靛蓝发",   "hex": "#2C3A6E", "role": "hair",   "yarnMetersPerGram": 4.2 },
+    { "id": "C3", "name": "靛青衣",   "hex": "#1E3A5F", "role": "main",   "yarnMetersPerGram": 4.2 },
+    { "id": "C4", "name": "风青",     "hex": "#4DB6A5", "role": "accent", "yarnMetersPerGram": 4.2 },
+    { "id": "C5", "name": "金饰",     "hex": "#D4AF37", "role": "accent", "yarnMetersPerGram": 4.2 },
+    { "id": "C6", "name": "白色短裤", "hex": "#F4F1EA", "role": "accent", "yarnMetersPerGram": 4.2 },
+    { "id": "C7", "name": "风瞳青",   "hex": "#3D9B8F", "role": "eye",    "yarnMetersPerGram": 4.2 },
+    { "id": "C8", "name": "腮红粉",   "hex": "#E8A0A0", "role": "blush",  "yarnMetersPerGram": 4.2 }
+  ],
+  "parts": [
+    {
+      "id": "head",
+      "name": "头部",
+      "shape": { "kind": "sphere", "diameterCm": 6.5 },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "hair-cap",
+      "name": "发帽（短靛发）",
+      "shape": { "kind": "sphere", "diameterCm": 6.8 },
+      "defaultColor": "C2",
+      "decor": [
+        {
+          "kind": "curly",
+          "every": 3,
+          "ch": 4,
+          "roundFrom": 6,
+          "roundTo": 10,
+          "note": "发梢短卷；正面中央可改风青色线点缀发尖"
+        }
+      ]
+    },
+    {
+      "id": "bangs",
+      "name": "前刘海片",
+      "shape": { "kind": "flat-round", "diameterCm": 6.0 },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "hat-brim",
+      "name": "大帽檐（标志配件）",
+      "shape": { "kind": "flat-round", "diameterCm": 8.0 },
+      "defaultColor": "C3"
+    },
+    {
+      "id": "hat",
+      "name": "大帽筒身",
+      "shape": { "kind": "cylinder", "diameterCm": 4.5, "heightCm": 2.0 },
+      "defaultColor": "C3",
+      "colorRounds": [
+        { "from": 1, "to": 2, "color": "C3" },
+        { "from": 3, "to": 4, "color": "C4" },
+        { "from": 5, "to": 99, "color": "C3" }
+      ]
+    },
+    {
+      "id": "hat-ornament",
+      "name": "帽顶金饰（织 1 只）",
+      "shape": { "kind": "sphere", "diameterCm": 1.2 },
+      "defaultColor": "C5"
+    },
+    {
+      "id": "body",
+      "name": "躯干（靛青短衣+白短裤）",
+      "shape": { "kind": "capsule", "diameterCm": 3.5, "heightCm": 4.0 },
+      "defaultColor": "C3",
+      "colorRounds": [
+        { "from": 1, "to": 2, "color": "C1" },
+        { "from": 3, "to": 5, "color": "C3" },
+        { "from": 6, "to": 99, "color": "C6" }
+      ]
+    },
+    {
+      "id": "scarf",
+      "name": "飘带（织 1 条）",
+      "shape": { "kind": "flat-row", "widthCm": 3.0, "heightCm": 6.0 },
+      "defaultColor": "C4"
+    },
+    {
+      "id": "arm",
+      "name": "手臂（织 2 只）",
+      "shape": { "kind": "capsule", "diameterCm": 1.5, "heightCm": 3.0 },
+      "defaultColor": "C1",
+      "colorRounds": [
+        { "from": 1, "to": 2, "color": "C3" }
+      ]
+    },
+    {
+      "id": "leg",
+      "name": "腿（织 2 只）",
+      "shape": { "kind": "capsule", "diameterCm": 1.5, "heightCm": 2.5 },
+      "defaultColor": "C1",
+      "colorRounds": [
+        { "from": 4, "to": 99, "color": "C3" }
+      ]
+    },
+    {
+      "id": "eye",
+      "name": "眼睛（织 2 片）",
+      "shape": { "kind": "flat-round", "diameterCm": 0.5 },
+      "defaultColor": "C7"
+    }
+  ],
+  "buildOrder": [
+    "头部：环形起针，塞棉收口，前脸压平。",
+    "发帽：靛蓝短发底，中段挂短卷曲针模拟发梢；封口后套在头上。",
+    "前刘海片：贴在额头前方，压住发帽下缘。",
+    "大帽檐：宽圆片，这是认出「散兵/放浪者」的第一特征，务必做够大。",
+    "大帽筒身：靛青主色夹风青腰线，缝在帽檐中央；顶上缝金色小珠。",
+    "把整顶大帽扣在发帽顶部偏后，帽檐向前压住刘海。",
+    "躯干：领口两圈肤色 → 靛青短衣 → 白色短裤区；塞棉后与头缝合。",
+    "飘带：风青色片织长条，从后颈绕到身前一侧自然垂下。",
+    "手臂 ×2：靛青袖口，缝在躯干上方两侧。",
+    "腿 ×2：靛青鞋边，缝在躯干底部。",
+    "眼睛 ×2：风瞳青色圆片缝在前额下方；可用深蓝线绣细眉。",
+    "金饰点缀：帽檐边缘与胸口用金色线打几个短针圈即可；腮红轻扫。"
+  ],
+  "_meta": {
+    "source": "无本地立绘；按原神放浪者决定性特征手写 toySpec（大帽/靛发/风青瞳/白短裤）",
+    "note": "仓库内 1.jpg–3.jpg 为蟹老板梗成品，未用于取色。若有官方立绘可再跑 analyze_photo.py 覆写 palette。"
+  }
+}

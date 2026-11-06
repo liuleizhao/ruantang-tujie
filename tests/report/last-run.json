@@ -1,0 +1,29 @@
+{
+  "generatedAt": "2026-11-06T16:10:47.369Z",
+  "node": "v25.7.0",
+  "engine": {
+    "ok": true,
+    "how": "import"
+  },
+  "caseFiles": [
+    "a-engine-api.mjs",
+    "b-ops.mjs",
+    "c-invariants.mjs",
+    "d-buildshape.mjs",
+    "e-buildchart.mjs",
+    "g-layout-quantize.mjs",
+    "i-cli.mjs",
+    "j-template-k-skills.mjs",
+    "l-m-n-o-p-v11.mjs",
+    "q-template-v11.mjs",
+    "r-craft-identity.mjs"
+  ],
+  "totals": {
+    "total": 166,
+    "passed": 166,
+    "failed": 0,
+    "skipped": 0
+  },
+  "failures": [],
+  "skips": []
+}

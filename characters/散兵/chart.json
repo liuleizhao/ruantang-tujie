@@ -1,0 +1,3986 @@
+{
+  "version": 1,
+  "name": "散兵（流浪者·软糖体）",
+  "createdAt": "2026-11-06T16:00:43.647Z",
+  "spec": {
+    "name": "散兵（流浪者·软糖体）",
+    "heightCm": 10,
+    "style": "softcandy",
+    "gauge": {
+      "stPerCm": 2.2,
+      "roundsPerCm": 2.2,
+      "hookMm": 1.75,
+      "yarn": "4ply 牛奶棉"
+    },
+    "palette": [
+      {
+        "id": "C1",
+        "name": "奶肤",
+        "hex": "#F2E4D4",
+        "role": "skin",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C2",
+        "name": "靛青发",
+        "hex": "#2E3871",
+        "role": "hair",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C3",
+        "name": "米白衣",
+        "hex": "#F1F2EE",
+        "role": "main",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C4",
+        "name": "风青",
+        "hex": "#79B2B4",
+        "role": "accent",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C5",
+        "name": "深蓝笠",
+        "hex": "#35313D",
+        "role": "accent",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C6",
+        "name": "金饰",
+        "hex": "#C5A059",
+        "role": "accent",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C7",
+        "name": "靛青瞳",
+        "hex": "#2E3871",
+        "role": "eye",
+        "yarnMetersPerGram": 4.2
+      },
+      {
+        "id": "C8",
+        "name": "深紫袴",
+        "hex": "#4A3D6B",
+        "role": "accent",
+        "yarnMetersPerGram": 4.2
+      }
+    ],
+    "parts": [
+      {
+        "id": "body",
+        "name": "软糖主体（头身一体）",
+        "shape": {
+          "kind": "softcandy"
+        },
+        "defaultColor": "C1",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "magic-ring",
+            "color": "C1",
+            "stitchesIn": 0,
+            "stitchesOut": 5,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 5
+              }
+            ],
+            "note": "环起 5X（软糖体）"
+          },
+          {
+            "r": 2,
+            "kind": "round",
+            "color": "C1",
+            "stitchesIn": 5,
+            "stitchesOut": 10,
+            "ops": [
+              {
+                "sym": "V",
+                "n": 5
+              }
+            ],
+            "note": "5V"
+          },
+          {
+            "r": 3,
+            "kind": "round",
+            "color": "C1",
+            "stitchesIn": 10,
+            "stitchesOut": 15,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              }
+            ],
+            "note": "5(X,V)"
+          },
+          {
+            "r": 4,
+            "kind": "round",
+            "color": "C1",
+            "stitchesIn": 15,
+            "stitchesOut": 20,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              }
+            ],
+            "note": "5(X,V,X)"
+          },
+          {
+            "r": 5,
+            "kind": "round",
+            "color": "C1",
+            "stitchesIn": 20,
+            "stitchesOut": 20,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 20
+              }
+            ],
+            "note": "20X"
+          },
+          {
+            "r": 6,
+            "kind": "round",
+            "color": "C1",
+            "stitchesIn": 20,
+            "stitchesOut": 20,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 20
+              }
+            ],
+            "note": "20X"
+          },
+          {
+            "r": 7,
+            "kind": "round",
+            "color": "C1",
+            "stitchesIn": 20,
+            "stitchesOut": 20,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 20
+              }
+            ],
+            "note": "20X · 绣眼定位约此圈"
+          },
+          {
+            "r": 8,
+            "kind": "round",
+            "color": "C1",
+            "stitchesIn": 20,
+            "stitchesOut": 10,
+            "ops": [
+              {
+                "sym": "A",
+                "n": 10
+              }
+            ],
+            "note": "10A · 收颈"
+          },
+          {
+            "r": 9,
+            "kind": "round",
+            "color": "C1",
+            "stitchesIn": 10,
+            "stitchesOut": 15,
+            "loop": "blo",
+            "reservedFor": "skirt",
+            "ops": [
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "B",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "B",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              }
+            ],
+            "note": "BLO：X,V,B,V, X,V,B,V, X,V · 两只爆米花手臂"
+          },
+          {
+            "r": 10,
+            "kind": "round",
+            "color": "C3",
+            "stitchesIn": 15,
+            "stitchesOut": 15,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 15
+              }
+            ],
+            "note": "换米白 15X · 羽织"
+          },
+          {
+            "r": 11,
+            "kind": "round",
+            "color": "C3",
+            "stitchesIn": 15,
+            "stitchesOut": 15,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 4
+              },
+              {
+                "sym": "B",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 3
+              },
+              {
+                "sym": "B",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 6
+              }
+            ],
+            "note": "4X, B(顶出手), 3X, B(顶出手), 6X · B 处换肤色线钩爆米花"
+          },
+          {
+            "r": 12,
+            "kind": "round",
+            "color": "C8",
+            "stitchesIn": 15,
+            "stitchesOut": 10,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "A",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "A",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "A",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "A",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "A",
+                "n": 1
+              }
+            ],
+            "note": "换深紫袴 5(X,A)"
+          },
+          {
+            "r": 13,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 10,
+            "stitchesOut": 5,
+            "ops": [
+              {
+                "sym": "A",
+                "n": 5
+              }
+            ],
+            "note": "5A · 下摆深蓝"
+          },
+          {
+            "r": 14,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 5,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "SL",
+                "n": 5
+              }
+            ],
+            "note": "5SL 收口 · 塞棉"
+          }
+        ]
+      },
+      {
+        "id": "skirt",
+        "name": "风青下摆（接 R9 外半针）",
+        "shape": {
+          "kind": "softcandy",
+          "attachTo": {
+            "part": "body",
+            "round": 9,
+            "loop": "flo",
+            "stitches": 15
+          }
+        },
+        "defaultColor": "C4",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "attach",
+            "color": "C4",
+            "stitchesIn": 15,
+            "stitchesOut": 15,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 15
+              }
+            ],
+            "note": "在主体 R9 外半针上 15X"
+          },
+          {
+            "r": 2,
+            "kind": "round",
+            "color": "C4",
+            "stitchesIn": 15,
+            "stitchesOut": 15,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 15
+              }
+            ],
+            "decor": [
+              {
+                "kind": "picot",
+                "every": 1,
+                "count": 15,
+                "ch": 3
+              }
+            ],
+            "note": "15X + 每针 3CH 狗牙花边"
+          }
+        ]
+      },
+      {
+        "id": "scalp",
+        "name": "头皮（发条底板）",
+        "shape": {
+          "kind": "softcandy"
+        },
+        "defaultColor": "C2",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "magic-ring",
+            "color": "C2",
+            "stitchesIn": 0,
+            "stitchesOut": 5,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 5
+              }
+            ],
+            "note": "环起 5X"
+          },
+          {
+            "r": 2,
+            "kind": "round",
+            "color": "C2",
+            "stitchesIn": 5,
+            "stitchesOut": 10,
+            "ops": [
+              {
+                "sym": "V",
+                "n": 5
+              }
+            ],
+            "note": "5V"
+          },
+          {
+            "r": 3,
+            "kind": "round",
+            "color": "C2",
+            "stitchesIn": 10,
+            "stitchesOut": 15,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              }
+            ],
+            "note": "5(X,V) · 沿边缘挂发条"
+          }
+        ]
+      },
+      {
+        "id": "bangs-1",
+        "name": "刘海发条 1",
+        "shape": {
+          "kind": "strand"
+        },
+        "defaultColor": "C2",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "strand",
+            "color": "C2",
+            "stitchesIn": 0,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "CH",
+                "n": 4
+              },
+              {
+                "sym": "SL",
+                "n": 3
+              }
+            ],
+            "note": "4CH, 倒2回钩 3SL"
+          }
+        ]
+      },
+      {
+        "id": "bangs-2",
+        "name": "刘海发条 2",
+        "shape": {
+          "kind": "strand"
+        },
+        "defaultColor": "C2",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "strand",
+            "color": "C2",
+            "stitchesIn": 0,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "CH",
+                "n": 4
+              },
+              {
+                "sym": "SL",
+                "n": 3
+              }
+            ],
+            "note": "4CH, 倒2回钩 3SL"
+          }
+        ]
+      },
+      {
+        "id": "bangs-3",
+        "name": "刘海发条 3",
+        "shape": {
+          "kind": "strand"
+        },
+        "defaultColor": "C2",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "strand",
+            "color": "C2",
+            "stitchesIn": 0,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "CH",
+                "n": 5
+              },
+              {
+                "sym": "SL",
+                "n": 4
+              }
+            ],
+            "note": "5CH, 倒2回钩 4SL"
+          }
+        ]
+      },
+      {
+        "id": "bangs-4",
+        "name": "刘海发条 4",
+        "shape": {
+          "kind": "strand"
+        },
+        "defaultColor": "C2",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "strand",
+            "color": "C2",
+            "stitchesIn": 0,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "CH",
+                "n": 4
+              },
+              {
+                "sym": "SL",
+                "n": 3
+              }
+            ],
+            "note": "4CH, 倒2回钩 3SL"
+          }
+        ]
+      },
+      {
+        "id": "side-L",
+        "name": "左鬓发条",
+        "shape": {
+          "kind": "strand"
+        },
+        "defaultColor": "C2",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "strand",
+            "color": "C2",
+            "stitchesIn": 0,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "CH",
+                "n": 6
+              },
+              {
+                "sym": "SL",
+                "n": 5
+              }
+            ],
+            "note": "6CH, 倒2回钩 5SL"
+          }
+        ]
+      },
+      {
+        "id": "side-R",
+        "name": "右鬓发条",
+        "shape": {
+          "kind": "strand"
+        },
+        "defaultColor": "C2",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "strand",
+            "color": "C2",
+            "stitchesIn": 0,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "CH",
+                "n": 6
+              },
+              {
+                "sym": "SL",
+                "n": 5
+              }
+            ],
+            "note": "6CH, 倒2回钩 5SL"
+          }
+        ]
+      },
+      {
+        "id": "back-1",
+        "name": "后脑发条（短）×3",
+        "shape": {
+          "kind": "strand"
+        },
+        "defaultColor": "C2",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "strand",
+            "color": "C2",
+            "stitchesIn": 0,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "CH",
+                "n": 6
+              },
+              {
+                "sym": "SL",
+                "n": 5
+              }
+            ],
+            "note": "6CH, 倒2回钩 5SL · 织 3 条同款"
+          }
+        ]
+      },
+      {
+        "id": "back-2",
+        "name": "后脑发条（长）×4",
+        "shape": {
+          "kind": "strand"
+        },
+        "defaultColor": "C2",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "strand",
+            "color": "C2",
+            "stitchesIn": 0,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "CH",
+                "n": 8
+              },
+              {
+                "sym": "SL",
+                "n": 7
+              }
+            ],
+            "note": "8CH, 倒2回钩 7SL · 织 4 条同款"
+          }
+        ]
+      },
+      {
+        "id": "hat",
+        "name": "笠帽（宽檐）",
+        "shape": {
+          "kind": "softcandy"
+        },
+        "defaultColor": "C5",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "magic-ring",
+            "color": "C5",
+            "stitchesIn": 0,
+            "stitchesOut": 6,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 6
+              }
+            ],
+            "note": "环起 6X"
+          },
+          {
+            "r": 2,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 6,
+            "stitchesOut": 12,
+            "ops": [
+              {
+                "sym": "V",
+                "n": 6
+              }
+            ],
+            "note": "6V"
+          },
+          {
+            "r": 3,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 12,
+            "stitchesOut": 18,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 1
+              },
+              {
+                "sym": "V",
+                "n": 1
+              }
+            ],
+            "note": "6(X,V)"
+          },
+          {
+            "r": 4,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 18,
+            "stitchesOut": 24,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 2
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 2
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 2
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 2
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 2
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 2
+              },
+              {
+                "sym": "V",
+                "n": 1
+              }
+            ],
+            "note": "6(2X,V)"
+          },
+          {
+            "r": 5,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 24,
+            "stitchesOut": 30,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 3
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 3
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 3
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 3
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 3
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 3
+              },
+              {
+                "sym": "V",
+                "n": 1
+              }
+            ],
+            "note": "6(3X,V)"
+          },
+          {
+            "r": 6,
+            "kind": "round",
+            "color": "C6",
+            "stitchesIn": 30,
+            "stitchesOut": 30,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 30
+              }
+            ],
+            "note": "换金线 30X · 饰带"
+          },
+          {
+            "r": 7,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 30,
+            "stitchesOut": 30,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 30
+              }
+            ],
+            "loop": "blo",
+            "reservedFor": "brim",
+            "note": "BLO 30X · 留外半针扩帽檐"
+          },
+          {
+            "r": 8,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 30,
+            "stitchesOut": 30,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 30
+              }
+            ],
+            "note": "筒身 30X · 开口朝下戴头上"
+          }
+        ]
+      },
+      {
+        "id": "brim",
+        "name": "笠帽宽檐（接 R7 外半针）",
+        "shape": {
+          "kind": "softcandy",
+          "attachTo": {
+            "part": "hat",
+            "round": 7,
+            "loop": "flo",
+            "stitches": 30
+          }
+        },
+        "defaultColor": "C5",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "attach",
+            "color": "C5",
+            "stitchesIn": 30,
+            "stitchesOut": 36,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 4
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 4
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 4
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 4
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 4
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 4
+              },
+              {
+                "sym": "V",
+                "n": 1
+              }
+            ],
+            "note": "外半针 6(4X,V)=36 · 宽檐起步"
+          },
+          {
+            "r": 2,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 36,
+            "stitchesOut": 42,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 5
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 5
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 5
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 5
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 5
+              },
+              {
+                "sym": "V",
+                "n": 1
+              },
+              {
+                "sym": "X",
+                "n": 5
+              },
+              {
+                "sym": "V",
+                "n": 1
+              }
+            ],
+            "note": "6(5X,V)=42"
+          },
+          {
+            "r": 3,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 42,
+            "stitchesOut": 42,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 42
+              }
+            ],
+            "note": "42X · 檐边"
+          },
+          {
+            "r": 4,
+            "kind": "round",
+            "color": "C5",
+            "stitchesIn": 42,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "SL",
+                "n": 42
+              }
+            ],
+            "note": "42SL 收边"
+          }
+        ]
+      },
+      {
+        "id": "hat-top",
+        "name": "笠顶金珠",
+        "shape": {
+          "kind": "softcandy"
+        },
+        "defaultColor": "C6",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "magic-ring",
+            "color": "C6",
+            "stitchesIn": 0,
+            "stitchesOut": 5,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 5
+              }
+            ],
+            "note": "环起 5X"
+          },
+          {
+            "r": 2,
+            "kind": "round",
+            "color": "C6",
+            "stitchesIn": 5,
+            "stitchesOut": 5,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 5
+              }
+            ],
+            "note": "5X"
+          },
+          {
+            "r": 3,
+            "kind": "round",
+            "color": "C6",
+            "stitchesIn": 5,
+            "stitchesOut": 0,
+            "ops": [
+              {
+                "sym": "SL",
+                "n": 5
+              }
+            ],
+            "note": "5SL 收口"
+          }
+        ]
+      },
+      {
+        "id": "eye",
+        "name": "眼睛（织 2）",
+        "shape": {
+          "kind": "softcandy"
+        },
+        "defaultColor": "C7",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "magic-ring",
+            "color": "C7",
+            "stitchesIn": 0,
+            "stitchesOut": 5,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 5
+              }
+            ],
+            "note": "环起 5X · 缝在主体约 R6–R7"
+          }
+        ]
+      },
+      {
+        "id": "vision",
+        "name": "风元素神之眼",
+        "shape": {
+          "kind": "softcandy"
+        },
+        "defaultColor": "C6",
+        "rounds": [
+          {
+            "r": 1,
+            "kind": "magic-ring",
+            "color": "C6",
+            "stitchesIn": 0,
+            "stitchesOut": 5,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 5
+              }
+            ],
+            "note": "金线环起 5X"
+          },
+          {
+            "r": 2,
+            "kind": "round",
+            "color": "C4",
+            "stitchesIn": 5,
+            "stitchesOut": 5,
+            "ops": [
+              {
+                "sym": "X",
+                "n": 5
+              }
+            ],
+            "note": "换风青 5X · 缝左胸"
+          }
+        ]
+      }
+    ],
+    "buildOrder": [
+      "① 软糖主体：肤色 5X 开面 → R8 收颈 → R9 内半针爆米花长两臂 → 换米白羽织 → 深紫袴 → 深蓝收口塞棉。",
+      "② 风青下摆：在主体 R9 外半针上钩花边。",
+      "③ 头皮：靛青 5X→15 针圆片，沿边缘挂发条。",
+      "④ 发条：刘海 4 条短 + 左右鬓 + 后脑短 3 / 长 4；全部是「nCH + 倒2回钩 SL」，不是球体。",
+      "⑤ 头皮（连发）粘/缝到主体头顶。",
+      "⑥ 笠帽：加针至 30 → 金饰带 → BLO 留檐 → 筒身；宽檐在外半针加到 42。",
+      "⑦ 金珠缝帽顶；整帽戴在发上，檐明显前探。",
+      "⑧ 眼睛 ×2 缝 R6–R7；神之眼缝左胸。",
+      "已省略（肖像级）：帽后飘带、羽饰、红眼线、腰绳细结。"
+    ],
+    "reference": {
+      "caption": "流浪者立绘 · 点击定位（软糖体结构）",
+      "width": 100,
+      "height": 253,
+      "regions": [
+        {
+          "partId": "hat-top",
+          "name": "笠顶金珠",
+          "color": "#C5A059",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 28,
+          "rx": 6,
+          "ry": 5,
+          "z": 90
+        },
+        {
+          "partId": "hat",
+          "name": "笠帽",
+          "color": "#35313D",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 40,
+          "rx": 16,
+          "ry": 11,
+          "z": 80
+        },
+        {
+          "partId": "brim",
+          "name": "宽檐",
+          "color": "#35313D",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 52,
+          "rx": 30,
+          "ry": 9,
+          "z": 70
+        },
+        {
+          "partId": "scalp",
+          "name": "头皮/发",
+          "color": "#2E3871",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 64,
+          "rx": 14,
+          "ry": 10,
+          "z": 40
+        },
+        {
+          "partId": "bangs-1",
+          "name": "刘海",
+          "color": "#2E3871",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 68,
+          "rx": 12,
+          "ry": 5,
+          "z": 55
+        },
+        {
+          "partId": "body",
+          "name": "软糖主体",
+          "color": "#F2E4D4",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 95,
+          "rx": 16,
+          "ry": 28,
+          "z": 30
+        },
+        {
+          "partId": "skirt",
+          "name": "风青下摆",
+          "color": "#79B2B4",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 118,
+          "rx": 18,
+          "ry": 8,
+          "z": 35
+        },
+        {
+          "partId": "vision",
+          "name": "神之眼",
+          "color": "#C5A059",
+          "shape": "ellipse",
+          "cx": 52,
+          "cy": 92,
+          "rx": 5,
+          "ry": 5,
+          "z": 65
+        },
+        {
+          "partId": "eye",
+          "name": "眼睛",
+          "color": "#2E3871",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 72,
+          "rx": 8,
+          "ry": 3,
+          "z": 60
+        },
+        {
+          "partId": "side-L",
+          "name": "左鬓",
+          "color": "#2E3871",
+          "shape": "ellipse",
+          "cx": 32,
+          "cy": 70,
+          "rx": 5,
+          "ry": 8,
+          "z": 50
+        },
+        {
+          "partId": "side-R",
+          "name": "右鬓",
+          "color": "#2E3871",
+          "shape": "ellipse",
+          "cx": 56,
+          "cy": 70,
+          "rx": 5,
+          "ry": 8,
+          "z": 50
+        },
+        {
+          "partId": "back-1",
+          "name": "后脑短发",
+          "color": "#2E3871",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 78,
+          "rx": 10,
+          "ry": 6,
+          "z": 25
+        },
+        {
+          "partId": "back-2",
+          "name": "后脑长发",
+          "color": "#2E3871",
+          "shape": "ellipse",
+          "cx": 44,
+          "cy": 85,
+          "rx": 11,
+          "ry": 7,
+          "z": 20
+        }
+      ]
+    },
+    "_meta": {
+      "patternStyle": "xiaoqiao-softcandy",
+      "sourceRef": "https://mp.weixin.qq.com/s/Qb08Et0gUUzkWzc1waaHfg",
+      "photo": "ref-散兵.jpg",
+      "diffFromSphereModel": [
+        "头身一体 5X 软糖体，非分件球体",
+        "手脚=爆米花 B，非独立 capsule",
+        "头发=CH 发条，非发帽球体",
+        "帽檐/裙=半针 FLO 另起，非圆片硬拼"
+      ]
+    }
+  },
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 1.75,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    {
+      "id": "C1",
+      "name": "奶肤",
+      "hex": "#F2E4D4",
+      "role": "skin",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C2",
+      "name": "靛青发",
+      "hex": "#2E3871",
+      "role": "hair",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C3",
+      "name": "米白衣",
+      "hex": "#F1F2EE",
+      "role": "main",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C4",
+      "name": "风青",
+      "hex": "#79B2B4",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C5",
+      "name": "深蓝笠",
+      "hex": "#35313D",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C6",
+      "name": "金饰",
+      "hex": "#C5A059",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C7",
+      "name": "靛青瞳",
+      "hex": "#2E3871",
+      "role": "eye",
+      "yarnMetersPerGram": 4.2
+    },
+    {
+      "id": "C8",
+      "name": "深紫袴",
+      "hex": "#4A3D6B",
+      "role": "accent",
+      "yarnMetersPerGram": 4.2
+    }
+  ],
+  "parts": [
+    {
+      "id": "body",
+      "name": "软糖主体（头身一体）",
+      "shape": {
+        "kind": "softcandy",
+        "color": "C1"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C1",
+          "stitchesIn": 0,
+          "stitchesOut": 5,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            }
+          ],
+          "note": "环起 5X（软糖体）"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 5,
+          "stitchesOut": 10,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 5
+            }
+          ],
+          "note": "5V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 10,
+          "stitchesOut": 15,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "5(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 15,
+          "stitchesOut": 20,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            }
+          ],
+          "note": "5(X,V,X)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 20,
+          "stitchesOut": 20,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 20
+            }
+          ],
+          "note": "20X"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 20,
+          "stitchesOut": 20,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 20
+            }
+          ],
+          "note": "20X"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 20,
+          "stitchesOut": 20,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 20
+            }
+          ],
+          "note": "20X · 绣眼定位约此圈"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 20,
+          "stitchesOut": 10,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 10
+            }
+          ],
+          "note": "10A · 收颈"
+        },
+        {
+          "r": 9,
+          "kind": "round",
+          "color": "C1",
+          "stitchesIn": 10,
+          "stitchesOut": 15,
+          "loop": "blo",
+          "reservedFor": "skirt",
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "B",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "B",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "BLO：X,V,B,V, X,V,B,V, X,V · 两只爆米花手臂"
+        },
+        {
+          "r": 10,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 15,
+          "stitchesOut": 15,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 15
+            }
+          ],
+          "note": "换米白 15X · 羽织"
+        },
+        {
+          "r": 11,
+          "kind": "round",
+          "color": "C3",
+          "stitchesIn": 15,
+          "stitchesOut": 15,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "B",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "B",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "4X, B(顶出手), 3X, B(顶出手), 6X · B 处换肤色线钩爆米花"
+        },
+        {
+          "r": 12,
+          "kind": "round",
+          "color": "C8",
+          "stitchesIn": 15,
+          "stitchesOut": 10,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "A",
+              "n": 1
+            }
+          ],
+          "note": "换深紫袴 5(X,A)"
+        },
+        {
+          "r": 13,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 10,
+          "stitchesOut": 5,
+          "ops": [
+            {
+              "sym": "A",
+              "n": 5
+            }
+          ],
+          "note": "5A · 下摆深蓝"
+        },
+        {
+          "r": 14,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 5,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "SL",
+              "n": 5
+            }
+          ],
+          "note": "5SL 收口 · 塞棉"
+        }
+      ],
+      "subtotal": {
+        "stitches": 205,
+        "rounds": 14
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "skirt",
+      "name": "风青下摆（接 R9 外半针）",
+      "shape": {
+        "kind": "softcandy",
+        "attachTo": {
+          "part": "body",
+          "round": 9,
+          "loop": "flo",
+          "stitches": 15
+        },
+        "color": "C4"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "attach",
+          "color": "C4",
+          "stitchesIn": 15,
+          "stitchesOut": 15,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 15
+            }
+          ],
+          "note": "在主体 R9 外半针上 15X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 15,
+          "stitchesOut": 15,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 15
+            }
+          ],
+          "decor": [
+            {
+              "kind": "picot",
+              "every": 1,
+              "count": 15,
+              "ch": 3
+            }
+          ],
+          "note": "15X + 每针 3CH 狗牙花边"
+        }
+      ],
+      "subtotal": {
+        "stitches": 30,
+        "rounds": 2
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C4"
+    },
+    {
+      "id": "scalp",
+      "name": "头皮（发条底板）",
+      "shape": {
+        "kind": "softcandy",
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 5,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            }
+          ],
+          "note": "环起 5X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 5,
+          "stitchesOut": 10,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 5
+            }
+          ],
+          "note": "5V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C2",
+          "stitchesIn": 10,
+          "stitchesOut": 15,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "5(X,V) · 沿边缘挂发条"
+        }
+      ],
+      "subtotal": {
+        "stitches": 30,
+        "rounds": 3
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "bangs-1",
+      "name": "刘海发条 1",
+      "shape": {
+        "kind": "strand",
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "strand",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "CH",
+              "n": 4
+            },
+            {
+              "sym": "SL",
+              "n": 3
+            }
+          ],
+          "note": "4CH, 倒2回钩 3SL"
+        }
+      ],
+      "subtotal": {
+        "stitches": 0,
+        "rounds": 1
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "bangs-2",
+      "name": "刘海发条 2",
+      "shape": {
+        "kind": "strand",
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "strand",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "CH",
+              "n": 4
+            },
+            {
+              "sym": "SL",
+              "n": 3
+            }
+          ],
+          "note": "4CH, 倒2回钩 3SL"
+        }
+      ],
+      "subtotal": {
+        "stitches": 0,
+        "rounds": 1
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "bangs-3",
+      "name": "刘海发条 3",
+      "shape": {
+        "kind": "strand",
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "strand",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "CH",
+              "n": 5
+            },
+            {
+              "sym": "SL",
+              "n": 4
+            }
+          ],
+          "note": "5CH, 倒2回钩 4SL"
+        }
+      ],
+      "subtotal": {
+        "stitches": 0,
+        "rounds": 1
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "bangs-4",
+      "name": "刘海发条 4",
+      "shape": {
+        "kind": "strand",
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "strand",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "CH",
+              "n": 4
+            },
+            {
+              "sym": "SL",
+              "n": 3
+            }
+          ],
+          "note": "4CH, 倒2回钩 3SL"
+        }
+      ],
+      "subtotal": {
+        "stitches": 0,
+        "rounds": 1
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "side-L",
+      "name": "左鬓发条",
+      "shape": {
+        "kind": "strand",
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "strand",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "CH",
+              "n": 6
+            },
+            {
+              "sym": "SL",
+              "n": 5
+            }
+          ],
+          "note": "6CH, 倒2回钩 5SL"
+        }
+      ],
+      "subtotal": {
+        "stitches": 0,
+        "rounds": 1
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "side-R",
+      "name": "右鬓发条",
+      "shape": {
+        "kind": "strand",
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "strand",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "CH",
+              "n": 6
+            },
+            {
+              "sym": "SL",
+              "n": 5
+            }
+          ],
+          "note": "6CH, 倒2回钩 5SL"
+        }
+      ],
+      "subtotal": {
+        "stitches": 0,
+        "rounds": 1
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "back-1",
+      "name": "后脑发条（短）×3",
+      "shape": {
+        "kind": "strand",
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "strand",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "CH",
+              "n": 6
+            },
+            {
+              "sym": "SL",
+              "n": 5
+            }
+          ],
+          "note": "6CH, 倒2回钩 5SL · 织 3 条同款"
+        }
+      ],
+      "subtotal": {
+        "stitches": 0,
+        "rounds": 1
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "back-2",
+      "name": "后脑发条（长）×4",
+      "shape": {
+        "kind": "strand",
+        "color": "C2"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "strand",
+          "color": "C2",
+          "stitchesIn": 0,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "CH",
+              "n": 8
+            },
+            {
+              "sym": "SL",
+              "n": 7
+            }
+          ],
+          "note": "8CH, 倒2回钩 7SL · 织 4 条同款"
+        }
+      ],
+      "subtotal": {
+        "stitches": 0,
+        "rounds": 1
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "hat",
+      "name": "笠帽（宽檐）",
+      "shape": {
+        "kind": "softcandy",
+        "color": "C5"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C5",
+          "stitchesIn": 0,
+          "stitchesOut": 6,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 6
+            }
+          ],
+          "note": "环起 6X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 6,
+          "stitchesOut": 12,
+          "ops": [
+            {
+              "sym": "V",
+              "n": 6
+            }
+          ],
+          "note": "6V"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 12,
+          "stitchesOut": 18,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 1
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(X,V)"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 18,
+          "stitchesOut": 24,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 2
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(2X,V)"
+        },
+        {
+          "r": 5,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 24,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 3
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(3X,V)"
+        },
+        {
+          "r": 6,
+          "kind": "round",
+          "color": "C6",
+          "stitchesIn": 30,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 30
+            }
+          ],
+          "note": "换金线 30X · 饰带"
+        },
+        {
+          "r": 7,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 30,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 30
+            }
+          ],
+          "loop": "blo",
+          "reservedFor": "brim",
+          "note": "BLO 30X · 留外半针扩帽檐"
+        },
+        {
+          "r": 8,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 30,
+          "stitchesOut": 30,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 30
+            }
+          ],
+          "note": "筒身 30X · 开口朝下戴头上"
+        }
+      ],
+      "subtotal": {
+        "stitches": 180,
+        "rounds": 8
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C5"
+    },
+    {
+      "id": "brim",
+      "name": "笠帽宽檐（接 R7 外半针）",
+      "shape": {
+        "kind": "softcandy",
+        "attachTo": {
+          "part": "hat",
+          "round": 7,
+          "loop": "flo",
+          "stitches": 30
+        },
+        "color": "C5"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "attach",
+          "color": "C5",
+          "stitchesIn": 30,
+          "stitchesOut": 36,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 4
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "外半针 6(4X,V)=36 · 宽檐起步"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 36,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            },
+            {
+              "sym": "X",
+              "n": 5
+            },
+            {
+              "sym": "V",
+              "n": 1
+            }
+          ],
+          "note": "6(5X,V)=42"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 42,
+          "stitchesOut": 42,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 42
+            }
+          ],
+          "note": "42X · 檐边"
+        },
+        {
+          "r": 4,
+          "kind": "round",
+          "color": "C5",
+          "stitchesIn": 42,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "SL",
+              "n": 42
+            }
+          ],
+          "note": "42SL 收边"
+        }
+      ],
+      "subtotal": {
+        "stitches": 162,
+        "rounds": 4
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C5"
+    },
+    {
+      "id": "hat-top",
+      "name": "笠顶金珠",
+      "shape": {
+        "kind": "softcandy",
+        "color": "C6"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C6",
+          "stitchesIn": 0,
+          "stitchesOut": 5,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            }
+          ],
+          "note": "环起 5X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C6",
+          "stitchesIn": 5,
+          "stitchesOut": 5,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            }
+          ],
+          "note": "5X"
+        },
+        {
+          "r": 3,
+          "kind": "round",
+          "color": "C6",
+          "stitchesIn": 5,
+          "stitchesOut": 0,
+          "ops": [
+            {
+              "sym": "SL",
+              "n": 5
+            }
+          ],
+          "note": "5SL 收口"
+        }
+      ],
+      "subtotal": {
+        "stitches": 15,
+        "rounds": 3
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C6"
+    },
+    {
+      "id": "eye",
+      "name": "眼睛（织 2）",
+      "shape": {
+        "kind": "softcandy",
+        "color": "C7"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C7",
+          "stitchesIn": 0,
+          "stitchesOut": 5,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            }
+          ],
+          "note": "环起 5X · 缝在主体约 R6–R7"
+        }
+      ],
+      "subtotal": {
+        "stitches": 5,
+        "rounds": 1
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C7"
+    },
+    {
+      "id": "vision",
+      "name": "风元素神之眼",
+      "shape": {
+        "kind": "softcandy",
+        "color": "C6"
+      },
+      "rounds": [
+        {
+          "r": 1,
+          "kind": "magic-ring",
+          "color": "C6",
+          "stitchesIn": 0,
+          "stitchesOut": 5,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            }
+          ],
+          "note": "金线环起 5X"
+        },
+        {
+          "r": 2,
+          "kind": "round",
+          "color": "C4",
+          "stitchesIn": 5,
+          "stitchesOut": 5,
+          "ops": [
+            {
+              "sym": "X",
+              "n": 5
+            }
+          ],
+          "note": "换风青 5X · 缝左胸"
+        }
+      ],
+      "subtotal": {
+        "stitches": 10,
+        "rounds": 2
+      },
+      "plan": {
+        "manual": true,
+        "source": "toySpec.rounds"
+      },
+      "defaultColor": "C6"
+    }
+  ],
+  "buildOrder": [
+    "① 软糖主体：肤色 5X 开面 → R8 收颈 → R9 内半针爆米花长两臂 → 换米白羽织 → 深紫袴 → 深蓝收口塞棉。",
+    "② 风青下摆：在主体 R9 外半针上钩花边。",
+    "③ 头皮：靛青 5X→15 针圆片，沿边缘挂发条。",
+    "④ 发条：刘海 4 条短 + 左右鬓 + 后脑短 3 / 长 4；全部是「nCH + 倒2回钩 SL」，不是球体。",
+    "⑤ 头皮（连发）粘/缝到主体头顶。",
+    "⑥ 笠帽：加针至 30 → 金饰带 → BLO 留檐 → 筒身；宽檐在外半针加到 42。",
+    "⑦ 金珠缝帽顶；整帽戴在发上，檐明显前探。",
+    "⑧ 眼睛 ×2 缝 R6–R7；神之眼缝左胸。",
+    "已省略（肖像级）：帽后飘带、羽饰、红眼线、腰绳细结。"
+  ],
+  "reference": {
+    "caption": "流浪者立绘 · 点击定位（软糖体结构）",
+    "image": null,
+    "imageMime": null,
+    "width": 100,
+    "height": 253,
+    "unit": "normalized",
+    "kind": "custom",
+    "regions": [
+      {
+        "partId": "hat-top",
+        "name": "笠顶金珠",
+        "color": "#C5A059",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 28,
+        "rx": 6,
+        "ry": 5,
+        "z": 90
+      },
+      {
+        "partId": "hat",
+        "name": "笠帽",
+        "color": "#35313D",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 40,
+        "rx": 16,
+        "ry": 11,
+        "z": 80
+      },
+      {
+        "partId": "brim",
+        "name": "宽檐",
+        "color": "#35313D",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 52,
+        "rx": 30,
+        "ry": 9,
+        "z": 70
+      },
+      {
+        "partId": "scalp",
+        "name": "头皮/发",
+        "color": "#2E3871",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 64,
+        "rx": 14,
+        "ry": 10,
+        "z": 40
+      },
+      {
+        "partId": "bangs-1",
+        "name": "刘海",
+        "color": "#2E3871",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 68,
+        "rx": 12,
+        "ry": 5,
+        "z": 55
+      },
+      {
+        "partId": "body",
+        "name": "软糖主体",
+        "color": "#F2E4D4",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 95,
+        "rx": 16,
+        "ry": 28,
+        "z": 30
+      },
+      {
+        "partId": "skirt",
+        "name": "风青下摆",
+        "color": "#79B2B4",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 118,
+        "rx": 18,
+        "ry": 8,
+        "z": 35
+      },
+      {
+        "partId": "vision",
+        "name": "神之眼",
+        "color": "#C5A059",
+        "shape": "ellipse",
+        "cx": 52,
+        "cy": 92,
+        "rx": 5,
+        "ry": 5,
+        "z": 65
+      },
+      {
+        "partId": "eye",
+        "name": "眼睛",
+        "color": "#2E3871",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 72,
+        "rx": 8,
+        "ry": 3,
+        "z": 60
+      },
+      {
+        "partId": "side-L",
+        "name": "左鬓",
+        "color": "#2E3871",
+        "shape": "ellipse",
+        "cx": 32,
+        "cy": 70,
+        "rx": 5,
+        "ry": 8,
+        "z": 50
+      },
+      {
+        "partId": "side-R",
+        "name": "右鬓",
+        "color": "#2E3871",
+        "shape": "ellipse",
+        "cx": 56,
+        "cy": 70,
+        "rx": 5,
+        "ry": 8,
+        "z": 50
+      },
+      {
+        "partId": "back-1",
+        "name": "后脑短发",
+        "color": "#2E3871",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 78,
+        "rx": 10,
+        "ry": 6,
+        "z": 25
+      },
+      {
+        "partId": "back-2",
+        "name": "后脑长发",
+        "color": "#2E3871",
+        "shape": "ellipse",
+        "cx": 44,
+        "cy": 85,
+        "rx": 11,
+        "ry": 7,
+        "z": 20
+      }
+    ]
+  },
+  "yarn": {
+    "perPart": [
+      {
+        "id": "body",
+        "stitches": 205,
+        "meters": 5.1,
+        "grams": 1.2
+      },
+      {
+        "id": "skirt",
+        "stitches": 30,
+        "meters": 0.8,
+        "grams": 0.2
+      },
+      {
+        "id": "scalp",
+        "stitches": 30,
+        "meters": 0.8,
+        "grams": 0.2
+      },
+      {
+        "id": "bangs-1",
+        "stitches": 0,
+        "meters": 0,
+        "grams": 0
+      },
+      {
+        "id": "bangs-2",
+        "stitches": 0,
+        "meters": 0,
+        "grams": 0
+      },
+      {
+        "id": "bangs-3",
+        "stitches": 0,
+        "meters": 0,
+        "grams": 0
+      },
+      {
+        "id": "bangs-4",
+        "stitches": 0,
+        "meters": 0,
+        "grams": 0
+      },
+      {
+        "id": "side-L",
+        "stitches": 0,
+        "meters": 0,
+        "grams": 0
+      },
+      {
+        "id": "side-R",
+        "stitches": 0,
+        "meters": 0,
+        "grams": 0
+      },
+      {
+        "id": "back-1",
+        "stitches": 0,
+        "meters": 0,
+        "grams": 0
+      },
+      {
+        "id": "back-2",
+        "stitches": 0,
+        "meters": 0,
+        "grams": 0
+      },
+      {
+        "id": "hat",
+        "stitches": 180,
+        "meters": 4.5,
+        "grams": 1.1
+      },
+      {
+        "id": "brim",
+        "stitches": 162,
+        "meters": 4.1,
+        "grams": 1
+      },
+      {
+        "id": "hat-top",
+        "stitches": 15,
+        "meters": 0.4,
+        "grams": 0.1
+      },
+      {
+        "id": "eye",
+        "stitches": 5,
+        "meters": 0.1,
+        "grams": 0
+      },
+      {
+        "id": "vision",
+        "stitches": 10,
+        "meters": 0.3,
+        "grams": 0.1
+      }
+    ],
+    "perColor": [
+      {
+        "color": "C5",
+        "stitches": 327,
+        "meters": 8.2,
+        "grams": 1.9
+      },
+      {
+        "color": "C1",
+        "stitches": 145,
+        "meters": 3.6,
+        "grams": 0.9
+      },
+      {
+        "color": "C6",
+        "stitches": 50,
+        "meters": 1.3,
+        "grams": 0.3
+      },
+      {
+        "color": "C4",
+        "stitches": 35,
+        "meters": 0.9,
+        "grams": 0.2
+      },
+      {
+        "color": "C3",
+        "stitches": 30,
+        "meters": 0.8,
+        "grams": 0.2
+      },
+      {
+        "color": "C2",
+        "stitches": 30,
+        "meters": 0.8,
+        "grams": 0.2
+      },
+      {
+        "color": "C8",
+        "stitches": 15,
+        "meters": 0.4,
+        "grams": 0.1
+      },
+      {
+        "color": "C7",
+        "stitches": 5,
+        "meters": 0.1,
+        "grams": 0
+      }
+    ],
+    "total": {
+      "stitches": 637,
+      "meters": 16.1,
+      "grams": 3.9
+    },
+    "withBuffer": {
+      "meters": 20.1,
+      "grams": 4.9
+    },
+    "bufferRatio": 0.25,
+    "constants": {
+      "metersPerStitch": 0.025,
+      "note": "单短针用线按 2.5cm 计（2.5mm 钩针 + 4ply 棉线）；实际用量随手劲浮动，已含 25% 损耗缓冲"
+    }
+  },
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "warnings": [
+      "R11 可钩性偏紧：主体部件 \"body\" 最宽圈 20 针（建议 ≥ 24）。成品会偏小、塞棉困难。"
+    ],
+    "parts": [
+      {
+        "id": "body",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 5,
+            "declaredIn": 0,
+            "produced": 5,
+            "declaredOut": 5,
+            "delta": 5,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 5,
+            "declaredIn": 5,
+            "produced": 10,
+            "declaredOut": 10,
+            "delta": 5,
+            "incdec": 5,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 10,
+            "declaredIn": 10,
+            "produced": 15,
+            "declaredOut": 15,
+            "delta": 5,
+            "incdec": 5,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 15,
+            "declaredIn": 15,
+            "produced": 20,
+            "declaredOut": 20,
+            "delta": 5,
+            "incdec": 5,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 20,
+            "declaredIn": 20,
+            "produced": 20,
+            "declaredOut": 20,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 20,
+            "declaredIn": 20,
+            "produced": 20,
+            "declaredOut": 20,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 20,
+            "declaredIn": 20,
+            "produced": 20,
+            "declaredOut": 20,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 8,
+            "consumed": 20,
+            "declaredIn": 20,
+            "produced": 10,
+            "declaredOut": 10,
+            "delta": -10,
+            "incdec": -10,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 9,
+            "consumed": 10,
+            "declaredIn": 10,
+            "produced": 15,
+            "declaredOut": 15,
+            "delta": 5,
+            "incdec": 5,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 10,
+            "consumed": 15,
+            "declaredIn": 15,
+            "produced": 15,
+            "declaredOut": 15,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 11,
+            "consumed": 15,
+            "declaredIn": 15,
+            "produced": 15,
+            "declaredOut": 15,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 12,
+            "consumed": 15,
+            "declaredIn": 15,
+            "produced": 10,
+            "declaredOut": 10,
+            "delta": -5,
+            "incdec": -5,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 13,
+            "consumed": 10,
+            "declaredIn": 10,
+            "produced": 5,
+            "declaredOut": 5,
+            "delta": -5,
+            "incdec": -5,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 14,
+            "consumed": 5,
+            "declaredIn": 5,
+            "produced": 0,
+            "declaredOut": 0,
+            "delta": -5,
+            "incdec": -5,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "skirt",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 15,
+            "declaredIn": 15,
+            "produced": 15,
+            "declaredOut": 15,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 15,
+            "declaredIn": 15,
+            "produced": 15,
+            "declaredOut": 15,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "scalp",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 5,
+            "declaredIn": 0,
+            "produced": 5,
+            "declaredOut": 5,
+            "delta": 5,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 5,
+            "declaredIn": 5,
+            "produced": 10,
+            "declaredOut": 10,
+            "delta": 5,
+            "incdec": 5,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 10,
+            "declaredIn": 10,
+            "produced": 15,
+            "declaredOut": 15,
+            "delta": 5,
+            "incdec": 5,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "bangs-1",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 3,
+            "declaredIn": 0,
+            "produced": 4,
+            "declaredOut": 0,
+            "delta": 0,
+            "incdec": 1,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "bangs-2",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 3,
+            "declaredIn": 0,
+            "produced": 4,
+            "declaredOut": 0,
+            "delta": 0,
+            "incdec": 1,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "bangs-3",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 4,
+            "declaredIn": 0,
+            "produced": 5,
+            "declaredOut": 0,
+            "delta": 0,
+            "incdec": 1,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "bangs-4",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 3,
+            "declaredIn": 0,
+            "produced": 4,
+            "declaredOut": 0,
+            "delta": 0,
+            "incdec": 1,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "side-L",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 5,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 0,
+            "delta": 0,
+            "incdec": 1,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "side-R",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 5,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 0,
+            "delta": 0,
+            "incdec": 1,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "back-1",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 5,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 0,
+            "delta": 0,
+            "incdec": 1,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "back-2",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 7,
+            "declaredIn": 0,
+            "produced": 8,
+            "declaredOut": 0,
+            "delta": 0,
+            "incdec": 1,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "hat",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 6,
+            "declaredIn": 0,
+            "produced": 6,
+            "declaredOut": 6,
+            "delta": 6,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 6,
+            "declaredIn": 6,
+            "produced": 12,
+            "declaredOut": 12,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 12,
+            "declaredIn": 12,
+            "produced": 18,
+            "declaredOut": 18,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 18,
+            "declaredIn": 18,
+            "produced": 24,
+            "declaredOut": 24,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 5,
+            "consumed": 24,
+            "declaredIn": 24,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 6,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 7,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 8,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 30,
+            "declaredOut": 30,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "brim",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 30,
+            "declaredIn": 30,
+            "produced": 36,
+            "declaredOut": 36,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 36,
+            "declaredIn": 36,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 6,
+            "incdec": 6,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 42,
+            "declaredOut": 42,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 4,
+            "consumed": 42,
+            "declaredIn": 42,
+            "produced": 0,
+            "declaredOut": 0,
+            "delta": -42,
+            "incdec": -42,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "hat-top",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 5,
+            "declaredIn": 0,
+            "produced": 5,
+            "declaredOut": 5,
+            "delta": 5,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 5,
+            "declaredIn": 5,
+            "produced": 5,
+            "declaredOut": 5,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 3,
+            "consumed": 5,
+            "declaredIn": 5,
+            "produced": 0,
+            "declaredOut": 0,
+            "delta": -5,
+            "incdec": -5,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "eye",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 5,
+            "declaredIn": 0,
+            "produced": 5,
+            "declaredOut": 5,
+            "delta": 5,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      },
+      {
+        "id": "vision",
+        "ok": true,
+        "errors": [],
+        "rounds": [
+          {
+            "r": 1,
+            "consumed": 5,
+            "declaredIn": 0,
+            "produced": 5,
+            "declaredOut": 5,
+            "delta": 5,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          },
+          {
+            "r": 2,
+            "consumed": 5,
+            "declaredIn": 5,
+            "produced": 5,
+            "declaredOut": 5,
+            "delta": 0,
+            "incdec": 0,
+            "ok": true,
+            "errors": []
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "parts": 16,
+      "rounds": 45,
+      "totalStitches": 637,
+      "colorChanges": 6,
+      "decorCount": 1,
+      "decorStitches": 15,
+      "reservedLoops": 2,
+      "craftability": {
+        "hardFails": 0,
+        "softWarns": 1,
+        "checked": [
+          {
+            "id": "body",
+            "maxStitches": 20
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "name": "芙宁娜",
+  "heightCm": 14,
+  "style": "chibi",
+  "gauge": {
+    "stPerCm": 2.2,
+    "roundsPerCm": 2.2,
+    "hookMm": 2.5,
+    "yarn": "4ply 牛奶棉"
+  },
+  "palette": [
+    { "id": "C1", "name": "奶肤",   "hex": "#F5E6D8", "role": "skin",  "yarnMetersPerGram": 4.2 },
+    { "id": "C2", "name": "银白",   "hex": "#E8F4F8", "role": "hair",  "yarnMetersPerGram": 4.2 },
+    { "id": "C3", "name": "深蓝",   "hex": "#1A2B5C", "role": "main",  "yarnMetersPerGram": 4.2 },
+    { "id": "C4", "name": "深紫",   "hex": "#5D3A8A", "role": "accent","yarnMetersPerGram": 4.2 },
+    { "id": "C5", "name": "金色",   "hex": "#D4AF37", "role": "accent","yarnMetersPerGram": 4.2 },
+    { "id": "C6", "name": "水蓝",   "hex": "#3D8ED4", "role": "eye",   "yarnMetersPerGram": 4.2 },
+    { "id": "C7", "name": "腮红粉", "hex": "#F2B6B6", "role": "blush", "yarnMetersPerGram": 4.2 }
+  ],
+  "parts": [
+    {
+      "id": "head",
+      "name": "头部",
+      "shape": { "kind": "sphere", "diameterCm": 6.5 },
+      "defaultColor": "C1"
+    },
+    {
+      "id": "hair-cap",
+      "name": "发帽",
+      "shape": { "kind": "sphere", "diameterCm": 6.8 },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "bangs",
+      "name": "前刘海片",
+      "shape": { "kind": "flat-round", "diameterCm": 6.5 },
+      "defaultColor": "C2"
+    },
+    {
+      "id": "body",
+      "name": "躯干（深蓝燕尾服）",
+      "shape": { "kind": "capsule", "diameterCm": 3.5, "heightCm": 4.0 },
+      "defaultColor": "C3",
+      "colorRounds": [
+        { "from": 1, "to": 2, "color": "C1" },
+        { "from": 3, "to": 4, "color": "C3" },
+        { "from": 5, "to": 6, "color": "C4" },
+        { "from": 7, "to": 99, "color": "C3" }
+      ]
+    },
+    {
+      "id": "hat",
+      "name": "礼帽筒身（织 1 只）",
+      "shape": { "kind": "cylinder", "diameterCm": 4.0, "heightCm": 1.5 },
+      "defaultColor": "C3"
+    },
+    {
+      "id": "hat-top",
+      "name": "礼帽顶珠",
+      "shape": { "kind": "sphere", "diameterCm": 1.5 },
+      "defaultColor": "C5"
+    },
+    {
+      "id": "arm",
+      "name": "手臂（织 2 只）",
+      "shape": { "kind": "capsule", "diameterCm": 1.5, "heightCm": 3.0 },
+      "defaultColor": "C1",
+      "colorRounds": [
+        { "from": 1, "to": 2, "color": "C3" }
+      ]
+    },
+    {
+      "id": "leg",
+      "name": "腿（织 2 只）",
+      "shape": { "kind": "capsule", "diameterCm": 1.5, "heightCm": 2.5 },
+      "defaultColor": "C1",
+      "colorRounds": [
+        { "from": 5, "to": 99, "color": "C3" }
+      ]
+    },
+    {
+      "id": "eye",
+      "name": "眼睛（织 2 片）",
+      "shape": { "kind": "flat-round", "diameterCm": 0.5 },
+      "defaultColor": "C6"
+    }
+  ],
+  "buildOrder": [
+    "头部：环形起针，塞棉收口，前脸压平。",
+    "发帽：环形起针，封口后套在头上。",
+    "前刘海片：环形起针递增，贴在额头前方，压住发帽下缘。",
+    "礼帽筒身：平织直筒，套在发帽顶部偏后位置。",
+    "礼帽顶珠：塞棉收口，缝在礼帽筒身顶端。",
+    "躯干：环形起针，深蓝主色换紫色领结区，收口后与头部底部缝合。",
+    "手臂 ×2：深蓝袖口，缝合在躯干上方两侧。",
+    "腿 ×2：深蓝鞋边，缝合在躯干底部。",
+    "紫色领结：片织小方块，缝在躯干领口中央。",
+    "眼睛 ×2：水蓝圆片，缝在前额下方。",
+    "金色装饰刺绣：领结中心、礼帽侧面缝金色点缀（用金色线简单打圈即可）。",
+    "腮红：C7 粉色在眼睛下方扫两小块棉线点。"
+  ]
+}
